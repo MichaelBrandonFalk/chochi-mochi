@@ -1,11 +1,11 @@
 import { mkdir, copyFile, rm, readFile, writeFile } from 'node:fs/promises';
 await rm('dist',{recursive:true,force:true});
 await mkdir('dist/docs',{recursive:true});
-for(const file of ['index.html','style.css','app.js','art.js','content.js','chapters.js'])await copyFile(file,`dist/${file}`);
+for(const file of ['index.html','style.css','app.js','art.js','content.js','chapters.js','activities.js'])await copyFile(file,`dist/${file}`);
 await copyFile('docs/RESEARCH.md','dist/docs/RESEARCH.md');
 // Content fingerprints refresh cached assets after each release.
 const { createHash } = await import('node:crypto');
-for (const dependency of ['content.js', 'art.js', 'chapters.js']) {
+for (const dependency of ['content.js', 'art.js', 'chapters.js','activities.js']) {
   const hash = createHash('sha256').update(await readFile(`dist/${dependency}`)).digest('hex').slice(0,12);
   const app = await readFile('dist/app.js','utf8');
   await writeFile('dist/app.js',app.replace(`'./${dependency}'`,`'./${dependency}?v=${hash}'`));

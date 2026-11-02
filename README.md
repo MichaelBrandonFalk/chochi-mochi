@@ -30,3 +30,5 @@ For subsequent releases, update the package version, visible footer, and changel
 `content.js` contains the 19 original lessons; `app.js` composes the story and final review. All final-review gifts require a correct response with unlimited supportive retries, and every lesson is revisitable. Choices do not collect personal mental-health data. Reading level is an editorial target around age seven, not a validated assessment. Adult notes intentionally use more precise terminology.
 
 Native buttons, headings, keyboard focus, live feedback, responsive layouts, no motion effects, and user-initiated speech are included. Browser speech availability varies. Local-storage failure falls back to in-memory progress; clearing browser data removes saves.
+
+Version 1.2 adds 19 optional card activities, distinct landmark illustrations, new final scenarios, a saved reading position, and printable keepsakes. Chapter page links allow easy review.

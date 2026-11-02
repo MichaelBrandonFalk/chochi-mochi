@@ -48,3 +48,7 @@ The 19 lessons are small teaching units chosen for the story, not official SPACE
 ## Expanded story edition (1.1.0)
 
 Each place now includes arrival, an optional discovery, a worked teaching scene, guided rehearsal, and a knowledge choice with a closing scene. The three-page prologue introduces Glaloula as a fairy and Aunt Fern as her caregiver. These fictional examples explain the existing principles; they do not add a prescribed treatment plan.
+
+## Practice edition (1.2.0)
+
+Optional card activities rehearse the existing concepts without real-world assignments. The final gathering uses new fictional situations to review each of the 19 principles. Practice completion measures only game interaction, never mental health.
