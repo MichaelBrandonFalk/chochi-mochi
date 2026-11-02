@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.3: 2026-11-02
+
+- Fingerprint deployed assets so returning players receive updated writing and styles.
+
 ## 1.0.2: 2026-11-02
 
 - Remove em dashes and simplify slogan-like interface text.
