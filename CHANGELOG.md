@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.0: 2026-11-02
+
+- Add a three-page opening introducing the friends, Glaloula the fairy, Aunt Fern, and the quest.
+- Expand all 19 places into five-page chapters with arrival scenes, discoveries, worked teaching examples, guided practice, and a final choice.
+- Add chapter endings, page navigation, and narration for story and teaching pages.
+- Keep existing saved progress and the final 19-gift review.
+
 ## 1.0.3: 2026-11-02
 
 - Fingerprint deployed assets so returning players receive updated writing and styles.

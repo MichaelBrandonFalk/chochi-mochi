@@ -44,3 +44,7 @@ The 19 lessons are small teaching units chosen for the story, not official SPACE
 - Simple prose, short paragraphs, and concrete fantasy examples target roughly age seven. No formal reading-age certification is claimed. Adult notes are intentionally more advanced.
 - The final review reuses the 19 lesson choices as a gentle knowledge-retrieval exercise. It is not a standardized or clinical exam.
 - No copied artwork, logos, questionnaires, proprietary manual text, or treatment worksheets are included.
+
+## Expanded story edition (1.1.0)
+
+Each place now includes arrival, an optional discovery, a worked teaching scene, guided rehearsal, and a knowledge choice with a closing scene. The three-page prologue introduces Glaloula as a fairy and Aunt Fern as her caregiver. These fictional examples explain the existing principles; they do not add a prescribed treatment plan.

@@ -3,3 +3,5 @@ import assert from 'node:assert/strict';
 import {lessons} from '../content.js';
 test('19 complete lessons plus the app’s final review',()=>{assert.equal(lessons.length,19);assert.equal(new Set(lessons.map(l=>l.place)).size,19);for(const l of lessons){for(const k of ['place','title','story','learn','question','why','keepsake','adult'])assert.ok(l[k]?.length,k);assert.equal(l.choices.length,3);assert.ok(Number.isInteger(l.answer)&&l.answer>=0&&l.answer<3);assert.equal(new Set(l.choices).size,3);}});
 test('all answer positions are used',()=>assert.deepEqual([...new Set(lessons.map(l=>l.answer))].sort(),[0,1,2]));
+import {opening,chapters} from '../chapters.js';
+test('every chapter teaches through a worked scene before practice',()=>{assert.equal(opening.length,3);assert.equal(chapters.length,lessons.length);for(const c of chapters){assert.ok(c.arrival.length>=2);assert.ok(c.explore.length>80);assert.ok(c.teach.length>=3);assert.ok(c.practice.length>=2);assert.ok(c.ending.length>80);const words=[...c.arrival,c.explore,...c.teach,...c.practice,c.ending].join(' ').split(/\s+/).length;assert.ok(words>=190,`Chapter too brief: ${words}`);}});
