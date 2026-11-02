@@ -1,6 +1,6 @@
 # Chochi Mochi: The Garden of Little Lights
 
-A peaceful, text-led browser adventure with a three-page opening and five-page story chapters: 19 learning places and a final 19-gift review with Glaloula. Original SVG artwork, early-reader prose, optional browser read-aloud, local progress, a keepsake book, and adult notes. No timers, penalties, trackers, accounts, runtime packages, or build dependencies.
+A peaceful, text-led browser adventure with a three-page opening and seven-page story chapters: 19 learning places and a final 19-gift review with Glaloula. Original SVG artwork, early-reader prose, optional browser read-aloud, local progress, a keepsake book, and adult notes. No timers, penalties, trackers, accounts, runtime packages, or build dependencies.
 
 This independent educational adaptation introduces SPACE principles. It is not official SPACE treatment, endorsed by its developers, or clinically validated. Children do not need to play for their caregivers to use SPACE. See [research and curriculum notes](docs/RESEARCH.md).
 
@@ -34,3 +34,5 @@ Native buttons, headings, keyboard focus, live feedback, responsive layouts, no 
 Version 1.2 adds 19 optional card activities, distinct landmark illustrations, new final scenarios, a saved reading position, and printable keepsakes. Chapter page links allow easy review.
 
 Version 1.3 adds a winding map, a keepsake garden, responsive practice pictures, saved discoveries, and four final-review story scenes. Flowers record learning rather than a character’s anxiety level.
+
+Version 1.4 expands each chapter to seven pages: arrival, discovery, teaching, reply exploration, practice, teach-back, and a new situation. Five story letters bring Glaloula into the trip. Reading position and completion saves remain compatible; older page bookmarks open the corresponding page number in the expanded chapter.

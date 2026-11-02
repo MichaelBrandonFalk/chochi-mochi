@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.4.0: 2026-11-02
+
+- Deepen all 19 chapters with each teacher’s personal reason for caring.
+- Add 19 conversation scenes with two explorable replies, character reactions, and explanations.
+- Add 19 teach-back exercises and optional own-words rehearsal.
+- Replace lesson checks with new transfer situations.
+- Add five letters from Glaloula and a letter collection in the keepsake book.
+- Expand chapters to seven pages and preserve existing completion progress.
+
 ## 1.3.0: 2026-11-02
 
 - Add a winding illustrated map with accessible stops for all 20 levels.

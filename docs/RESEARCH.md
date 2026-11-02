@@ -56,3 +56,7 @@ Optional card activities rehearse the existing concepts without real-world assig
 ## Responsive world edition (1.3.0)
 
 Discovery light and garden flowers respond to reading and game choices, not mental-health measures. The four final-review story scenes preserve the distinction between friendship and caregiver-led treatment. No additional treatment techniques or individual care prescriptions are introduced.
+
+## Learning and character edition (1.4.0)
+
+New fictional teacher memories and Glaloula’s letters connect the principles to character goals. Conversation branches show differences between well-intended responses without claiming that a particular sentence reliably reduces distress. Teach-back and new-situation exercises rehearse conceptual understanding; they are not clinical assessments. Own-words practice records no audio or personal text. No real-world treatment tasks are assigned.
