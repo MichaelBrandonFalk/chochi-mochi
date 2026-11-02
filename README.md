@@ -1,4 +1,4 @@
-# Chochi & Mochi: The Garden of Little Lights
+# Chochi Mochi: The Garden of Little Lights
 
 A peaceful, text-led browser adventure: 19 learning places and a final 19-gift review with Glaloula. Original SVG artwork, early-reader prose, optional browser read-aloud, local progress, a keepsake book, and adult notes. No timers, penalties, trackers, accounts, runtime packages, or build dependencies.
 
