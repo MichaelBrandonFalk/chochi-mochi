@@ -1,0 +1,32 @@
+# Chochi & Mochi: The Garden of Little Lights
+
+A peaceful, text-led browser adventure: 19 learning places and a final 19-gift review with Glaloula. Original SVG artwork, early-reader prose, optional browser read-aloud, local progress, a keepsake book, and adult notes. No timers, penalties, trackers, accounts, runtime packages, or build dependencies.
+
+This independent educational adaptation introduces SPACE principles. It is not official SPACE treatment, endorsed by its developers, or clinically validated. Children do not need to play for their caregivers to use SPACE. See [research and curriculum notes](docs/RESEARCH.md).
+
+## Run locally
+
+Requires Node 22+ for checks/build and Python 3 for the convenience server.
+
+```sh
+npm test
+npm run build
+npm start
+```
+
+Open http://localhost:4173. Static files also work on any web server. Use HTTP because the game uses ES modules. The deployable output is `dist/`; relative asset paths support GitHub project Pages.
+
+## GitHub Pages and versioned releases
+
+1. Create a public GitHub repository and push this source.
+2. In Settings → Pages choose **GitHub Actions** as the build source.
+3. Tag the release `v1.0.0` and push the tag. The included workflow tests, packages, and deploys that exact tagged commit. Main-branch pushes do not deploy automatically.
+4. Create a GitHub Release for that tag, using CHANGELOG.md and optionally attaching a ZIP of `dist/`.
+
+For subsequent releases, update the package version, visible footer, and changelog, then create a new semantic version tag. Never move a published tag. To roll back, run the workflow manually selecting a previous tag. The workflow can also be manually run for a selected branch; use a release tag to preserve release provenance.
+
+## Content and accessibility
+
+`content.js` contains the 19 original lessons; `app.js` composes the story and final review. All final-review gifts require a correct response with unlimited supportive retries, and every lesson is revisitable. Choices do not collect personal mental-health data. Reading level is an editorial target around age seven, not a validated assessment. Adult notes intentionally use more precise terminology.
+
+Native buttons, headings, keyboard focus, live feedback, responsive layouts, no motion effects, and user-initiated speech are included. Browser speech availability varies. Local-storage failure falls back to in-memory progress; clearing browser data removes saves.
