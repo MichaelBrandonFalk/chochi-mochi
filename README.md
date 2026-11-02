@@ -32,3 +32,5 @@ For subsequent releases, update the package version, visible footer, and changel
 Native buttons, headings, keyboard focus, live feedback, responsive layouts, no motion effects, and user-initiated speech are included. Browser speech availability varies. Local-storage failure falls back to in-memory progress; clearing browser data removes saves.
 
 Version 1.2 adds 19 optional card activities, distinct landmark illustrations, new final scenarios, a saved reading position, and printable keepsakes. Chapter page links allow easy review.
+
+Version 1.3 adds a winding map, a keepsake garden, responsive practice pictures, saved discoveries, and four final-review story scenes. Flowers record learning rather than a character’s anxiety level.

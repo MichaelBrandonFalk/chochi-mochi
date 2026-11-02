@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.3.0: 2026-11-02
+
+- Add a winding illustrated map with accessible stops for all 20 levels.
+- Add a keepsake garden with a flower and memory for each completed lesson.
+- Make practice pictures respond to choices, including two working lanterns.
+- Save discoveries and brighten their scenes.
+- Add four story scenes to connect the final review into a homecoming, art time, tea, and a later visit.
+- Move page narration above long teaching text.
+
 ## 1.2.0: 2026-11-02
 
 - Add 19 hands-on practice activities with card choices, paired ideas, and ordered steps.

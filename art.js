@@ -14,11 +14,11 @@ pond+'<path d="M157 251q120-70 245 0m-245-24q120-70 245 0" fill="none" stroke="#
 pond+'<circle cx="300" cy="218" r="45" fill="none" stroke="#ae9570" stroke-width="10"/><path d="M255 218h90m-45-45v90m-32-77 64 64m0-64-64 64" stroke="#ae9570" stroke-width="7"/>',pots+'<g fill="#fff7e5"><ellipse cx="230" cy="123" rx="60" ry="19"/><ellipse cx="340" cy="90" rx="60" ry="19"/></g>',house+'<path d="M235 239h40v20q-20 20-40 0z" fill="#efe3c4"/><path d="M276 241q25 0 11 17" fill="none" stroke="#efe3c4" stroke-width="7"/>',tree+'<path d="M310 220q-25-40-40 0l-10 50h65z" fill="#b8b8a0"/><text x="240" y="170" font-size="40" fill="#f0dfa7">♪</text>',
 '<g transform="translate(-80)">'+tree+'</g><g transform="translate(80)">'+tree+'</g><path d="M210 249h145m-127 0v30m107-30v30" stroke="#ac9270" stroke-width="10"/>',pots+'<g fill="#e9d5a9"><circle cx="200" cy="158" r="14"/><circle cx="290" cy="138" r="14"/><circle cx="380" cy="169" r="14"/></g>',house+book+'<text x="272" y="118" font-size="32" fill="#f3dfa1">✦</text>'
 ];
-export function placeScene(index,bright=false){
- let result=scene(bright);
+export function placeScene(index,bright=false,effects={}){
+ let result=scene(bright||effects.discovered);
  // The fairy is at home while Chochi and Mochi travel.
  result=result.replace(/<g transform="translate\(307 226\)">[\s\S]*?<\/g>/,'');
- result=result.replace('<g transform="translate(101 259)">',`${landmarks[index]||''}<g transform="translate(101 259)">`);
+ result=result.replace('<g transform="translate(101 259)">',`${index===5?lamp.replace('fill="#f5dda0"','fill="#d2d7c7"')+(Array.from({length:effects.steps??(bright?2:0)},(_,j)=>`<circle cx="${240+j*87}" cy="185" r="38" fill="#f9df8b" opacity=".6"/><rect x="${222+j*87}" y="159" width="35" height="55" rx="8" fill="#f5d07b" stroke="#ad9865" stroke-width="3"/>`).join('')):landmarks[index]||''}${effects.discovered?'<g fill="#fff2b8"><circle cx="155" cy="150" r="5"/><circle cx="402" cy="174" r="5"/><path d="m380 95 4 10 10 4-10 4-4 10-4-10-10-4 10-4z"/></g>':''}<g transform="translate(101 259)">`);
  result=result.replace('Chochi the green dinosaur and Mochi the cream unicorn in a peaceful garden with fairy Glaloula','Chochi and Mochi exploring a peaceful place on their journey');
- return result.replace(/<div class="scene-caption">[\s\S]*?<\/div>/,`<div class="scene-caption">${bright?'Your visit brought more light':'A place to explore together'}</div>`);
+ return result.replace(/<div class="scene-caption">[\s\S]*?<\/div>/,`<div class="scene-caption">${bright?'Your visit brought more light':effects.discovered?'A discovery for our book':'A place to explore together'}</div>`);
 }

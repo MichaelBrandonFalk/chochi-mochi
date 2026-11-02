@@ -52,3 +52,7 @@ Each place now includes arrival, an optional discovery, a worked teaching scene,
 ## Practice edition (1.2.0)
 
 Optional card activities rehearse the existing concepts without real-world assignments. The final gathering uses new fictional situations to review each of the 19 principles. Practice completion measures only game interaction, never mental health.
+
+## Responsive world edition (1.3.0)
+
+Discovery light and garden flowers respond to reading and game choices, not mental-health measures. The four final-review story scenes preserve the distinction between friendship and caregiver-led treatment. No additional treatment techniques or individual care prescriptions are introduced.
