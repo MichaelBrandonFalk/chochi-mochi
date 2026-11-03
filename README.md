@@ -36,3 +36,5 @@ Version 1.2 adds 19 optional card activities, distinct landmark illustrations, n
 Version 1.3 adds a winding map, a keepsake garden, responsive practice pictures, saved discoveries, and four final-review story scenes. Flowers record learning rather than a character’s anxiety level.
 
 Version 1.4 expands each chapter to seven pages: arrival, discovery, teaching, reply exploration, practice, teach-back, and a new situation. Five story letters bring Glaloula into the trip. Reading position and completion saves remain compatible; older page bookmarks open the corresponding page number in the expanded chapter.
+
+Version 1.5 puts the opening before level 1, moves letters to chapter endings, and adds optional music and effects. Audio is off each visit. Source and CC0 records are in [docs/AUDIO.md](docs/AUDIO.md).

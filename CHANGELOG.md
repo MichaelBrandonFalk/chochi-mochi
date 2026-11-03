@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.5.0: 2026-11-02
+
+- Put the opening story before level 1 on the map and direct new players through it first.
+- Move Glaloula’s letters to chapter endings.
+- Correct dinosaur, unicorn, and sheep descriptions.
+- Remove the three-item home banner.
+- Add optional CC0 music and soft effects, independent volume controls, narration ducking, and a stop-all control.
+- Bundle audio locally with license records.
+
 ## 1.4.0: 2026-11-02
 
 - Deepen all 19 chapters with each teacher’s personal reason for caring.

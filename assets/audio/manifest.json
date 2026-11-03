@@ -1,0 +1,29 @@
+[
+  {
+    "file": "assets/audio/calm-garden.mp3",
+    "title": "Calm Track",
+    "creator": "pmiller",
+    "source": "https://opengameart.org/content/calm-track",
+    "license": "CC0-1.0",
+    "attribution_required": false,
+    "sha256": "e077ec76f51e7e07c5c26df52ba91d73655d5559cf0bd4ce16dcdcc300fd6433"
+  },
+  {
+    "file": "assets/audio/page-touch.mp3",
+    "title": "Interface Sounds: tick_001",
+    "creator": "Kenney",
+    "source": "https://kenney.nl/assets/interface-sounds",
+    "license": "CC0-1.0",
+    "attribution_required": false,
+    "sha256": "78568ac970b2cacfeb6ad601ba9e0aabc14c871013d0ebd891997af99b2c1ede"
+  },
+  {
+    "file": "assets/audio/keepsake.mp3",
+    "title": "Interface Sounds: pluck_001",
+    "creator": "Kenney",
+    "source": "https://kenney.nl/assets/interface-sounds",
+    "license": "CC0-1.0",
+    "attribution_required": false,
+    "sha256": "11cb9880fd7f195278b08d7c8fb114c7ecc4a3e7a404462bec9a017c68b4f197"
+  }
+]
