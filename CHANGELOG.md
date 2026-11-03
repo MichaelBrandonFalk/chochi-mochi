@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.2.0 · November 3, 2026
+
+- Added Comfort & Access before the story and throughout play, with saved reading, contrast, sensory, layout, and control settings. No diagnosis is requested.
+- Added page read-aloud with pause, repeat, voice, speed, and volume controls, plus optional spoken labels and feedback.
+- Added one-paragraph story reading, saved paragraph position, a recap, and a quiet break screen that survives reload on the same page.
+- Added direct direction, ribbon-pattern, stamp, and erase controls; boat undo; picture descriptions; and large controls on any screen.
+- Added supported project demonstrations with Chochi and story-continuation links from optional toys.
+- Changed toy updates to preserve existing controls and live regions. Preserved learning progress, postcards, and previous story versions.
+
 ## 2.1.0 · November 3, 2026
 
 - Added an original optional outing in each of the 19 chapters and in Glaloula’s garden, with six toy systems: finding, boats, a music box, a ribbon loom, tiny gardens, and turning-paper puzzles.

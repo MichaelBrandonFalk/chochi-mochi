@@ -33,3 +33,8 @@ Music and effects start off on every page load. Volume levels alone are remember
 ## Pocket music box
 
 Version 2.1 adds original synthesized pentatonic notes for a player-operated four-note music box. No additional recordings or third-party samples are downloaded. The music box follows the Soft sound effects switch and effect volume. Notes stop when Stop all sound is used, narration begins, the page changes, or the tab is hidden. Saved tunes contain note numbers only; playback never resumes automatically.
+
+
+## Comfort and reading controls
+
+Comfort & Access can adjust music and effect volumes and stop all sound. Narration has its own voice, speed, and volume settings. Quiet stops current audio and disables extra spoken labels. Read-aloud remains available by request. A break, page navigation, hiding the tab, and Stop all sound cancel narration; none automatically restarts it. Browser voices are supplied by the device or browser, not bundled recordings.
