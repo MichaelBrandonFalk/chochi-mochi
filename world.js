@@ -1,6 +1,6 @@
 import { renderAtlas } from './atlas.js';
 export const treasures = [
- ['Gold leaf','Pip’s welcome sign has room for every feeling.'],
+ ['Gold leaf','Tuck’s welcome sign has room for every feeling.'],
  ['Yellow cloth','Rue made room for more than one feeling.'],
  ['Leaf bookmark','Olive gave the mouse time to finish.'],
  ['Reed stone','Moss showed how to reflect a feeling.'],

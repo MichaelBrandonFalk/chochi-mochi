@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.3.0 · November 3, 2026
+
+- Connected every arrival to its story choice with a concrete moment in the scene.
+- Renamed the Clover Gate keeper Tuck and introduced Button and Pipkin before choosing a companion. Their picnic and song outings now follow from that choice.
+- Removed the repeated outing prompt, competing activity menus, duplicate outing title, and generic transition text.
+- Gave exploration one activity to start with, an optional bag for carried toys, and a clear invitation to sit with the chapter’s teacher.
+- Preserved saved choices, toy branches, postcards, learning progress, and comfort settings.
+
 ## 2.2.0 · November 3, 2026
 
 - Added Comfort & Access before the story and throughout play, with saved reading, contrast, sensory, layout, and control settings. No diagnosis is requested.

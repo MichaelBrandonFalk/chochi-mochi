@@ -41,3 +41,9 @@ An outing’s save key includes only the story choices available up to that chap
 Replaying does not erase lesson completion or keepsakes. Existing game saves gain an empty outing collection. Outing pages and unfinished toys can resume after a reload. Everything stays in this browser; there is no account or tracking service.
 
 These are playful variations of twenty authored scenes, not twenty separate novels for every combination. No timer, lives, rankings, or compulsory side-game score is used. The toys are not clinical exercises or measures of anxiety.
+
+## Chapter flow in 2.3.0
+
+Meet each host and see the story choice in the arrival scene. At Clover Gate, Tuck introduces Button and Pipkin before you pick a companion. Button suggests a tiny picnic; Pipkin suggests a welcome song.
+
+Play & explore opens the outing itself. Try something from our bag opens the alternate toys from earlier choices. These toys keep their own saved work. Keep our postcard saves a picture for the album and a memory for the next stop. The chapter’s main button invites you to sit with the teacher, then make a gift, try a conversation, remember, and pack up. Outings remain optional.

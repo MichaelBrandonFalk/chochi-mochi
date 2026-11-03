@@ -1,6 +1,6 @@
 // Playful side stories. These toys do not score feelings or ask personal questions.
 export const outings=[
- ['The hat at Clover Gate','Pip has made a hat so small that it fits on a pea. He wants a picture of the friends’ first outing.','Pip','Pea hat',['a leaf cup','a curled fern','a moss cushion'],['a cloud curl','a high twig','a hanging flag'],['seek','tune']],
+ ['A welcome at Clover Gate','While Tuck’s sign dries, Chochi spots a leaf cup beside the gate. What else is tucked among the leaves?','Tuck','Clover Gate picture',['a leaf cup','a curled fern','a moss cushion'],['a cloud curl','a high twig','a hanging flag'],['seek','tune']],
  ['Rue’s scrap parade','Rue’s scraps have become capes for the meadow mice. There is room for a very small parade before sewing time.','Rue','Mouse cape',['a mouse cape','a dew cup','a button stool'],['a kite tail','a seed sail','a cloud sheep'],['weave','garden']],
  ['The leaf-band rehearsal','The mouse band needs a tune for its leaf stage. The beetle who plays the spoon has brought two spoons, just in case.','Olive','Leaf violin',['a spoon stand','a moss drum','a leaf fiddle'],['a bell branch','a feather fan','a bird stage'],['tune','wheels']],
  ['A party on a lily pad','Gran’s frog friends are setting up a little pond party. The cups are acorn caps. The largest frog has brought the smallest cup.','Moss','Acorn cup',['a lily stool','a reed basket','a frog’s cup'],['a dragonfly perch','a cloud mirror','a willow loop'],['boat','garden']],
@@ -28,3 +28,16 @@ export const toolKinds=[
 export const toolGlyphs=[['❧','♫'],['▧','▦'],['♪','♩'],['⋈','♧'],['✿','☘'],['✧','❧'],['♧','○'],['∞','⋈'],['◒','◭'],['☀','♧'],['⌂','✧'],['☽','♧'],['○','❧'],['☁','☕'],['♧','▤'],['♫','♩'],['○','▦'],['✦','●'],['☁','◒']];
 export const modeNames={seek:'A little finding game',boat:'A trip to the little docks',tune:'Our pocket music box',weave:'The ribbon loom',garden:'A tiny world to arrange',wheels:'The turning-paper puzzle'};
 export const recipes=[{id:'sail',needs:[7,8],name:'Ribbon-sail boat',text:'The ribbon becomes a sail for the little boat. Now it can carry a flag to the next place.',glyph:'◭'},{id:'glow',needs:[4,5],name:'Flower lantern',text:'A flower sits beside the paper lantern. Its shadow looks like a whole garden.',glyph:'✿'},{id:'band',needs:[2,3],name:'Pond band badge',text:'The cup picture joins the tune. A frog with a very small drum becomes the band leader.',glyph:'♫'},{id:'club',needs:[9,10],name:'Tiny club house',text:'The painted pebble becomes a club sign. A beetle has already asked if there is a chair.',glyph:'⌂'},{id:'post',needs:[11,17],name:'Bug post office',text:'The tiny guest delivers an invitation. It is the first letter carried by a beetle in a hat.',glyph:'✉'}];
+
+export function outingSetup(level, choices, tool = {id: 'native'}) {
+ if (level !== 0) return outings[level].setup;
+ if (choices[0] === 1 && tool.id !== 'native') return 'Pipkin spreads his wings. “Follow me over the stream!” Chochi and Mochi take the path along the bank. Choose a turn at each bend to meet the friends by the water.';
+ if (choices[0] === 1) return 'Pipkin taps the gate rail with his beak. “Let’s make a welcome song for Tuck!” Chochi taps with his small hands. Mochi keeps time with a hoof.';
+ if (choices[0] === 0) return 'Button leads them to a leaf beside the gate. “A picnic can fit right here!” she says. Help the friends find a cup, a fern, and a soft seat while Tuck’s sign dries.';
+ return outings[0].setup;
+}
+export function outingAction(mode, level) {
+ if (level === 0 && mode === 'seek') return 'Find the tiny picnic';
+ if (level === 0 && mode === 'tune') return 'Make a welcome song';
+ return {seek:'Find three tiny things',tune:'Make a tune',weave:'Choose a ribbon pattern',garden:'Make a tiny world',wheels:'Turn the paper wheels',boat:'Take a boat to a dock'}[mode];
+}

@@ -1,6 +1,6 @@
 // All activities use fictional situations. Real care plans belong to caregivers.
 export const activities = [
-{kind:'pick',title:'Pack the right thing',prompt:'Pip offers two things for the trip. Which would help the friends?',options:['A book for kind ideas','A list of people to blame'],answer:0,reply:'Chochi packs the book. “We can learn without blaming anyone,” he says.'},
+{kind:'pick',title:'Pack the right thing',prompt:'Tuck offers two things for the trip. Which would help the friends?',options:['A book for kind ideas','A list of people to blame'],answer:0,reply:'Chochi packs the book. “We can learn without blaming anyone,” he says.'},
 {kind:'both',title:'Fill Rue’s basket',prompt:'Rue is glad about the visit and worried about meeting someone new. Tap each feeling she can have.',options:['Glad','Worried'],reply:'Both scraps fit. Rue does not have to send one feeling away to make room for the other.'},
 {kind:'order',title:'Make room to listen',prompt:'Put Olive’s listening steps in order. Tap the step that comes next.',options:['Let the mouse finish','Think about what he said','Give a short, kind reply'],reply:'Chochi waits, thinks, and then speaks. Now his reply fits what the mouse told him.'},
 {kind:'pick',title:'Hold up a kind mirror',prompt:'The young frog says, “Giving Gran my cup feels hard.” Which reply shows you heard her?',options:['Making cups is easy for me','Giving the cup feels hard for you'],answer:1,reply:'“Yes, that is how I feel,” says the frog. You reflected her feeling instead of comparing it with yours.'},
