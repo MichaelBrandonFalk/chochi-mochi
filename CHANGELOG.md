@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.2 · November 3, 2026
+
+- Moved the Story hexagon directly left of level 1 and shortened its connecting path.
+- Made level 19 use the same unvisited and completed colors as the other learning stops, including level 18.
+
 ## 2.0.1 · November 3, 2026
 
 - Reversed the numbered map route to run clockwise.
