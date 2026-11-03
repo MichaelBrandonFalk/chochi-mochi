@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.4.0 · November 3, 2026
+
+- Rebuilt chapter navigation as spacious, wrapping pills with separate numbers and labels, a 48-pixel minimum height, and a clear current-page outline.
+- Introduced a shared watercolor palette: warm paper, sage learning spaces, lavender selections, peach memories, and pond-blue activity notes. Text and main actions retain deeper colors for legibility.
+- Refined reading widths, paragraph rhythm, panel padding, action groups, and sidebar placement across desktop, tablet, and mobile.
+- Applied the same surface and control styling to crafts, outings, the map, album, basket, garden, and comfort tools.
+- Preserved larger text, plain backgrounds, simplified layouts, high contrast, and all saved progress.
+
 ## 2.3.0 · November 3, 2026
 
 - Connected every arrival to its story choice with a concrete moment in the scene.

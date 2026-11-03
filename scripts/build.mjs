@@ -18,7 +18,7 @@ async function emit(file){
 }
 await emit('app.js');
 let html=await readFile('index.html','utf8');
-for(const asset of ['style.css','pastel.css','access.css']){await copyFile(asset,'dist/'+asset);hashes.set(asset,hash(await readFile(asset)));}
-for(const asset of ['app.js','style.css','pastel.css','access.css'])html=html.replace('"'+asset+'"','"'+asset+'?v='+hashes.get(asset)+'"');
+for(const asset of ['style.css','pastel.css','calm.css','access.css']){await copyFile(asset,'dist/'+asset);hashes.set(asset,hash(await readFile(asset)));}
+for(const asset of ['app.js','style.css','pastel.css','calm.css','access.css'])html=html.replace('"'+asset+'"','"'+asset+'?v='+hashes.get(asset)+'"');
 await writeFile('dist/index.html',html);
 console.log('Static game ready in dist/');

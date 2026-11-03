@@ -38,3 +38,7 @@ These checks are not a WCAG conformance certification. End-to-end testing with V
 - [W3C cognitive accessibility: clear and understandable content](https://www.w3.org/WAI/WCAG2/supplemental/objectives/o3-clear-content/)
 - [W3C WCAG 2.2 guidance on focus, targets, and input alternatives](https://www.w3.org/WAI/standards-guidelines/wcag/new-in-22/)
 - [Game Accessibility Guidelines](https://gameaccessibilityguidelines.com/full-list/)
+
+## Layout update in 2.4.0
+
+Chapter links now wrap with separate number and label spans, generous horizontal padding, and a 48-pixel minimum height. The current page has both an outline and bold text. The shared pastel palette uses deeper ink and action colors; optional stronger contrast remains available. Larger text can increase the navigation’s height without clipping labels. See [layout verification](QA-v2.4.0.md).
