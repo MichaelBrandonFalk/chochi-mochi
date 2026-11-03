@@ -53,3 +53,5 @@ Version 2.1 adds twenty optional outings and six interactive toy systems. Every 
 
 
 Version 2.2 adds Comfort & Access preferences, reading controls, one-paragraph story pages, sensory supports and saved breaks, recaps, direct toy controls, supported project completion, and control-preserving toy updates. See [access features and testing limits](docs/ACCESSIBILITY.md). Preferences, reading positions, and break state use separate local-storage keys from game progress. `access-model.js` sanitizes settings, `access.js` binds reading and comfort tools, `access.css` supplies presentation variants, and `dom-update.js` preserves existing toy controls during updates.
+
+Version 2.5 adds optional browser-local players, guarded restarts, an earned-gift basket with received letters, silent visual songs, fixed postcard pictures, and connected flight stories. The original player retains the legacy save keys; additional players use separate key namespaces. Never clear all local storage to restart one player. See [play instructions](docs/PLAY.md) and [verification notes](docs/QA-v2.5.0.md).

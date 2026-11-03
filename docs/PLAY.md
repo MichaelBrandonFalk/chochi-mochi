@@ -47,3 +47,17 @@ These are playful variations of twenty authored scenes, not twenty separate nove
 Meet each host and see the story choice in the arrival scene. At Clover Gate, Tuck introduces Button and Pipkin before you pick a companion. Button suggests a tiny picnic; Pipkin suggests a welcome song.
 
 Play & explore opens the outing itself. Try something from our bag opens the alternate toys from earlier choices. These toys keep their own saved work. Keep our postcard saves a picture for the album and a memory for the next stop. The chapter’s main button invites you to sit with the teacher, then make a gift, try a conversation, remember, and pack up. Outings remain optional.
+
+## Players, the basket, and songs in 2.5.0
+
+Players is optional. The original adventure keeps its save and is called My adventure. Add up to four more players, with names or automatic Player names. Pick a player to switch to their home screen and continue their own story. Comfort settings and reading positions belong to each player. There are no passwords or online accounts.
+
+Restart from scratch is inside Players. It names the active player, asks twice, and requires a checkbox before the final erase button becomes available. It clears that player’s adventure, letters, and reading position. It keeps their comfort settings and the other players.
+
+The basket fills when gifts are packed at chapter endings. Choose a gift below the illustration to inspect it and open Notes from this place. Received letters appear as envelopes and can be reopened in Letters from Glaloula. Future letters stay hidden. A letter becomes received when its chapter-ending delivery is shown, or when that chapter is packed. Older completed chapters retain their letters.
+
+Song sound starts off. Turn on song sound to listen, or choose Watch our tune for silent playback. The scene, note keys, and numbered score mark each beat together. Stop the tune ends playback. Note names and the beat counter give information in addition to color.
+
+Save a picture of our game shows the exact scene that will become a postcard. Save this picture keeps it; Replace saved picture updates it. Editing a toy later does not change the saved picture. The album offers all saved toy pictures within each trip version.
+
+Helper buttons say what they will do and appear only while they can make a useful move. Mixing appears only when the bag holds a complete recipe; unrelated objects are left out. Replay guidance lives on About the game rather than at every stop.

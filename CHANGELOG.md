@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.5.0 · November 3, 2026
+
+- Added up to five optional local players, with separate game saves, comfort settings, reading positions, and sound volumes. Existing progress stays in My adventure.
+- Added a restart flow with two named confirmations and an explicit erase checkbox. Other players and comfort settings stay. The older reset shortcut now opens the same guarded flow.
+- Added silent song playback, matching note colors and beat markers, a sound-off prompt, and one timing score for audio and visual playback.
+- Made helper actions specific and hid them when the activity is complete. Added postcard capture previews and fixed snapshots that stay unchanged until saved again.
+- Rebuilt the basket as an illustrated collection of earned gifts, with all 19 items and their number tags contained inside the rim. Added received letters and notes for each packed place.
+- Connected Pipkin’s flight to tree destinations, friendly neighbors, and three story endings. Moved results beside their activity and carried songs below the main flow.
+- Hid mixing until an actual recipe is possible and limited the ingredients to useful materials. Moved replay explanations to About the game.
+- Replaced bunting with welcome flags, corrected Glaloula’s pocket detail, stopped repeating an unplayed invitation after a completed outing, and removed text clipping at outing panel edges.
+
 ## 2.4.0 · November 3, 2026
 
 - Rebuilt chapter navigation as spacious, wrapping pills with separate numbers and labels, a 48-pixel minimum height, and a clear current-page outline.

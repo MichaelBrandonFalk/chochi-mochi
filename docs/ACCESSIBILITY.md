@@ -42,3 +42,11 @@ These checks are not a WCAG conformance certification. End-to-end testing with V
 ## Layout update in 2.4.0
 
 Chapter links now wrap with separate number and label spans, generous horizontal padding, and a 48-pixel minimum height. The current page has both an outline and bold text. The shared pastel palette uses deeper ink and action colors; optional stronger contrast remains available. Larger text can increase the navigation’s height without clipping labels. See [layout verification](QA-v2.4.0.md).
+
+## Supports in 2.5.0
+
+Player profiles keep independent comfort settings and paragraph positions. Restarting an adventure keeps its comfort settings. Both restart confirmations focus the safe choice first; the final erase button stays disabled until the player checks the named acknowledgement.
+
+The music box offers silent Watch our tune playback. Note names, a numbered score, a beat counter, borders, and matching colors accompany the same timing track used by the audio. Nothing loops automatically. Reduced-motion settings remove the glow shadow while preserving the current-note cue. Playback stops on navigation, hiding the tab, a break, or the stop control. Screen readers are not asked to announce every rapid beat.
+
+The illustrated basket also has named gift buttons, notes, and expandable letters. Hiding artwork keeps this information available. Only the active player’s earned gifts and received letters appear.

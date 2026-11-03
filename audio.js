@@ -1,10 +1,12 @@
+import {tuneScore,notePaint,beatSeconds} from './music-box.js';
+import { playerStorage } from './player-store.js';
 // Audio starts only after an explicit control is used in this visit.
 let music, effect, musicOn=false, effectsOn=false, narrating=false, fadeFrame, lastEffect=0,playGeneration=0;
 let musicVolume=.15, effectsVolume=.25;
-try{const p=JSON.parse(localStorage.getItem('little-lights-audio')||'{}');if(Number.isFinite(p.musicVolume))musicVolume=Math.max(0,Math.min(1,p.musicVolume));if(Number.isFinite(p.effectsVolume))effectsVolume=Math.max(0,Math.min(1,p.effectsVolume));}catch{}
+try{const p=JSON.parse(playerStorage.getItem('little-lights-audio')||'{}');if(Number.isFinite(p.musicVolume))musicVolume=Math.max(0,Math.min(1,p.musicVolume));if(Number.isFinite(p.effectsVolume))effectsVolume=Math.max(0,Math.min(1,p.effectsVolume));}catch{}
 const source=name=>new URL(`./assets/audio/${name}`,import.meta.url).href;
 const status=text=>{document.querySelector('#audio-status').textContent=text;};
-function persist(){try{localStorage.setItem('little-lights-audio',JSON.stringify({musicVolume,effectsVolume}));}catch{}}
+function persist(){try{playerStorage.setItem('little-lights-audio',JSON.stringify({musicVolume,effectsVolume}));}catch{}}
 function paint(){const button=document.querySelector('#music-toggle');button.textContent=musicOn?'Pause music':'Play music';button.setAttribute('aria-pressed',String(musicOn));document.querySelector('#effects-toggle').checked=effectsOn;window.dispatchEvent(new Event('audio-settings-changed'));}
 function gain(){if(!music)return;cancelAnimationFrame(fadeFrame);const from=music.volume,to=musicVolume*(narrating ? 0.18 : 1),start=performance.now();function step(now){const t=Math.min(1,(now-start)/200);music.volume=from+(to-from)*t;if(t<1)fadeFrame=requestAnimationFrame(step);}fadeFrame=requestAnimationFrame(step);}
 export function setNarrating(value){narrating=value;if(value)stopTune();gain();}
@@ -37,9 +39,24 @@ export function initAudio(){
  paint();
 }
 // Original, softly synthesized pentatonic notes for the user-operated music box.
-let tuneContext=null,tuneNodes=[];
-export function stopTune(){for(const node of tuneNodes){try{node.stop();}catch{}try{node.disconnect();}catch{}}tuneNodes=[];}
-export function playTune(notes,variant=0){if(!effectsOn||narrating||document.hidden||!notes.length)return false;const Audio=window.AudioContext||window.webkitAudioContext;if(!Audio)return false;try{stopTune();tuneContext ||=new Audio();tuneContext.resume().catch(()=>{});const tones=[261.63,293.66,329.63,392,440],start=tuneContext.currentTime+.025;notes.slice(0,4).forEach((n,i)=>{if(!Number.isInteger(n)||n<0||n>=tones.length)return;const oscillator=tuneContext.createOscillator(),envelope=tuneContext.createGain(),at=start+i*.4;oscillator.type=variant?'triangle':'sine';oscillator.frequency.value=tones[n]*(variant?.75:1);envelope.gain.setValueAtTime(0,at);envelope.gain.linearRampToValueAtTime(effectsVolume*.12,at+.04);envelope.gain.exponentialRampToValueAtTime(.0001,at+.34);oscillator.connect(envelope);envelope.connect(tuneContext.destination);oscillator.start(at);oscillator.stop(at+.37);oscillator.onended=()=>{oscillator.disconnect();envelope.disconnect();tuneNodes=tuneNodes.filter(node=>node!==oscillator);};tuneNodes.push(oscillator);});return true;}catch{return false;}}
+let tuneContext=null,tuneNodes=[],tuneFrame=0,tuneToken=0,tuneFinished=null;
+export function stopTune(){tuneToken++;cancelAnimationFrame(tuneFrame);tuneFrame=0;for(const node of tuneNodes){try{node.stop();}catch{}try{node.disconnect();}catch{}}tuneNodes=[];const finish=tuneFinished;tuneFinished=null;finish?.(false);}
+export function playTune(notes,variant=0,options={}){
+ const score=tuneScore(notes),silent=options.silent===true;
+ if(narrating||document.hidden||!score.length||(!silent&&(!effectsOn||effectsVolume===0)))return false;
+ const Audio=window.AudioContext||window.webkitAudioContext;
+ if(!silent&&!Audio)return false;
+ stopTune();const token=tuneToken;tuneFinished=options.onEnd||null;
+ const start=(audible)=>{
+  if(token!==tuneToken)return;
+  const at=audible?tuneContext.currentTime+.03:performance.now()/1000;
+  if(audible)for(const beat of score){const oscillator=tuneContext.createOscillator(),envelope=tuneContext.createGain(),time=at+beat.at;oscillator.type=variant?'triangle':'sine';oscillator.frequency.value=notePaint[beat.note].frequency*(variant?.75:1);envelope.gain.setValueAtTime(0,time);envelope.gain.linearRampToValueAtTime(effectsVolume*.12,time+.04);envelope.gain.exponentialRampToValueAtTime(.0001,time+beat.duration);oscillator.connect(envelope);envelope.connect(tuneContext.destination);oscillator.start(time);oscillator.stop(time+beat.duration+.02);tuneNodes.push(oscillator,envelope);oscillator.onended=()=>{oscillator.disconnect();envelope.disconnect();tuneNodes=tuneNodes.filter(n=>n!==oscillator&&n!==envelope);};}
+  let last=-1;
+  const tick=()=>{if(token!==tuneToken)return;const elapsed=(audible?tuneContext.currentTime:performance.now()/1000)-at;if(elapsed>=score.length*beatSeconds){tuneFrame=0;const finish=tuneFinished;tuneFinished=null;finish?.(true);return;}const i=Math.floor(elapsed/beatSeconds);if(i>=0&&i!==last){last=i;options.onBeat?.(score[i],score.length);}tuneFrame=requestAnimationFrame(tick);};
+  tuneFrame=requestAnimationFrame(tick);
+ };
+ try{if(silent)start(false);else{tuneContext ||=new Audio();tuneContext.resume().then(()=>{if(token!==tuneToken)return;if(tuneContext.state!=='running'){options.onError?.();start(false);}else start(true);}).catch(()=>{if(token!==tuneToken)return;options.onError?.();start(false);});}return true;}catch{stopTune();return false;}
+}
 export function getAudioState(){return {musicOn,effectsOn,musicVolume,effectsVolume};}
 export function setAudioSettings(value={}){if(Number.isFinite(value.musicVolume))musicVolume=Math.max(0,Math.min(1,value.musicVolume));if(Number.isFinite(value.effectsVolume))effectsVolume=Math.max(0,Math.min(1,value.effectsVolume));if(typeof value.effectsOn==='boolean'){effectsOn=value.effectsOn;if(!effectsOn){stopTune();if(effect)effect.pause();}}persist();document.querySelector('#music-volume').value=Math.round(musicVolume*100);document.querySelector('#effects-volume').value=Math.round(effectsVolume*100);paint();gain();window.dispatchEvent(new Event('audio-settings-changed'));}
 export function silenceAudio(){pauseMusic();effectsOn=false;stopTune();if(effect)effect.pause();window.dispatchEvent(new Event('stop-all-audio'));paint();status('All sound is off.');window.dispatchEvent(new Event('audio-settings-changed'));}

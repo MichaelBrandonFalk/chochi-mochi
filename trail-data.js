@@ -31,7 +31,7 @@ export const recipes=[{id:'sail',needs:[7,8],name:'Ribbon-sail boat',text:'The r
 
 export function outingSetup(level, choices, tool = {id: 'native'}) {
  if (level !== 0) return outings[level].setup;
- if (choices[0] === 1 && tool.id !== 'native') return 'Pipkin spreads his wings. “Follow me over the stream!” Chochi and Mochi take the path along the bank. Choose a turn at each bend to meet the friends by the water.';
+ if (choices[0] === 1 && tool.id !== 'native') return 'Pipkin spreads his wings. “Follow me through the trees!” Chochi and Mochi take the path below. They wonder which small friends they will meet.';
  if (choices[0] === 1) return 'Pipkin taps the gate rail with his beak. “Let’s make a welcome song for Tuck!” Chochi taps with his small hands. Mochi keeps time with a hoof.';
  if (choices[0] === 0) return 'Button leads them to a leaf beside the gate. “A picnic can fit right here!” she says. Help the friends find a cup, a fern, and a soft seat while Tuck’s sign dries.';
  return outings[0].setup;
@@ -41,3 +41,5 @@ export function outingAction(mode, level) {
  if (level === 0 && mode === 'tune') return 'Make a welcome song';
  return {seek:'Find three tiny things',tune:'Make a tune',weave:'Choose a ribbon pattern',garden:'Make a tiny world',wheels:'Turn the paper wheels',boat:'Take a boat to a dock'}[mode];
 }
+
+export function helperAction(mode,friend){return 'Ask '+friend+' to '+{seek:'find one thing',tune:'add a note',wheels:'match one wheel',weave:'weave one row',garden:'add one shape',boat:'guide us to a dock'}[mode];}

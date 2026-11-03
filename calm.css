@@ -241,3 +241,90 @@ body[data-contrast=true] .chapter-steps a { color: #152c22; background: #f3f4e7;
 body[data-contrast=true] .chapter-steps a[aria-current] { color: #21132c; background: #e2d5ee; border-color: #573c6d; }
 body[data-plain=true] .chapter-steps a { background-image: none; }
 body[data-simple=true] .play-layout aside { display: none; }
+
+/* Player spaces are optional and use the same calm controls as the story. */
+#players-dialog .player-list { display: grid; gap: 12px; margin: 24px 0; }
+#players-dialog .player-card { display: flex; flex-direction: column; align-items: flex-start; text-align: left; gap: 6px; width: 100%; padding: 16px 20px; }
+#players-dialog .player-card span { font-size: .9em; line-height: 1.6; }
+#players-dialog .player-card[aria-current] { border: 2px solid var(--selected-edge); background: var(--wash-lilac); color: var(--selected-ink); }
+#players-dialog form { margin: 24px 0; }
+#players-dialog input[type=text], #players-dialog input:not([type]) { display: block; width: 100%; min-width: 0; font: inherit; line-height: 1.5; margin: 10px 0 16px; padding: 12px 14px; border: 1px solid var(--control-edge); border-radius: 12px; color: var(--ink); background: var(--surface); }
+#players-dialog [data-player-status]:empty { display: none; }
+#players-dialog .restart-options { margin-top: 30px; }
+#players-dialog button:disabled { opacity: .6; cursor: default; }
+#players-dialog .access-check { align-items: flex-start; }
+#players-dialog .access-check input { margin-top: .2em; }
+body[data-contrast=true] #players-dialog .player-card[aria-current] { color: #21132c; background: #e2d5ee; border-color: #573c6d; }
+@media (min-width:1101px) { header { flex-wrap: wrap; } }
+
+/* The music box has a quiet visual score as well as sound. */
+.song-panel { margin: 20px 0; padding: 20px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); }
+.song-sequence { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; }
+.song-step { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; min-height: 76px; padding: 10px 4px; border: 2px solid transparent; border-radius: 16px; color: var(--ink); background: var(--note-fill,#f0f1e9); }
+.song-step small { font: 12px/1.5 Arial,sans-serif; }
+.song-step[data-playing],.note-key[data-playing] { background: var(--note-lit); border-color: var(--note-edge); box-shadow: 0 0 0 2px var(--note-edge),0 0 18px var(--note-fill); opacity: 1; }
+.song-step[aria-current] b::after { content: ' ♪'; }
+[data-song-scene][data-playing] .song-scene-panel { fill: var(--note-lit); stroke: var(--note-edge); stroke-width: 4px; filter: drop-shadow(0 0 7px var(--note-fill)); }
+.note-key { background: var(--note-fill,var(--surface)); }
+[data-song-position] { display: block; margin: 18px 0; min-height: 1.7em; font: 16px/1.7 Arial,sans-serif; color: var(--ink); }
+.song-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+.song-sound-note { background: var(--wash-pond); border-radius: 14px; padding: 16px; margin: 18px 0; }
+.song-sound-note[hidden] { display: none; }
+.song-sound-note p { margin: 0 0 12px; font-size: 16px; }
+.travelling-memories { display: block; }
+body[data-reduce-motion=true] :is(.song-step,.note-key)[data-playing] { box-shadow: none; outline: 2px solid var(--note-edge); }
+body[data-reduce-motion=true] [data-song-scene][data-playing] .song-scene-panel { filter: none; }
+body[data-contrast=true] .song-panel { background: #fffdf4; border-color: #687960; }
+body[data-contrast=true] .song-step { color: #152c22; }
+body[data-plain=true] .song-panel { background: var(--surface); }
+@media(prefers-reduced-motion:reduce) { .song-step[data-playing],.note-key[data-playing] { box-shadow: none; } [data-song-scene][data-playing] .song-scene-panel { filter: none; } }
+@media(max-width:420px) { .song-panel { padding: 14px; } .song-sequence { gap: 8px; } .song-step { min-height: 68px; } }
+
+.postcard-capture { margin: 30px 0; padding: 24px; background: #f7eee5; border: 1px solid #d8c9bc; border-radius: 20px; }
+.postcard-capture h3 { margin-bottom: 12px; }
+.postcard-capture p { font-size: calc(16px * var(--reading-scale,1)); line-height: 1.7; }
+.postcard-capture-preview { max-width: 380px; padding: 10px 10px 24px; margin: 20px 0; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); transform: rotate(-1deg); }
+.postcard-capture-preview img { display: block; width: 100%; border-radius: 6px; }
+.postcard-capture .actions { margin-top: 18px; }
+body[data-hide-art=true] .postcard-capture-preview { display: none; }
+body[data-plain=true] .postcard-capture,body[data-contrast=true] .postcard-capture { background: var(--surface); }
+body[data-reduce-motion=true] .postcard-capture-preview { transform: none; }
+@media(max-width:420px) { .postcard-capture { padding: 18px; } }
+.postcard-art img { display: block; width: 100%; }
+.postcard-others .postcard-art { margin-top: 16px; }
+
+/* The basket shows only gifts that have actually been packed. */
+.basket-art { max-width: 1040px; margin: 24px auto 28px; }
+.basket-art svg { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 28px; }
+.basket-art figcaption { text-align: center; font: 15px/1.7 Arial,sans-serif; color: var(--muted); margin: 18px auto; max-width: 52ch; }
+.basket-gift-detail { display: grid; grid-template-columns: minmax(180px,.6fr) minmax(0,1fr); gap: 28px; align-items: center; padding: 24px; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); max-width: 900px; margin: 24px auto; }
+.basket-gift-detail .craft-art { margin: 0; }
+.basket-gift-detail .eyebrow { margin-bottom: 12px; }
+.basket-gift-detail h2 { margin-bottom: 14px; }
+.basket-gift-detail p { font-size: calc(18px * var(--reading-scale,1)); }
+.basket-contents { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; max-width: 1040px; margin: 30px auto; }
+.basket-contents button { justify-content: flex-start; text-align: left; font-size: calc(16px * var(--reading-scale,1)); }
+.basket-contents [aria-pressed=true] { border: 2px solid var(--selected-edge); color: var(--selected-ink); background: var(--wash-lilac); }
+.basket-contents span { font-variant-numeric: tabular-nums; }
+.basket-empty { text-align: center; max-width: 55ch; margin: 25px auto 40px; }
+.basket-plans .picnic-painting { max-width: 800px; margin: 24px auto; }
+body[data-hide-art=true] .basket-art { display: none; }
+body[data-contrast=true] .basket-contents [aria-pressed=true] { color: #21132c; background: #e2d5ee; border-color: #573c6d; }
+#players-dialog .player-card strong { overflow-wrap: anywhere; max-width: 100%; }
+#players-dialog .access-check { overflow-wrap: anywhere; }
+@media(max-width:650px) { .basket-contents { grid-template-columns: repeat(2,minmax(0,1fr)); } .basket-gift-detail { grid-template-columns: minmax(0,1fr); padding: 20px; gap: 20px; } }
+@media(max-width:420px) { .basket-contents { grid-template-columns: minmax(0,1fr); } }
+.basket-letters { max-width: 1040px; margin: 32px auto; }
+.basket-letters h2 { margin-bottom: 14px; }
+.basket-letter-list { display: grid; gap: 14px; }
+.basket-letter-list .letter-page { margin: 0; max-width: none; padding: 20px 24px; border-radius: 18px; }
+.basket-letter-list summary { font-family: Georgia,serif; font-size: calc(20px * var(--reading-scale,1)); }
+.basket-letter-list .eyebrow { display: block; margin: 0 0 8px; }
+.basket-letter-list p { font-size: calc(19px * var(--reading-scale,1)); }
+.trip-story { margin: 20px 0; padding: 22px 24px; background: var(--wash-pond); border: 1px solid var(--line); border-radius: 18px; }
+.trip-story h3 { margin-bottom: 12px; }
+.trip-story p { margin: 0; font-size: calc(18px * var(--reading-scale,1)); line-height: 1.8; }
+.travelling-memories { margin: 24px 0; padding: 16px 20px; border: 1px solid var(--line); border-radius: 16px; background: #f3f0f5; }
+.travelling-memories summary { font-size: calc(15px * var(--reading-scale,1)); }
+.travelling-memories .text-button { margin-top: 14px; }
+body[data-contrast=true] .trip-story,body[data-contrast=true] .travelling-memories { background: #fffdf4; border-color: #687960; }

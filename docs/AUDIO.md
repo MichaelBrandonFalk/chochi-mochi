@@ -38,3 +38,5 @@ Version 2.1 adds original synthesized pentatonic notes for a player-operated fou
 ## Comfort and reading controls
 
 Comfort & Access can adjust music and effect volumes and stop all sound. Narration has its own voice, speed, and volume settings. Quiet stops current audio and disables extra spoken labels. Read-aloud remains available by request. A break, page navigation, hiding the tab, and Stop all sound cancel narration; none automatically restarts it. Browser voices are supplied by the device or browser, not bundled recordings.
+
+Version 2.5 adds a shared 0.6-second beat score for sound and visual playback. Watch our tune runs silently without requiring Web Audio. The score, scene notes, and keys mark the same note, with names and a beat counter as well as color. Sound-off and zero-volume states show an explicit opt-in control. This enables soft effects only, not background music. Volume settings are separate for each local player.
