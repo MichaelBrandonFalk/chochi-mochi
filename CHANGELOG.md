@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.1.0 · November 3, 2026
+
+- Added an original optional outing in each of the 19 chapters and in Glaloula’s garden, with six toy systems: finding, boats, a music box, a ribbon loom, tiny gardens, and turning-paper puzzles.
+- Turned all 19 story choices into usable tools at their stop and every later stop. Companion routes, boat ponds, paper-wheel rules, materials, and scenery now change during the journey.
+- Added five item combinations that unlock travelling picture charms. Tunes, patterns, postcards, and dock visits carry forward.
+- Added an illustrated postcard album with separate saved toy states for different story-choice versions. Players can follow an older version without erasing lessons or keepsakes.
+- Added optional soft synthesized notes, a whole-kit menu, larger mobile toy controls, and saved outing bookmarks.
+- Preserved the clockwise map, Story hexagon directly left of level 1, level 20 below level 1, and matching level 18/19 colors.
+
 ## 2.0.2 · November 3, 2026
 
 - Moved the Story hexagon directly left of level 1 and shortened its connecting path.

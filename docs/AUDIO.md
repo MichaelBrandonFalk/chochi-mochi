@@ -28,3 +28,8 @@ CC0 information and legal code: https://creativecommons.org/publicdomain/zero/1.
 ## Playback behavior
 
 Music and effects start off on every page load. Volume levels alone are remembered. Files are hosted with the game; playing them makes no request to a third-party music service. Music loops at a low default volume, ducks during read-aloud, and pauses when the tab is hidden. Stop all sound also stops read-aloud. Sound effects give gentle feedback for navigation and learning actions, with no penalty sound for an incorrect answer.
+
+
+## Pocket music box
+
+Version 2.1 adds original synthesized pentatonic notes for a player-operated four-note music box. No additional recordings or third-party samples are downloaded. The music box follows the Soft sound effects switch and effect volume. Notes stop when Stop all sound is used, narration begins, the page changes, or the tab is hidden. Saved tunes contain note numbers only; playback never resumes automatically.
