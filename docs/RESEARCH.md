@@ -60,3 +60,8 @@ Discovery light and garden flowers respond to reading and game choices, not ment
 ## Learning and character edition (1.4.0)
 
 New fictional teacher memories and Glaloula’s letters connect the principles to character goals. Conversation branches show differences between well-intended responses without claiming that a particular sentence reliably reduces distress. Teach-back and new-situation exercises rehearse conceptual understanding; they are not clinical assessments. Own-words practice records no audio or personal text. No real-world treatment tasks are assigned.
+
+
+### Version 2 game design
+
+The garden art afternoon, creative forks, hexagon route, craft projects, and five-part finale are original game design, not clinical SPACE session activities. All 19 ideas remain represented in the finale (see `partyActs.ideas` in `party.js`). The fictional caregiver Fern leads planning with a trained helper; Chochi and Mochi practice friendship. Needed access and care remain in place. Progress and decorative brightness mark learning and story completion, not Glaloula’s anxiety or treatment outcome. Creative choices change fictional details and never ask for a player’s own mental-health history.

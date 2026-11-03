@@ -1,6 +1,6 @@
 # Chochi Mochi: The Garden of Little Lights
 
-A peaceful, text-led browser adventure with a three-page opening and seven-page story chapters: 19 learning places and a final 19-gift review with Glaloula. Original SVG artwork, early-reader prose, optional browser read-aloud, local progress, a keepsake book, and adult notes. No timers, penalties, trackers, accounts, runtime packages, or build dependencies.
+A peaceful, text-led browser adventure with a three-page opening and seven-page story chapters: 19 learning places and a five-part garden gathering with Glaloula. Original SVG artwork, early-reader prose, optional browser read-aloud, local progress, a keepsake book, and adult notes. No timers, penalties, trackers, accounts, runtime packages, or build dependencies.
 
 This independent educational adaptation introduces SPACE principles. It is not official SPACE treatment, endorsed by its developers, or clinically validated. Children do not need to play for their caregivers to use SPACE. See [research and curriculum notes](docs/RESEARCH.md).
 
@@ -27,7 +27,7 @@ For subsequent releases, update the package version, visible footer, and changel
 
 ## Content and accessibility
 
-`content.js` contains the 19 original lessons; `app.js` composes the story and final review. All final-review gifts require a correct response with unlimited supportive retries, and every lesson is revisitable. Choices do not collect personal mental-health data. Reading level is an editorial target around age seven, not a validated assessment. Adult notes intentionally use more precise terminology.
+`content.js` contains the 19 original lessons; `app.js` composes the story and final review. Each chapter has a visual project with unlimited supportive retries; the finale applies all 19 ideas, and every lesson is revisitable. Choices do not collect personal mental-health data. Reading level is an editorial target around age seven, not a validated assessment. Adult notes intentionally use more precise terminology.
 
 Native buttons, headings, keyboard focus, live feedback, responsive layouts, no motion effects, and user-initiated speech are included. Browser speech availability varies. Local-storage failure falls back to in-memory progress; clearing browser data removes saves.
 
@@ -38,3 +38,10 @@ Version 1.3 adds a winding map, a keepsake garden, responsive practice pictures,
 Version 1.4 expands each chapter to seven pages: arrival, discovery, teaching, reply exploration, practice, teach-back, and a new situation. Five story letters bring Glaloula into the trip. Reading position and completion saves remain compatible; older page bookmarks open the corresponding page number in the expanded chapter.
 
 Version 1.5 puts the opening before level 1, moves letters to chapter endings, and adds optional music and effects. Audio is off each visit. Source and CC0 records are in [docs/AUDIO.md](docs/AUDIO.md).
+
+
+Version 2.0 makes the trip a shared garden art afternoon. All 19 chapters include a creative story fork, a lesson, a growing craft project, dialogue exploration, recall, and packing up. An optional garden-stamp toy lets players make a freely editable picture. Nineteen saved creative choices return in later scenes and the final storybook; the companion, cloth, lanterns, flower pot, sign, table, and ride have visual consequences. The final level is five linked projects applying the 19 ideas with Glaloula and her adult caregiver.
+
+The hexagon map circles the valley from its far-left start, climbs to Starlight Library, then offers a manually paced cloud or balloon ride to the garden beside the start. Small screens can scroll the map, fit it into an overview, or use the keyboard-accessible place list. Pastel SVG scenes, paper texture, and 19 distinct craft pictures are original code-native artwork.
+
+`adventure.js` holds creative forks and the pure project rules. `crafts.js`, `painting.js`, and `atlas.js` draw crafts, choice-dependent scenery, and the route. `party.js` maps the finale to all 19 ideas. `pastel.css` supplies the new visual treatment. The build fingerprints the complete ES-module tree to prevent stale modules after deployment. Existing completed chapters and keepsakes remain saved; new project boards, choices, and the ride are added to the same save. Older page bookmarks retain their page number, which may now show a different activity.

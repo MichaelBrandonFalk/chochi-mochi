@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.0.0 · November 3, 2026
+
+- Rebuilt all 19 learning places around making Glaloula’s garden art afternoon, with a project to bring home from every stop.
+- Added 19 non-curriculum story forks, saved choices, later callbacks, a personal storybook, and choice-dependent picnic and ride artwork.
+- Added 19 growing craft illustrations with collecting, sorting, sequencing, and word-strip projects. Helpful work stays in place after a wrong try or a reload.
+- Replaced the route with a pastel hexagon map circling the valley, a mountaintop beside home, and a three-page cloud or petal-balloon descent to level 20.
+- Replaced the final quiz sequence with five connected garden scenes applying all 19 ideas. Adults lead care planning; the friends share time, listen, and include Glaloula.
+- Added a freely editable garden-stamp picture toy in the art basket and ending.
+- Added watercolor-style pigment edges, paper texture, pastel colors, a scrollable mobile map, an overview toggle, and an accessible place list.
+- Preserved completed chapters and keepsakes. Expanded save handling for fictional choices and projects, and fingerprinted nested modules for reliable release updates.
+
 ## 1.5.0: 2026-11-02
 
 - Put the opening story before level 1 on the map and direct new players through it first.

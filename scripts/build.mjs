@@ -1,20 +1,24 @@
 import { mkdir, copyFile, rm, readFile, writeFile, cp } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 await rm('dist',{recursive:true,force:true});
-await mkdir('dist/docs',{recursive:true});
-for(const file of ['index.html','style.css','app.js','art.js','content.js','chapters.js','activities.js','world.js','learning.js','audio.js'])await copyFile(file,`dist/${file}`);
+await mkdir('dist',{recursive:true});
 await cp('docs','dist/docs',{recursive:true});
 await cp('assets','dist/assets',{recursive:true});
-// Content fingerprints refresh cached assets after each release.
-const { createHash } = await import('node:crypto');
-for (const dependency of ['content.js', 'art.js', 'chapters.js','activities.js','world.js','learning.js','audio.js']) {
-  const hash = createHash('sha256').update(await readFile(`dist/${dependency}`)).digest('hex').slice(0,12);
-  const app = await readFile('dist/app.js','utf8');
-  await writeFile('dist/app.js',app.replace(`'./${dependency}'`,`'./${dependency}?v=${hash}'`));
+const hashes=new Map(),visiting=new Set();
+const hash=text=>createHash('sha256').update(text).digest('hex').slice(0,12);
+// Fingerprint the entire import tree so a release refreshes nested modules too.
+async function emit(file){
+ if(hashes.has(file))return hashes.get(file);
+ if(visiting.has(file))throw new Error('Import cycle: '+file);
+ visiting.add(file);
+ let source=await readFile(file,'utf8');
+ const imports=[...source.matchAll(/from\s+['"]\.\/([^'"?]+\.js)['"]/g)];
+ for(const match of imports){const fingerprint=await emit(match[1]);source=source.replace(match[0],match[0].replace(match[1],match[1]+'?v='+fingerprint));}
+ await writeFile('dist/'+file,source);visiting.delete(file);hashes.set(file,hash(source));return hashes.get(file);
 }
-let html = await readFile('dist/index.html','utf8');
-for (const asset of ['app.js','style.css']) {
-  const hash = createHash('sha256').update(await readFile(`dist/${asset}`)).digest('hex').slice(0,12);
-  html = html.replace(`"${asset}"`,`"${asset}?v=${hash}"`);
-}
+await emit('app.js');
+let html=await readFile('index.html','utf8');
+for(const asset of ['style.css','pastel.css']){await copyFile(asset,'dist/'+asset);hashes.set(asset,hash(await readFile(asset)));}
+for(const asset of ['app.js','style.css','pastel.css'])html=html.replace('"'+asset+'"','"'+asset+'?v='+hashes.get(asset)+'"');
 await writeFile('dist/index.html',html);
 console.log('Static game ready in dist/');
