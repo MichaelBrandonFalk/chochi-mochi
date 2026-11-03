@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.1 · November 3, 2026
+
+- Reversed the numbered map route to run clockwise.
+- Added a story-start hexagon before level 1 and placed level 20 directly below level 1.
+- Moved the mountain and floating route to match the new layout.
+
 ## 2.0.0 · November 3, 2026
 
 - Rebuilt all 19 learning places around making Glaloula’s garden art afternoon, with a project to bring home from every stop.
