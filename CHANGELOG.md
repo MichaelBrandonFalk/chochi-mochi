@@ -1,3 +1,9 @@
+## 2.6.2
+
+- Play our tune and Watch our tune both play sound with synchronized visual notes.
+- Pause the background soundtrack completely during tune playback, then resume it from the same point if music is still enabled.
+- Keep visual playback available when sound is muted. Stopping all sound never restarts the soundtrack.
+
 ## 2.6.1
 
 - Correct Nell’s pronoun in a teaching scene and clarify that the previous audio source record is historical.

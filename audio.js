@@ -1,3 +1,4 @@
+import {tuneBackground} from './tune-background.js';
 import {tuneScore,notePaint,beatSeconds} from './music-box.js';
 import { playerStorage } from './player-store.js';
 import {playlist,audioPreferences,nextTrack} from './audio-settings.js';
@@ -5,12 +6,13 @@ import {playlist,audioPreferences,nextTrack} from './audio-settings.js';
 let saved={};try{saved=JSON.parse(playerStorage.getItem('little-lights-audio')||'{}')||{};}catch{}
 const initial=audioPreferences(saved);
 let music,effect,musicOn=initial.musicOn,effectsOn=initial.effectsOn,narrating=false,fadeFrame,lastEffect=0,playGeneration=0;
-let musicVolume=initial.musicVolume,effectsVolume=initial.effectsVolume,track=0,unlocked=false,tunePlaying=false;
+let musicVolume=initial.musicVolume,effectsVolume=initial.effectsVolume,track=0,unlocked=false,startMusic=()=>{};
+const background=tuneBackground({pause:()=>{playGeneration++;cancelAnimationFrame(fadeFrame);if(music)music.pause();},resume:()=>startMusic(),canResume:()=>musicOn&&unlocked&&!document.hidden});
 const source=name=>new URL(`./assets/audio/${name}`,import.meta.url).href;
 const status=text=>{document.querySelector('#audio-status').textContent=text;};
 function persist(){try{playerStorage.setItem('little-lights-audio',JSON.stringify({musicOn,effectsOn,musicVolume,effectsVolume}));}catch{}}
 function paint(){const button=document.querySelector('#music-toggle');button.textContent=musicOn?'Pause music':'Play music';button.setAttribute('aria-pressed',String(musicOn));document.querySelector('#effects-toggle').checked=effectsOn;window.dispatchEvent(new Event('audio-settings-changed'));}
-function gain(){if(!music)return;cancelAnimationFrame(fadeFrame);const from=music.volume,to=musicVolume*(narrating||tunePlaying ? 0.18 : 1),start=performance.now();function step(now){const t=Math.min(1,(now-start)/200);music.volume=from+(to-from)*t;if(t<1)fadeFrame=requestAnimationFrame(step);}fadeFrame=requestAnimationFrame(step);}
+function gain(){if(!music)return;cancelAnimationFrame(fadeFrame);const from=music.volume,to=musicVolume*(narrating ? 0.18 : 1),start=performance.now();function step(now){const t=Math.min(1,(now-start)/200);music.volume=from+(to-from)*t;if(t<1)fadeFrame=requestAnimationFrame(step);}fadeFrame=requestAnimationFrame(step);}
 export function setNarrating(value){narrating=value;if(value)stopTune();gain();}
 export function playEffect(kind='touch'){
  if(!effectsOn||narrating||document.hidden)return;
@@ -22,12 +24,13 @@ function pauseMusic(remember=true){playGeneration++;musicOn=false;if(music)music
 export function initAudio(){
  document.querySelector('#music-volume').value=Math.round(musicVolume*100);
  document.querySelector('#effects-volume').value=Math.round(effectsVolume*100);
- const startMusic=async()=>{
+ startMusic=async()=>{
+  if(background.held||!musicOn||document.hidden)return;
   if(!music){music=document.createElement('audio');music.id='garden-music';music.preload='none';music.src=source(playlist[track].file);document.querySelector('#audio-engine').append(music);
    music.addEventListener('ended',()=>{track=nextTrack(track);music.src=source(playlist[track].file);if(musicOn)startMusic();});
    music.addEventListener('error',()=>{pauseMusic(false);status('The music could not load. You can keep playing quietly.');});}
-  music.volume=musicVolume*(narrating||tunePlaying?.18:1);const generation=++playGeneration;
-  try{await music.play();if(generation!==playGeneration){music.pause();return;}status('Playing '+playlist[track].title+'.');}catch{if(generation!==playGeneration)return;status('Tap Play music to start the music.');musicOn=false;paint();}
+  music.volume=musicVolume*(narrating?.18:1);const generation=++playGeneration;
+  try{await music.play();if(generation!==playGeneration||background.held){if(background.held||!musicOn||document.hidden)music.pause();return;}status('Playing '+playlist[track].title+'.');}catch{if(generation!==playGeneration)return;status('Tap Play music to start the music.');musicOn=false;paint();}
  };
  document.querySelector('#music-toggle').onclick=()=>{unlocked=true;if(musicOn){pauseMusic();status('Music paused.');}else{musicOn=true;paint();persist();startMusic();}};
  const unlock=e=>{if(unlocked||e.target.closest('.audio-settings,#comfort-dialog,#players-dialog'))return;unlocked=true;if(musicOn)startMusic();};
@@ -46,7 +49,7 @@ export function initAudio(){
 }
 // Original, softly synthesized pentatonic notes for the user-operated music box.
 let tuneContext=null,tuneNodes=[],tuneFrame=0,tuneToken=0,tuneFinished=null;
-export function stopTune(){tunePlaying=false;gain();tuneToken++;cancelAnimationFrame(tuneFrame);tuneFrame=0;for(const node of tuneNodes){try{node.stop();}catch{}try{node.disconnect();}catch{}}tuneNodes=[];const finish=tuneFinished;tuneFinished=null;finish?.(false);}
+export function stopTune(){background.release();tuneToken++;cancelAnimationFrame(tuneFrame);tuneFrame=0;for(const node of tuneNodes){try{node.stop();}catch{}try{node.disconnect();}catch{}}tuneNodes=[];const finish=tuneFinished;tuneFinished=null;finish?.(false);}
 export function playTune(notes,variant=0,options={}){
  const score=tuneScore(notes),silent=options.silent===true;
  if(narrating||document.hidden||!score.length||(!silent&&(!effectsOn||effectsVolume===0)))return false;
@@ -55,10 +58,10 @@ export function playTune(notes,variant=0,options={}){
  stopTune();const token=tuneToken;tuneFinished=options.onEnd||null;
  const start=(audible)=>{
   if(token!==tuneToken)return;
-  tunePlaying=audible;gain();const at=audible?tuneContext.currentTime+.03:performance.now()/1000;
+  background.hold();const at=audible?tuneContext.currentTime+.03:performance.now()/1000;
   if(audible)for(const beat of score){const oscillator=tuneContext.createOscillator(),envelope=tuneContext.createGain(),time=at+beat.at;oscillator.type=variant?'triangle':'sine';oscillator.frequency.value=notePaint[beat.note].frequency*(variant?.75:1);envelope.gain.setValueAtTime(0,time);envelope.gain.linearRampToValueAtTime(effectsVolume*.12,time+.04);envelope.gain.exponentialRampToValueAtTime(.0001,time+beat.duration);oscillator.connect(envelope);envelope.connect(tuneContext.destination);oscillator.start(time);oscillator.stop(time+beat.duration+.02);tuneNodes.push(oscillator,envelope);oscillator.onended=()=>{oscillator.disconnect();envelope.disconnect();tuneNodes=tuneNodes.filter(n=>n!==oscillator&&n!==envelope);};}
   let last=-1;
-  const tick=()=>{if(token!==tuneToken)return;const elapsed=(audible?tuneContext.currentTime:performance.now()/1000)-at;if(elapsed>=score.length*beatSeconds){tuneFrame=0;tunePlaying=false;gain();const finish=tuneFinished;tuneFinished=null;finish?.(true);return;}const i=Math.floor(elapsed/beatSeconds);if(i>=0&&i!==last){last=i;options.onBeat?.(score[i],score.length);}tuneFrame=requestAnimationFrame(tick);};
+  const tick=()=>{if(token!==tuneToken)return;const elapsed=(audible?tuneContext.currentTime:performance.now()/1000)-at;if(elapsed>=score.length*beatSeconds){tuneFrame=0;background.release();const finish=tuneFinished;tuneFinished=null;finish?.(true);return;}const i=Math.floor(elapsed/beatSeconds);if(i>=0&&i!==last){last=i;options.onBeat?.(score[i],score.length);}tuneFrame=requestAnimationFrame(tick);};
   tuneFrame=requestAnimationFrame(tick);
  };
  try{if(silent)start(false);else{tuneContext ||=new Audio();tuneContext.resume().then(()=>{if(token!==tuneToken)return;if(tuneContext.state!=='running'){options.onError?.();start(false);}else start(true);}).catch(()=>{if(token!==tuneToken)return;options.onError?.();start(false);});}return true;}catch{stopTune();return false;}

@@ -80,3 +80,13 @@ import {companionPattern,patternReply} from '../companion-game.js';
 test('new players have sound on while explicit quiet preferences survive',()=>{assert.equal(audioPreferences().musicOn,true);assert.equal(audioPreferences().effectsOn,true);assert.equal(audioPreferences({musicOn:false,effectsOn:false}).musicOn,false);assert.equal(audioPreferences({musicOn:false,effectsOn:false}).effectsOn,false);assert.equal(audioPreferences({musicVolume:0}).musicVolume,0);assert.equal(playlist.length,4);assert.deepEqual(Array.from({length:4},(_,i)=>nextTrack(i)),[1,2,3,0]);});
 test('each companion keeps one musical game through all twenty places',()=>{for(let level=0;level<20;level++)for(const choice of [0,1]){assert.equal(nativeTool(level,{0:choice}).mode,'tune');const pattern=companionPattern(gameConfig(level,{0:choice},nativeTool(level,{0:choice})).seed);assert.equal(pattern.length,4);assert.ok(pattern.every(n=>Number.isInteger(n)&&n>=0&&n<5));assert.match(patternReply(pattern,gameConfig(level,{0:choice},nativeTool(level,{0:choice})).seed,choice===1,'Our host'),/learned this place/);}});
 test('story character mentions carry their species and each chapter adds at most one name',()=>{const seen=new Set(['Chochi','Mochi','Glaloula','Fern','Button','Pipkin']);const names=['Tuck','Rue','Olive','Moss','Sol','Luma','Ada','Kit','Bea','Tansy','Mira','Wren','Ori','Alba','Brin','Nell','Fenn','Linn'];for(const chapter of chapters){const text=JSON.stringify(chapter);assert.ok(!/\bChochi\b(?! the Dinosaur)/.test(text));assert.ok(!/\bMochi\b(?! the Unicorn)/.test(text));const fresh=names.filter(n=>new RegExp('\\b'+n+'\\b').test(text)&&!seen.has(n));assert.ok(fresh.length<=1,'Too many new names: '+fresh.join(', '));for(const n of fresh)seen.add(n);}});
+
+import {tuneBackground} from '../tune-background.js';
+test('tunes pause the soundtrack and resume only when music is allowed',()=>{
+ let enabled=true,visible=true,paused=false,position=42,resumes=0;
+ const bg=tuneBackground({pause:()=>{paused=true;},resume:()=>{paused=false;resumes++;},canResume:()=>enabled&&visible});
+ bg.hold();assert.equal(paused,true);assert.equal(position,42);bg.release();assert.equal(paused,false);assert.equal(resumes,1);
+ bg.release();assert.equal(resumes,1);
+ bg.hold();enabled=false;bg.release();assert.equal(paused,true);assert.equal(resumes,1);
+ enabled=true;bg.hold();visible=false;bg.release();assert.equal(resumes,1);
+});
