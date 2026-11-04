@@ -64,3 +64,7 @@ Version 2.5 adds optional browser-local players, guarded restarts, an earned-gif
 ### Version 2.6
 
 Each companion now keeps one musical game across the journey: Button’s leaf drums or Pipkin’s song book. Optional four-note patterns vary by place and story choices. Old toy postcards remain viewable. Four original CC0 miniatures replace the previous soundtrack, with sound on for new players after browser gesture unlock and saved quiet preferences respected. Chapter introductions focus on one new friend, and story mentions label Chochi the Dinosaur and Mochi the Unicorn.
+
+### Version 2.7 storybook artwork
+
+Twenty original watercolor paintings open the chapters. The same painting set supplies chapter side scenes, album thumbnails, and self-contained backgrounds in saved outing pictures. A separate painted valley sits behind the existing hex route. Interactive gifts and controls retain their state-driven behavior, with fine ink edges and a shared quiet palette. Full-size and smaller WebP versions are prepared in `assets/storybook/`; local PNG originals are ignored and excluded from published builds. See [art direction](docs/ART-DIRECTION.md) and the [exact prompt set](docs/storybook-prompts.json). Built-in image generation was used; the normal static build does not call a generation service.

@@ -1,3 +1,4 @@
+import {trailScene} from '../trail-art.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {lessons} from '../content.js';
@@ -89,4 +90,25 @@ test('tunes pause the soundtrack and resume only when music is allowed',()=>{
  bg.release();assert.equal(resumes,1);
  bg.hold();enabled=false;bg.release();assert.equal(paused,true);assert.equal(resumes,1);
  enabled=true;bg.hold();visible=false;bg.release();assert.equal(resumes,1);
+});
+
+import {chapterArt,storybookFigure,storybookBackdrop} from '../storybook.js';
+test('every chapter has a distinct prepared painting and an accessible opening figure',async()=>{
+ assert.equal(chapterArt.length,20);assert.equal(new Set(chapterArt.map(a=>a.src)).size,20);
+ const manifest=JSON.parse(await readFile(new URL('../assets/storybook/manifest.json',import.meta.url),'utf8'));
+ assert.equal(manifest.filter(x=>x.level).length,20);assert.equal(manifest.length,21);
+ const {createHash}=await import('node:crypto');
+ for(let i=0;i<20;i++){const art=chapterArt[i],entry=manifest.find(x=>x.level===i+1);assert.ok(art.alt.length>35);assert.ok(entry.width/entry.height>1.4&&entry.width/entry.height<1.6);assert.ok(storybookFigure(i).includes('alt="'+art.alt+'"'));assert.match(storybookFigure(i),/srcset=/);assert.equal(createHash('sha256').update(await readFile(new URL('../'+entry.file,import.meta.url))).digest('hex'),entry.sha256);await readFile(new URL(art.src.replace('.webp','-small.webp')));}
+});
+test('saved toy scenes embed their paintings and keep live note markers',()=>{
+ for(let i=0;i<20;i++){assert.match(storybookBackdrop(i),/href="data:image\/webp;base64,/);}
+ const choices={0:1},tool=nativeTool(0,choices),c=gameConfig(0,choices,tool),g=newGame(c);g.notes=[0,1,2,3];
+ const svg=trailScene(0,choices,c,tool,g,'tune');assert.match(svg,/data:image\/webp;base64,/);assert.equal((svg.match(/data-song-scene=/g)||[]).length,4);assert.ok(!svg.includes('href="http'));assert.match(svg,/<filter/);
+});
+test('chapter art stays before the story and comfort styles follow the new palette',async()=>{
+ const app=await readFile(new URL('../app.js',import.meta.url),'utf8'),html=await readFile(new URL('../index.html',import.meta.url),'utf8');
+ assert.ok(app.includes("storybookFigure(i,{className:'chapter-opening-art',eager:true})+paragraphs(c.arrival)"));
+ assert.ok(app.includes("storybookFigure(19,{className:'chapter-opening-art',eager:true})"));
+ assert.ok(html.indexOf('storybook.css')<html.indexOf('access.css'));
+ const css=await readFile(new URL('../storybook.css',import.meta.url),'utf8');assert.ok(css.includes('body[data-hide-art=true]'));assert.ok(css.includes('body[data-contrast=true]'));
 });

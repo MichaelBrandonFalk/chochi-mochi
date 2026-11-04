@@ -1,3 +1,11 @@
+## 2.7.0
+
+- Add twenty original watercolor chapter paintings, one before each chapter’s opening narrative, with consistent dinosaur and unicorn designs.
+- Replace the map landscape, opening garden, chapter side scenes, and album thumbnails with the new storybook artwork.
+- Give outings and saved postcards painted environments; retain playable controls, synchronized notes, earned gifts, and choice-based table plans.
+- Use warm ivory reading surfaces, sage actions, muted lilac choices, and fine ink edges across the interface and editable artwork.
+- Retain illustration hiding, simpler screens, plain backgrounds, contrast, text size, and motion preferences. Add responsive image sizes and self-contained postcard paintings.
+
 ## 2.6.2
 
 - Play our tune and Watch our tune both play sound with synchronized visual notes.

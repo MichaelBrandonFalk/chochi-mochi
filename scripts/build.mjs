@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 await rm('dist',{recursive:true,force:true});
 await mkdir('dist',{recursive:true});
 await cp('docs','dist/docs',{recursive:true});
-await cp('assets','dist/assets',{recursive:true});
+await cp('assets','dist/assets',{recursive:true,filter:source=>!source.endsWith('-original.png')});
 const hashes=new Map(),visiting=new Set();
 const hash=text=>createHash('sha256').update(text).digest('hex').slice(0,12);
 // Fingerprint the entire import tree so a release refreshes nested modules too.
@@ -18,7 +18,7 @@ async function emit(file){
 }
 await emit('app.js');
 let html=await readFile('index.html','utf8');
-for(const asset of ['style.css','pastel.css','calm.css','access.css']){await copyFile(asset,'dist/'+asset);hashes.set(asset,hash(await readFile(asset)));}
-for(const asset of ['app.js','style.css','pastel.css','calm.css','access.css'])html=html.replace('"'+asset+'"','"'+asset+'?v='+hashes.get(asset)+'"');
+for(const asset of ['style.css','pastel.css','calm.css','storybook.css','access.css']){await copyFile(asset,'dist/'+asset);hashes.set(asset,hash(await readFile(asset)));}
+for(const asset of ['app.js','style.css','pastel.css','calm.css','storybook.css','access.css'])html=html.replace('"'+asset+'"','"'+asset+'?v='+hashes.get(asset)+'"');
 await writeFile('dist/index.html',html);
 console.log('Static game ready in dist/');
