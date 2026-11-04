@@ -1,3 +1,4 @@
+import {hunts} from './hidden-garden.js';
 // Playful side stories. These toys do not score feelings or ask personal questions.
 export const outings=[
  ['A welcome at Clover Gate','While Tuck’s sign dries, Chochi the Dinosaur spots a leaf cup beside the gate. What else is tucked among the leaves?','Tuck','Clover Gate picture',['a leaf cup','a curled fern','a moss cushion'],['a cloud curl','a high twig','a hanging flag'],['seek','tune']],
@@ -30,11 +31,12 @@ export const modeNames={seek:'A little finding game',boat:'A trip to the little 
 export const recipes=[{id:'sail',needs:[7,8],name:'Ribbon-sail boat',text:'The ribbon becomes a sail for the little boat. Now it can carry a flag to the next place.',glyph:'◭'},{id:'glow',needs:[4,5],name:'Flower lantern',text:'A flower sits beside the paper lantern. Its shadow looks like a whole garden.',glyph:'✿'},{id:'band',needs:[2,3],name:'Pond band badge',text:'The cup picture joins the tune. A frog with a very small drum becomes the band leader.',glyph:'♫'},{id:'club',needs:[9,10],name:'Tiny club house',text:'The painted pebble becomes a club sign. A beetle has already asked if there is a chair.',glyph:'⌂'},{id:'post',needs:[11,17],name:'Bug post office',text:'The tiny guest delivers an invitation. It is the first letter carried by a beetle in a hat.',glyph:'✉'}];
 
 export function outingSetup(level, choices) {
+ if(choices[0]!==1)return hunts[level].story;
  const friend=choices[0]===1?'Pipkin the robin':'Button the snail',host=outings[level].host;
  return level===19?`${friend} settles beside Glaloula the fairy. “Let’s share the music we made on our trip.”`:`${host} makes a little space for their music. ${friend} brings out ${choices[0]===1?'a leaf music book':'four little leaf drums'}. “What shall this place sound like?”`;
 }
 export function outingAction(mode, level, choices={}) {
- return choices[0]===1?'Make a song with Pipkin':'Make a beat with Button';
+ return choices[0]===1?'Make a song with Pipkin':hunts[level].title;
 }
 
 export function helperAction(mode,friend){return 'Ask '+friend+' to '+{seek:'find one thing',tune:'add a note',wheels:'match one wheel',weave:'weave one row',garden:'add one shape',boat:'guide us to a dock'}[mode];}

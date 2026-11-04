@@ -1,3 +1,14 @@
+## 2.9.0
+
+- Give Button twenty painted hidden-object walks, with three themed treasures and three optional tiny wonders per place.
+- Add hints, larger objects, keyboard and text controls, story replies, and new hiding places on replay.
+- Keep Pipkin’s music game and preserve old saved musical postcards.
+
+- Put the gift count above the garden-plan picture, separate from the home-page story painting.
+- Bundle game scripts and styles to remove request waterfalls.
+- Load postcard paintings only when visible, preserving their original bytes and caching shared images.
+- Keep all full-size chapter paintings and transparent gift assets unchanged.
+
 ## 2.8.0
 
 - Replace the remaining basket, gift, project, keepsake, garden, table, music-frame, and return-ride art with 31 matching watercolor cutouts.

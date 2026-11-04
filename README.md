@@ -74,3 +74,9 @@ Twenty original watercolor paintings open the chapters. The same painting set su
 The editable gift artwork now uses 31 transparent watercolor objects throughout the basket, projects, keepsake book, garden, music frame, table plan, and return rides. Basket gifts link to named close-ups. Received letters live in a separate pocket beside the gift basket; unreceived letters remain hidden. The map title sits above the map rather than over its levels.
 
 The six-track original CC0 playlist has distinct arrangements and Next track controls in both sound panels. Track selection is saved per player and respects paused music and tune playback. See the object and audio manifests, [object prompts](docs/object-prompts.json), and [audio notes](docs/AUDIO.md).
+
+### Version 2.9 loading and finding
+
+The production build uses esbuild (`npm ci` before building) to produce one fingerprinted script and one stylesheet. The game no longer imports all postcard paintings as base64 during startup. Visible postcard previews embed only their own painting and music frame, caching the unchanged WebP bytes. Full-size chapter paintings and gift images retain their existing quality.
+
+Button now leads twenty painted finding walks, each with a story, three treasures, and optional tiny wonders. Hints, a larger view, keyboard targets, and text controls offer equal progress without a timer. Replays shift the objects while the saved postcard remains unchanged. Pipkin retains the song game. Old musical postcard snapshots remain viewable.

@@ -1,7 +1,7 @@
 """Prepare transparent watercolor objects; preserve the generated PNG originals."""
 from pathlib import Path
 from PIL import Image
-import hashlib,json,base64
+import hashlib,json
 root=Path('assets/objects');manifest=[]
 for p in sorted(root.glob('*-original.png')):
  im=Image.open(p).convert('RGBA');slug=p.stem.removesuffix('-original')
@@ -13,6 +13,4 @@ for p in sorted(root.glob('*-original.png')):
  dest=root/(slug+'.webp');im.save(dest,'WEBP',quality=86,method=6)
  manifest.append(dict(file=str(dest),width=im.width,height=im.height,alpha=im.getchannel('A').getextrema(),sha256=hashlib.sha256(dest.read_bytes()).hexdigest()))
 (root/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
-case=root/'music-case.webp'
-if case.exists():Path('object-art-data.js').write_text('export const musicCase="data:image/webp;base64,'+base64.b64encode(case.read_bytes()).decode()+'";\n')
 print('Prepared',len(manifest),'transparent watercolor objects',flush=True)

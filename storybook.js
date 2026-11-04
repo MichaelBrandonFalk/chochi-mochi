@@ -1,4 +1,3 @@
-import {storybookPaint} from './storybook-data.js';
 export const chapterArt=[
  ['clover-gate','Clover Gate','Chochi the Dinosaur and Mochi the Unicorn meet Tuck the snail at a flower-covered wooden gate.'],
  ['dewdrop-meadow','Dewdrop Meadow','Rue the rabbit shares baskets of cloth in a soft green meadow.'],
@@ -25,6 +24,6 @@ export function storybookFigure(index,{className='',caption='',eager=false}={}){
  const art=chapterArt[index]||chapterArt[19];
  return `<figure class="storybook-plate ${className}"><img src="${art.src}" srcset="${art.src.replace('.webp','-small.webp')} 768w, ${art.src} 1536w" sizes="(max-width:750px) 92vw, 760px" alt="${art.alt}" width="1536" height="1024" loading="${eager?'eager':'lazy'}" decoding="async">${caption?`<figcaption>${caption}</figcaption>`:''}</figure>`;
 }
-export function storybookBackdrop(index,w=720,h=360){const src=storybookPaint[index]||'';return `<image href="${src}" x="0" y="0" width="${w}" height="${h}" preserveAspectRatio="xMidYMid slice"/>`;}
+export function storybookBackdrop(index,w=720,h=360){const art=chapterArt[index]||chapterArt[19],src=art.src.replace('.webp','-small.webp');return `<image href="${src}" x="0" y="0" width="${w}" height="${h}" preserveAspectRatio="xMidYMid slice"/>`;}
 let paintId=0;
 export function inkPainting(svg){const id='book-ink-'+paintId++;return svg.replace(/<svg\b/,'<svg class="storybook-vector"').replace(/(<svg[^>]*>)/,`$1<style>.storybook-ink :is(path,ellipse,circle,rect):not([stroke]){stroke:#7d6b573b;stroke-width:.65;stroke-linejoin:round}</style><defs><filter id="${id}" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency=".045" numOctaves="3" seed="17" result="paper"/><feDisplacementMap in="SourceGraphic" in2="paper" scale=".7"/><feColorMatrix type="saturate" values=".8"/></filter></defs><g class="storybook-ink" filter="url(#${id})">`).replace('</svg>','</g></svg>');}

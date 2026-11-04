@@ -49,7 +49,7 @@ test('comfort presets preserve independent choices and text-only mode retains co
 test('direct toy controls reach the same goals without repeated cycling',()=>{const choices={0:0,5:1},tool=trailKit(5,choices).find(t=>t.index===5),c=gameConfig(5,choices,tool);let g=newGame(c);for(let i=0;i<3;i++)g=actGame('wheels',g,c,'set-wheel',{slot:i,n:c.targets[i]});assert.ok(solved('wheels',g,c));for(let i=0;i<3;i++)g=actGame('garden',g,c,'set-plot',{slot:i,n:2});assert.ok(solved('garden',g,c));g=actGame('garden',g,c,'set-plot',{slot:0,n:-1});assert.equal(g.cells[0],-1);for(let i=0;i<3;i++)g=actGame('weave',g,c,'set-row',{slot:i,n:1});assert.ok(solved('weave',g,c));const original=structuredClone(g);g=actGame('garden',g,c,'set-plot',{slot:99,n:2});assert.deepEqual(g,original);});
 test('boat steering can be undone without losing discovered dock visits',()=>{const c=gameConfig(8,{8:1},trailKit(8,{8:1})[0]);let g=newGame(c);const start=g.boat.col;g=actGame('boat',g,c,'paddle',1);g=actGame('boat',g,c,'undo-boat');assert.equal(g.boat.row,0);assert.equal(g.boat.col,start);for(let n=0;n<3;n++)g=actGame('boat',g,c,'paddle',-1);const dock=g.boat.col;assert.ok(g.boat.visits.includes(dock));g=actGame('boat',g,c,'undo-boat');assert.equal(g.boat.row,2);assert.ok(g.boat.visits.includes(dock));});
 
-test('the first choice grows out of the arrival and leads into its outing',()=>{const scene=chapters[0].arrival.join(' ');for(const name of ['Tuck','Button','Pipkin'])assert.ok(scene.includes(name));assert.ok(!/\bPip\b/.test(JSON.stringify([chapters,adventures,learning,outings])));assert.equal(travelGreeting(0,{},{}),'');assert.match(adventures[0].choices[0].outcome,/leaf drums/);assert.match(adventures[0].choices[1].outcome,/song/);});
+test('the first choice grows out of the arrival and leads into its outing',()=>{const scene=chapters[0].arrival.join(' ');for(const name of ['Tuck','Button','Pipkin'])assert.ok(scene.includes(name));assert.ok(!/\bPip\b/.test(JSON.stringify([chapters,adventures,learning,outings])));assert.equal(travelGreeting(0,{},{}),'');assert.match(adventures[0].choices[0].outcome,/treasures/);assert.match(adventures[0].choices[1].outcome,/song/);});
 
 import {createPlayerStore,cleanPlayers,playerRegistryKey,maxPlayers} from '../player-store.js';
 const memoryStorage=initial=>{const data=new Map(Object.entries(initial||{}));return {data,getItem:key=>data.get(key)??null,setItem:(key,value)=>data.set(key,String(value)),removeItem:key=>data.delete(key)};};
@@ -79,7 +79,7 @@ test('Pipkin’s flight has three welcoming story endings rather than dock count
 import {audioPreferences,playlist,nextTrack} from '../audio-settings.js';
 import {companionPattern,patternReply} from '../companion-game.js';
 test('new players have sound on while explicit quiet preferences survive',()=>{assert.equal(audioPreferences().musicOn,true);assert.equal(audioPreferences().effectsOn,true);assert.equal(audioPreferences({musicOn:false,effectsOn:false}).musicOn,false);assert.equal(audioPreferences({musicOn:false,effectsOn:false}).effectsOn,false);assert.equal(audioPreferences({musicVolume:0}).musicVolume,0);assert.equal(playlist.length,6);assert.deepEqual(Array.from({length:6},(_,i)=>nextTrack(i)),[1,2,3,4,5,0]);});
-test('each companion keeps one musical game through all twenty places',()=>{for(let level=0;level<20;level++)for(const choice of [0,1]){assert.equal(nativeTool(level,{0:choice}).mode,'tune');const pattern=companionPattern(gameConfig(level,{0:choice},nativeTool(level,{0:choice})).seed);assert.equal(pattern.length,4);assert.ok(pattern.every(n=>Number.isInteger(n)&&n>=0&&n<5));assert.match(patternReply(pattern,gameConfig(level,{0:choice},nativeTool(level,{0:choice})).seed,choice===1,'Our host'),/learned this place/);}});
+test('each companion keeps a distinct outing through all twenty places',()=>{for(let level=0;level<20;level++)for(const choice of [0,1]){assert.equal(nativeTool(level,{0:choice}).mode,choice===1?'tune':'seek');const pattern=companionPattern(gameConfig(level,{0:choice},nativeTool(level,{0:choice})).seed);assert.equal(pattern.length,4);assert.ok(pattern.every(n=>Number.isInteger(n)&&n>=0&&n<5));assert.match(patternReply(pattern,gameConfig(level,{0:choice},nativeTool(level,{0:choice})).seed,choice===1,'Our host'),/learned this place/);}});
 test('story character mentions carry their species and each chapter adds at most one name',()=>{const seen=new Set(['Chochi','Mochi','Glaloula','Fern','Button','Pipkin']);const names=['Tuck','Rue','Olive','Moss','Sol','Luma','Ada','Kit','Bea','Tansy','Mira','Wren','Ori','Alba','Brin','Nell','Fenn','Linn'];for(const chapter of chapters){const text=JSON.stringify(chapter);assert.ok(!/\bChochi\b(?! the Dinosaur)/.test(text));assert.ok(!/\bMochi\b(?! the Unicorn)/.test(text));const fresh=names.filter(n=>new RegExp('\\b'+n+'\\b').test(text)&&!seen.has(n));assert.ok(fresh.length<=1,'Too many new names: '+fresh.join(', '));for(const n of fresh)seen.add(n);}});
 
 import {tuneBackground} from '../tune-background.js';
@@ -100,10 +100,10 @@ test('every chapter has a distinct prepared painting and an accessible opening f
  const {createHash}=await import('node:crypto');
  for(let i=0;i<20;i++){const art=chapterArt[i],entry=manifest.find(x=>x.level===i+1);assert.ok(art.alt.length>35);assert.ok(entry.width/entry.height>1.4&&entry.width/entry.height<1.6);assert.ok(storybookFigure(i).includes('alt="'+art.alt+'"'));assert.match(storybookFigure(i),/srcset=/);assert.equal(createHash('sha256').update(await readFile(new URL('../'+entry.file,import.meta.url))).digest('hex'),entry.sha256);await readFile(new URL(art.src.replace('.webp','-small.webp')));}
 });
-test('saved toy scenes embed their paintings and keep live note markers',()=>{
- for(let i=0;i<20;i++){assert.match(storybookBackdrop(i),/href="data:image\/webp;base64,/);}
+test('toy scenes load paintings on demand and keep live note markers',()=>{
+ for(let i=0;i<20;i++){assert.match(storybookBackdrop(i),/href="[^"<>]+-small\.webp"/);}
  const choices={0:1},tool=nativeTool(0,choices),c=gameConfig(0,choices,tool),g=newGame(c);g.notes=[0,1,2,3];
- const svg=trailScene(0,choices,c,tool,g,'tune');assert.match(svg,/data:image\/webp;base64,/);assert.equal((svg.match(/data-song-scene=/g)||[]).length,4);assert.ok(!svg.includes('href="http'));assert.match(svg,/<filter/);
+ const svg=trailScene(0,choices,c,tool,g,'tune');assert.match(svg,/music-case\.webp/);assert.equal((svg.match(/data-song-scene=/g)||[]).length,4);assert.ok(!svg.includes('data:image/webp;base64,'));assert.match(svg,/<filter/);
 });
 test('chapter art stays before the story and comfort styles follow the new palette',async()=>{
  const app=await readFile(new URL('../app.js',import.meta.url),'utf8'),html=await readFile(new URL('../index.html',import.meta.url),'utf8');
@@ -127,4 +127,33 @@ test('map title sits outside the level artwork and saved track choices remain va
 });
 test('all object cutouts are prepared with alpha and recorded checksums',async()=>{
  const entries=JSON.parse(await readFile(new URL('../assets/objects/manifest.json',import.meta.url),'utf8'));assert.equal(entries.length,31);const {createHash}=await import('node:crypto');for(const e of entries){assert.equal(e.alpha[0],0);assert.ok(e.alpha[1]>200);assert.equal(createHash('sha256').update(await readFile(new URL('../'+e.file,import.meta.url))).digest('hex'),e.sha256);}
+});
+
+import {selfContainedSVG} from '../postcard-images.js';
+test('postcard embedding preserves exact image bytes and caches shared art',async()=>{
+ const original=globalThis.fetch;let requests=0;const bytes=new Uint8Array([0,255,123,45,8]);
+ globalThis.fetch=async()=>{requests++;return new Response(bytes,{headers:{'content-type':'image/webp'}});};
+ try{const input='<svg><image href="https://example.test/test-paint.webp"/><image href="https://example.test/test-paint.webp"/></svg>';
+ const result=decodeURIComponent((await selfContainedSVG(input)).split(',').slice(1).join(','));
+ assert.ok(!result.includes('https://'));assert.equal((result.match(/data:image\/webp;base64,AP97LQg=/g)||[]).length,2);
+ await selfContainedSVG(input);assert.equal(requests,1);
+ }finally{globalThis.fetch=original;}
+});
+
+import {hunts,huntObjects,huntSVG} from '../hidden-garden.js';
+test('all twenty finding walks have painted targets, safe hit areas, and new replay positions',()=>{
+ assert.equal(hunts.length,20);assert.equal(new Set(hunts.map(h=>h.title)).size,20);
+ for(let level=0;level<20;level++){const c=gameConfig(level,{0:0},nativeTool(level,{0:0})),g=newGame(c),objects=huntObjects(level,c,g);
+ assert.equal(objects.length,6);assert.equal(new Set(objects.map(o=>o.slug)).size,6);assert.equal(objects.filter(o=>o.target).length,3);assert.equal(new Set(objects.filter(o=>o.target).map(o=>o.slug)).size,3);
+ for(const o of objects){assert.ok(o.x>65&&o.x<655);assert.ok(o.y>65&&o.y<415);assert.ok(o.reply.length>30);}
+ assert.notDeepEqual(objects.map(o=>[o.x,o.y]),huntObjects(level,c,{...g,huntRound:1}).map(o=>[o.x,o.y]));
+ let finished=g;for(const slot of c.findSlots)finished=actGame('seek',finished,c,'find',slot);assert.ok(solved('seek',finished,c));
+ assert.match(huntSVG(level,c,finished),/assets\/objects/);
+ }
+});
+test('finding replays and old musical postcards survive save cleaning',()=>{
+ const choices={0:0},c=gameConfig(0,choices,nativeTool(0,choices)),g={...newGame(c),huntVersion:0,found:[0,1,2,3,4,5],huntRound:12,notes:[0,1,2,3]};
+ const old=cleanTrail({games:{native:g},cards:['native'],snapshots:{native:{mode:'tune',game:g}}},0,choices);
+ assert.equal(old.snapshots.native.mode,'tune');const legacy=cleanTrail({games:{native:g},cards:['native']},0,choices);assert.equal(legacy.snapshots.native.mode,'tune');assert.deepEqual(old.snapshots.native.game.notes,g.notes);assert.equal(old.games.native.huntRound,12);assert.deepEqual(old.games.native.found,[]);assert.equal(old.games.native.huntVersion,1);
+ const snap=cleanSnapshot({huntVersion:1,mode:'seek',game:g},c);assert.equal(snap.huntVersion,1);assert.equal(snap.game.huntRound,12);
 });

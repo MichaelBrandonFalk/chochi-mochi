@@ -1,24 +1,25 @@
 import { mkdir, copyFile, rm, readFile, writeFile, cp } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
+import {build} from 'esbuild';
 await rm('dist',{recursive:true,force:true});
 await mkdir('dist',{recursive:true});
 await cp('docs','dist/docs',{recursive:true});
 await cp('assets','dist/assets',{recursive:true,filter:source=>!source.endsWith('-original.png')});
-const hashes=new Map(),visiting=new Set();
+// One bundled module removes the network waterfall through dozens of imports.
+// Keep it at the root so existing import.meta.url asset paths remain correct.
+const result=await build({entryPoints:['app.js'],bundle:true,minify:true,format:'esm',target:'es2020',write:false,metafile:true});
 const hash=text=>createHash('sha256').update(text).digest('hex').slice(0,12);
-// Fingerprint the entire import tree so a release refreshes nested modules too.
-async function emit(file){
- if(hashes.has(file))return hashes.get(file);
- if(visiting.has(file))throw new Error('Import cycle: '+file);
- visiting.add(file);
- let source=await readFile(file,'utf8');
- const imports=[...source.matchAll(/from\s+['"]\.\/([^'"?]+\.js)['"]/g)];
- for(const match of imports){const fingerprint=await emit(match[1]);source=source.replace(match[0],match[0].replace(match[1],match[1]+'?v='+fingerprint));}
- await writeFile('dist/'+file,source);visiting.delete(file);hashes.set(file,hash(source));return hashes.get(file);
-}
-await emit('app.js');
+const js=result.outputFiles[0].contents,entry=`game-${hash(js)}.js`;
+await writeFile('dist/'+entry,js);
 let html=await readFile('index.html','utf8');
-for(const asset of ['style.css','pastel.css','calm.css','storybook.css','access.css']){await copyFile(asset,'dist/'+asset);hashes.set(asset,hash(await readFile(asset)));}
-for(const asset of ['app.js','style.css','pastel.css','calm.css','storybook.css','access.css'])html=html.replace('"'+asset+'"','"'+asset+'?v='+hashes.get(asset)+'"');
+html=html.replace('src="app.js"',`src="${entry}"`);
+const sheets=['style.css','pastel.css','calm.css','storybook.css','access.css'];
+// Preserve cascade order while replacing five blocking requests with one.
+const css=(await Promise.all(sheets.map(file=>readFile(file,'utf8')))).join('\n');
+const style=`game-${hash(css)}.css`;
+await writeFile('dist/'+style,css);
+html=html.replace(/<link rel="stylesheet" href="(?:style|pastel|calm|storybook|access)\.css">/g,'');
+html=html.replace('</head>',`<link rel="stylesheet" href="${style}"></head>`);
 await writeFile('dist/index.html',html);
-console.log('Static game ready in dist/');
+await writeFile('dist/build-report.json',JSON.stringify({script:entry,scriptBytes:js.length,stylesheet:style,stylesheetBytes:Buffer.byteLength(css),modules:Object.keys(result.metafile.inputs)},null,2)+'\n');
+console.log(`Static game ready in dist/: ${js.length.toLocaleString()} script bytes, one module request.`);

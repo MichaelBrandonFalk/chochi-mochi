@@ -116,3 +116,19 @@ body[data-reading-font=sans] :is(.basket-letter-list summary strong,.painted-bas
 .music-buttons{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
 .music-buttons>button{flex:1 1 110px;width:auto;min-height:44px}
 .basket-gift-detail:focus{outline:2px solid #9a839e;outline-offset:5px}
+
+/* Keep the gift count with the garden plan, rather than the story portrait. */
+.picnic-plan .picnic-gift-count{font:normal 16px/1.6 Georgia,serif;text-align:center;color:var(--ink);margin:2px 0 12px}
+img[data-postcard-svg]{object-fit:contain;background:#f8f2e4}
+
+/* Button’s painted finding walks. No flashing, timers, or automatic movement. */
+.hunt-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;list-style:none;padding:0;margin:20px 0}
+.hunt-list li{display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center;padding:12px 8px;background:#f8f3e8;border:1px solid #d9d3c0;border-radius:12px;font-size:16px}
+.hunt-list img{object-fit:contain;width:76px;height:66px}.hunt-list strong{font:13px/1.5 Arial,sans-serif;color:#63765d}.hunt-list .found{background:#edf1e6;border-color:#8ba181}
+.hunt-touch-layer{position:absolute;inset:0;pointer-events:none}.hunt-object{position:absolute;transform:translate(-50%,-50%);min-width:44px;min-height:44px;border:0;border-radius:50%;background:transparent;pointer-events:auto;cursor:pointer;padding:0}
+.hunt-object:hover{background:#fff8e42e;outline:1px solid #73866a80}.hunt-object:focus-visible{outline:3px solid var(--access-focus,#624480);outline-offset:3px;background:#fff8e433}
+.hunt-clue{padding:14px 18px;background:#edf0e5;border-left:3px solid #829675;border-radius:4px;font-size:18px;line-height:1.65;min-height:3em}
+.hunt-progress{font-size:16px}.hunt-controls .actions{gap:10px}.hunt-word-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.hunt-word-list button{white-space:normal;text-align:left;font-size:15px;line-height:1.6}
+.hunt-finish{padding:16px 20px;background:#f2eaf1;border-radius:12px;margin:20px 0}.hunt-finish h3{margin:0 0 10px}.hunt-finish p{margin:0;font-size:18px}
+body[data-hide-art=true] .hunt-touch-layer{display:none}body[data-hide-art=true] .hunt-list img{display:none}body[data-contrast=true] :is(.hunt-list li,.hunt-clue,.hunt-finish){background:#fffdf4;color:#20382b;border:1px solid #687960}
+@media(max-width:600px){.hunt-list{gap:6px}.hunt-list li{font-size:14px;padding:9px 4px}.hunt-list img{width:58px;height:52px}.hunt-word-list{grid-template-columns:1fr}}
