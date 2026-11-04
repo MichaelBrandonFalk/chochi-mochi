@@ -1,3 +1,0 @@
-import {storybookFigure} from './storybook.js?v=808070cdf267';
-export function scene(bright=false){return `<div class="scene book-scene ${bright?'is-shining':''}">${storybookFigure(19,{eager:true,caption:bright?'A little more light, a little more care':'Chochi the Dinosaur, Mochi the Unicorn, and their fairy friend Glaloula'})}</div>`;}
-export function placeScene(index,bright=false,effects={}){return `<div class="scene book-scene ${bright||effects.discovered?'is-shining':''}">${storybookFigure(index,{caption:bright?'Your visit brought more light':effects.discovered?'A discovery for our book':'A place to explore together'})}</div>`;}
