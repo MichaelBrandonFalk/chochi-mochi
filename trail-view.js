@@ -4,11 +4,11 @@ import {isFlightTool,tripStory} from './trip-story.js?v=2e1394b442c5';
 import {updateHTML} from './dom-update.js?v=f5d246a2bedd';
 import {outings,modeNames,recipes,outingSetup,outingAction,helperAction} from './trail-data.js?v=c10f0ba50c73';
 import {trailKey,trailKit,nativeTool,activeTool,gameConfig,newGame,cleanTrail,cleanSnapshot,actGame,solved,mixTools,availableMixes,trailCards,choicesFromKey,carriedCharms,lastPostcard,carriedTune,carriedDesign} from './trail.js?v=3cb3ae9da688';
-import {trailScene,noteNames,gardenPosition} from './trail-art.js?v=7ecf019b4508';
-import {playEffect,stopTune,getAudioState,setAudioSettings} from './audio.js?v=b8ea75ab6379';
-import {songPanel,playSong} from './song-player.js?v=2a2e7e73642b';
+import {trailScene,noteNames,gardenPosition} from './trail-art.js?v=fa06c7d30aef';
+import {playEffect,stopTune,getAudioState,setAudioSettings} from './audio.js?v=fc19d360dc24';
+import {songPanel,playSong} from './song-player.js?v=801b9c60aba1';
 import {noteStyle} from './music-box.js?v=d0eee573bfaa';
-import {stopReader} from './access.js?v=6ee27f15661d';
+import {stopReader} from './access.js?v=2623f5c7c135';
 const modeInstructions={seek:'Peek in the six little places. Find the three things on our list. Every peek has a small story.',boat:'Choose left, straight, or right at each bend. Every dock has a friend to meet. You can take another trip.',tune:'Pick four notes for a tune. Play it, change it, and keep the one you like. Every tune can belong here.',weave:'Tap each ribbon row to change its color and shape. Make any pattern you like.',garden:'Tap a little plot to add a shape. Tap again to change it, or once more to lift it. Fill three plots, or make a whole tiny world.',wheels:'Turn the paper wheels to match the little arrows below them. Ask your travelling friend for a turn whenever you like.'};
 const nativeGlyphs={seek:'❧',boat:'◒',tune:'♫',weave:'∞',garden:'✿',wheels:'✧'};
 export function trailPreview(level,choices,records){const friend=choices[0]===1?'Pipkin':choices[0]===0?'Button':'Chochi the Dinosaur',kit=trailKit(level,choices),prev=lastPostcard(level,choices,records),charms=carriedCharms(level,choices,records);return `<section class="trail-preview"><div class="eyebrow">Along our way</div><h3>${friend}’s little outing</h3><p>${prev?`Our ${outings[prev.level].souvenir.toLowerCase()} is tucked in the book. `:''}${choices[0]===1?'Pipkin brings a new song to each place.':choices[0]===0?'Button brings her little leaf drums to each place.':'There are small things to find and make along the way.'}</p><div class="carried-glyphs" aria-label="Things we can use here">${kit.slice(-5).map(t=>`<span title="${t.name}">${t.glyph}</span>`).join('')}${charms.map(c=>`<span title="${c.name}">${c.glyph}</span>`).join('')}</div><a class="secondary" href="#outing-${level+1}">Play along the way →</a><a class="text-button" href="#album">Our postcard album →</a></section>`;}
