@@ -18,12 +18,17 @@ Open http://localhost:4173. Static files also work on any web server. Use HTTP b
 
 ## GitHub Pages and versioned releases
 
-1. Create a public GitHub repository and push this source.
-2. In Settings → Pages choose **GitHub Actions** as the build source.
-3. Tag the release `v1.0.0` and push the tag. The included workflow tests, packages, and deploys that exact tagged commit. Main-branch pushes do not deploy automatically.
-4. Create a GitHub Release for that tag, using CHANGELOG.md and optionally attaching a ZIP of `dist/`.
+The live site publishes the root of the `gh-pages` branch using GitHub’s branch publishing mode. This was approved on November 4, 2026 after the custom Actions deployments remained queued. The public address stays https://michaelbrandonfalk.github.io/chochi-mochi/.
 
-For subsequent releases, update the package version, visible footer, and changelog, then create a new semantic version tag. Never move a published tag. To roll back, run the workflow manually selecting a previous tag. The workflow can also be manually run for a selected branch; use a release tag to preserve release provenance.
+For each release:
+
+1. Update the package version, visible footer, and changelog. Run `npm test` and `npm run build`.
+2. Commit the source and create an immutable semantic version tag. Never move a published tag.
+3. Copy the complete `dist/` output to the root of `gh-pages`, including a `.nojekyll` file. Commit the built files with the release tag and source commit in the message, then push that branch. Preserve its publishing history rather than force-pushing.
+4. GitHub Pages publishes that branch. Verify the Pages build and the version shown on the public website.
+5. Create a GitHub Release for the source tag, optionally attaching a ZIP of `dist/`.
+
+The included Actions workflow validates tagged releases and uploads a build artifact. It does not publish the website. Pushing a source tag alone does not update `gh-pages`. To roll back, build a previous immutable tag and publish that output as a new commit on `gh-pages`.
 
 ## Content and accessibility
 
