@@ -1,3 +1,12 @@
+## 2.6.0
+
+- Replace the background track with four gentle original CC0 chamber miniatures, about ten minutes in total.
+- Enable music and effects for new players after the browser’s first-gesture unlock. Remember quiet choices per player. Lower background music during music-box playback.
+- Give Button one leaf-drum game and Pipkin one song game throughout all twenty places. Remove the expanding toy selector and mixing panel from outings.
+- Add optional copy-a-pattern play, story responses for copied or original tunes, and a fresh-tune control. Keep silent synchronized playback.
+- Introduce both companions in the opening. Limit new chapter names, remove the duplicate Bea, and make family examples told stories.
+- Label story mentions of Chochi the Dinosaur and Mochi the Unicorn. Preserve legacy toy postcards and all lesson progress.
+
 # Changelog
 
 ## 2.5.0 · November 3, 2026

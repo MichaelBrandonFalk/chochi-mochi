@@ -328,3 +328,8 @@ body[data-contrast=true] .basket-contents [aria-pressed=true] { color: #21132c; 
 .travelling-memories summary { font-size: calc(15px * var(--reading-scale,1)); }
 .travelling-memories .text-button { margin-top: 14px; }
 body[data-contrast=true] .trip-story,body[data-contrast=true] .travelling-memories { background: #fffdf4; border-color: #687960; }
+
+/* Companion play stays visually separate from lesson practice. */
+.companion-reply:not(:empty){padding:1rem 1.25rem;border-radius:1rem;background:#eef1e5;line-height:1.7}
+.companion-pattern{margin:1.25rem 0;padding:1rem 1.25rem;border:1px solid #d7d7c6;border-radius:1rem;background:#f6f1e9}
+.companion-pattern summary{min-height:2.75rem;display:list-item;cursor:pointer}

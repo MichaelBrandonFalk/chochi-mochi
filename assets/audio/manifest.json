@@ -1,14 +1,5 @@
 [
   {
-    "file": "assets/audio/calm-garden.mp3",
-    "title": "Calm Track",
-    "creator": "pmiller",
-    "source": "https://opengameart.org/content/calm-track",
-    "license": "CC0-1.0",
-    "attribution_required": false,
-    "sha256": "e077ec76f51e7e07c5c26df52ba91d73655d5559cf0bd4ce16dcdcc300fd6433"
-  },
-  {
     "file": "assets/audio/page-touch.mp3",
     "title": "Interface Sounds: tick_001",
     "creator": "Kenney",
@@ -25,5 +16,41 @@
     "license": "CC0-1.0",
     "attribution_required": false,
     "sha256": "11cb9880fd7f195278b08d7c8fb114c7ecc4a3e7a404462bec9a017c68b4f197"
+  },
+  {
+    "file": "assets/audio/clover-waltz.mp3",
+    "title": "Clover Waltz",
+    "creator": "Chochi Mochi original miniature",
+    "source": "scripts/compose-music.py",
+    "license": "CC0-1.0",
+    "attribution_required": false,
+    "sha256": "b8cb6a752b6ca8a9f1e59254c9bee526fbcb5ebaf940ef8b98727d92300ea696"
+  },
+  {
+    "file": "assets/audio/pear-blossom.mp3",
+    "title": "Pear Blossom",
+    "creator": "Chochi Mochi original miniature",
+    "source": "scripts/compose-music.py",
+    "license": "CC0-1.0",
+    "attribution_required": false,
+    "sha256": "768e0efc7398f9235882f5de8c4f2063f17d5e68ff06a4eff8a2413b71908359"
+  },
+  {
+    "file": "assets/audio/cloud-carousel.mp3",
+    "title": "Cloud Carousel",
+    "creator": "Chochi Mochi original miniature",
+    "source": "scripts/compose-music.py",
+    "license": "CC0-1.0",
+    "attribution_required": false,
+    "sha256": "d3f4f3a1b943f824d66a9481d5f2a1de0ff6fe44440df4b0f5c572d8792ecfbe"
+  },
+  {
+    "file": "assets/audio/bluebell-tea.mp3",
+    "title": "Bluebell Tea",
+    "creator": "Chochi Mochi original miniature",
+    "source": "scripts/compose-music.py",
+    "license": "CC0-1.0",
+    "attribution_required": false,
+    "sha256": "ac570fc93d148dfeff41cdd86ed3f885aa161d2754346be6e54f5964195ff6d6"
   }
 ]
