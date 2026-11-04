@@ -2,13 +2,15 @@
 
 Verified November 2, 2026. Every bundled audio asset is creator-designated CC0 1.0 public domain. Attribution is not required, including in commercial projects. Source records are retained here for traceability, not as an attribution obligation.
 
-## Music
+## Earlier music, through version 2.5
+
+This recording is retained only in earlier releases. See Version 2.6 music below for the current playlist.
 
 - Work: **Calm Track**, by **pmiller**.
 - Creator upload and license: https://opengameart.org/content/calm-track
 - Original: https://opengameart.org/sites/default/files/calm_track-loop.ogg
 - The upload states CC0 and “Public Domain, no attribution necessary.”
-- Bundled as `assets/audio/calm-garden.mp3`.
+- Previously bundled as `assets/audio/calm-garden.mp3`.
 - Changes: MP3 encoding at 96 kbps, loudness adjustment to -24 LUFS, peak limit target -6 dBTP, two-second fades at the loop edges.
 
 ## Effects

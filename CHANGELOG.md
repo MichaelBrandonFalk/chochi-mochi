@@ -1,3 +1,7 @@
+## 2.6.1
+
+- Correct Nell’s pronoun in a teaching scene and clarify that the previous audio source record is historical.
+
 ## 2.6.0
 
 - Replace the background track with four gentle original CC0 chamber miniatures, about ten minutes in total.
