@@ -1,6 +1,6 @@
 import { playerStorage } from './player-store.js?v=7d168218758d';
 import {accessDefaults,cleanAccess,accessPreset,effectiveAccess,safePosition} from './access-model.js?v=9cbc7133d8c8';
-import {getAudioState,setAudioSettings,silenceAudio,setNarrating} from './audio.js?v=28e83205316c';
+import {getAudioState,setAudioSettings,silenceAudio,setNarrating} from './audio.js?v=b8ea75ab6379';
 const key='little-lights-access-v1';let prefs={...accessDefaults},positions={},pauseState=null,storageOK=true,segments=[],segmentIndex=0,reading=false,paused=false,speechMuted=false,generation=0,previousText='',readingKind='manual',recapProvider=()=>({title:'Our story',paragraphs:['Chochi and Mochi are gathering gifts and ways to be kind friends for Glaloula’s art afternoon.']}),lastReturn=null;
 try{prefs=cleanAccess(JSON.parse(playerStorage.getItem(key)||'null'));const saved=JSON.parse(playerStorage.getItem('little-lights-reading-positions')||'{}');if(saved&&typeof saved==='object')positions=saved;const p=JSON.parse(playerStorage.getItem('little-lights-break')||'null');if(p&&p.open===true)pauseState=p;}catch{storageOK=false;}
 const $=selector=>document.querySelector(selector);

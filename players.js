@@ -1,6 +1,6 @@
 import {playerStore,maxPlayers} from './player-store.js?v=7d168218758d';
-import {stopReader} from './access.js?v=08524110fa43';
-import {silenceAudio,stopTune} from './audio.js?v=28e83205316c';
+import {stopReader} from './access.js?v=6ee27f15661d';
+import {silenceAudio,stopTune} from './audio.js?v=b8ea75ab6379';
 const esc=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function initPlayers(saveCurrent){
  const opener=document.querySelector('#open-players');

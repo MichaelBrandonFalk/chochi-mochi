@@ -50,3 +50,7 @@ The previous Calm Track is no longer used. Four original, gently plucked keyboar
 The scores, synthesizer source in `scripts/compose-music.py`, and four generated recordings are dedicated to the public domain under CC0 1.0. No attribution is required for any use. The manifest records their SHA-256 checksums. The existing two Kenney effects keep their recorded CC0 terms.
 
 Sound is enabled initially, but browsers may block playback until a user gesture. Quiet and Stop all sound persist across reloads. Speech still starts only by request.
+
+## Version 2.6.2 tune controls
+
+Play our tune and Watch our tune both use the same audible, visual playback. If effects are muted or their volume is zero, either control still shows the visual notes. The background soundtrack pauses completely while a tune plays, including visual playback, and resumes from its existing position afterward only if music is enabled and the tab is visible. Stop all sound remains in effect.
