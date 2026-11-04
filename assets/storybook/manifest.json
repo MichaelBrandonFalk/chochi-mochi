@@ -1,0 +1,148 @@
+[
+  {
+    "level": 1,
+    "file": "assets/storybook/01-clover-gate.webp",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "0fb78e6d396791a4e8801db3bba0f1085a8594f689b18aec38a71c9f7109cde9"
+  },
+  {
+    "level": 2,
+    "file": "assets/storybook/02-dewdrop-meadow.webp",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "a380ef4e5cb656099f4de530bb5b97cd84b94e75d9a9717e3ad50239ca2297a3"
+  },
+  {
+    "level": 3,
+    "file": "assets/storybook/03-listening-grove.webp",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "c0e7f659f301e565e972a55e4bcf91f39f5304e71c50dc94ae921d5b6dc97081"
+  },
+  {
+    "level": 4,
+    "file": "assets/storybook/04-mirror-pool.webp",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "7a64484e20b9e7a324728605439a7d2f235058885c642191d26546e4aecf560f"
+  },
+  {
+    "level": 5,
+    "file": "assets/storybook/05-sunseed-field.webp",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "4cfd7511a45c405c066196a9f71780bde538a55aef11acf176254ff1008732db"
+  },
+  {
+    "level": 6,
+    "file": "assets/storybook/06-twin-lanterns.webp",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "49746ce4966c83fe00acc0f8e9c1204e2ebc931783ed3bb57e5b5cc47c448537"
+  },
+  {
+    "level": 7,
+    "file": "assets/storybook/07-choice-orchard.webp",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "022555c940059a992e6c2ce18477f215494a6416cdef1d214c8cf0d39d327cd1"
+  },
+  {
+    "level": 8,
+    "file": "assets/storybook/08-ribbon-bridge.webp",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "3c996d888e2e475bb7508926ba48bd3680cfc71871ff2aa3ae4e691514c7754a"
+  },
+  {
+    "level": 9,
+    "file": "assets/storybook/09-pattern-pond.webp",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "d3c95a88577b329ec100174c8bb9440f18f7d4b55ae96840d5f40713822b7247"
+  },
+  {
+    "level": 10,
+    "file": "assets/storybook/10-one-pebble-path.webp",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "912a6c3120328d7b01bcbeb0422eb0f86a10793e7a7778d5f55f82024d5fe393"
+  },
+  {
+    "level": 11,
+    "file": "assets/storybook/11-mapmakers-nook.webp",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "54e25dd589bc84caef5fd601b783f9afc0d0e3dfca9adf1d794eaa5638023929"
+  },
+  {
+    "level": 12,
+    "file": "assets/storybook/12-letter-tree.webp",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "39aba44cd7b9cef781f2313df9af2ef4b35758d91ac2807a1465c38aa94622db"
+  },
+  {
+    "level": 13,
+    "file": "assets/storybook/13-steady-stream.webp",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "a3961dbd82912bcd900fec2506aeb30b1c43b0f04ea1d489cc9a61de2f7de02d"
+  },
+  {
+    "level": 14,
+    "file": "assets/storybook/14-cloud-garden.webp",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "f1a940f7da92099aea82aa854570ff4a0265e386f15a9177d3e93f6a20b43cf7"
+  },
+  {
+    "level": 15,
+    "file": "assets/storybook/15-warm-tea-cottage.webp",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "1bb51a58124a22cecafc98e14408395f6de0f23c257128f519e87407544c7f85"
+  },
+  {
+    "level": 16,
+    "file": "assets/storybook/16-echo-glade.webp",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "1298e56cff4ac7eecc68e00883455d028449081936458b1f8967b9217544e937"
+  },
+  {
+    "level": 17,
+    "file": "assets/storybook/17-circle-of-oaks.webp",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "5b4c4c984b110c51f80a23906a926286cbbbddd3291976d0628d29b6f438b3a5"
+  },
+  {
+    "level": 18,
+    "file": "assets/storybook/18-little-bloom-hill.webp",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "33fd99e66bf419b54774eafe0abdd07de73844b92b0efcfe79b1e0f1eb266cd7"
+  },
+  {
+    "level": 19,
+    "file": "assets/storybook/19-starlight-library.webp",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "bb156bee0270de8169d550206884d9cf6163bf311c89eaee2d414bc7e6b6ac24"
+  },
+  {
+    "level": 20,
+    "file": "assets/storybook/20-glaloulas-garden.webp",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "f35f147a57b12f9e7990b9d8b038f1cb2485392ba5cfb2a3238c8793862d7fd1"
+  },
+  {
+    "file": "assets/storybook/valley-map.webp",
+    "width": 1433,
+    "height": 1098,
+    "sha256": "5127f8b458f8b20b27993e56e64c4694b8736ee8d32e719a4b2ffa45933b92f0"
+  }
+]

@@ -1,3 +1,4 @@
+import {inkPainting} from './storybook.js?v=808070cdf267';
 // Small, original paper crafts that fill as players build each project.
 const line='fill="none" stroke="#9a9e85" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"';
 const note=(x,y,w=70,h=75)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="5" fill="#fff7dd" stroke="#cec1a3"/><path d="M${x+12} ${y+20}h${w-24}m-${w-24} 15h${w-30}m-${w-30} 15h${w-25}" ${line}/>`;
@@ -26,6 +27,6 @@ const motifs=[
 ['<path d="M180 163V60m0 55-43-27m43 51 43-34" '+line+'/>','<path d="M138 89q-47-35-35-1 12 24 35 1" fill="#adc9a4"/>','<path d="M222 105q47-35 35-1-12 24-35 1" fill="#bad5ad"/>','<path d="M180 63q-34-46-3-47 31 4 3 47" fill="#d3dcaf"/>'],
 ['<path d="m75 61 88 10 96-10v103l-96-9-88 9z" fill="#f7ebcf" stroke="#c8ba9b"/>','<path d="M163 71v84m-68-58h48m-48 19h42m40-19h60m-60 19h54" '+line+'/>','<path d="m223 60 17 2v74l-9-8-8 7z" fill="#c8b1d0"/>','<path d="M181 136h56" '+line+'/>']
 ];
-export function craftPainting(index,count,total,label){const mapped=index<19?index:[0,5,8,14,18][index-19];const pieces=motifs[mapped]||motifs[18];return `<div class="craft-art" role="img" aria-label="${label||`Our project: ${count} of ${total} pieces placed`}"><svg viewBox="0 0 360 200" aria-hidden="true"><rect width="360" height="200" rx="15" fill="#f5f0e3"/><ellipse cx="180" cy="159" rx="138" ry="22" fill="#e9e6d5" opacity=".6"/>${pieces.map((p,i)=>`<g opacity="${i===0?1:count/total>=(i/(pieces.length-1))?1:.16}">${p}</g>`).join('')}</svg><span>${label?'Packed for Glaloula':`${count} of ${total} pieces placed`}</span></div>`;}
+export function craftPainting(index,count,total,label){const mapped=index<19?index:[0,5,8,14,18][index-19];const pieces=motifs[mapped]||motifs[18];return inkPainting(`<div class="craft-art" role="img" aria-label="${label||`Our project: ${count} of ${total} pieces placed`}"><svg viewBox="0 0 360 200" aria-hidden="true"><rect width="360" height="200" rx="15" fill="#f5f0e3"/><ellipse cx="180" cy="159" rx="138" ry="22" fill="#e9e6d5" opacity=".6"/>${pieces.map((p,i)=>`<g opacity="${i===0?1:count/total>=(i/(pieces.length-1))?1:.16}">${p}</g>`).join('')}</svg><span>${label?'Packed for Glaloula':`${count} of ${total} pieces placed`}</span></div>`);}
 // Complete craft pieces can also be tucked into the travelling basket.
 export function craftMotif(index){return (motifs[index]||motifs[18]).join('');}
