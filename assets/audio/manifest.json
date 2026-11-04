@@ -27,30 +27,58 @@
     "sha256": "b8cb6a752b6ca8a9f1e59254c9bee526fbcb5ebaf940ef8b98727d92300ea696"
   },
   {
-    "file": "assets/audio/pear-blossom.mp3",
-    "title": "Pear Blossom",
-    "creator": "Chochi Mochi original miniature",
-    "source": "scripts/compose-music.py",
+    "file": "assets/audio/meadow-guitar.mp3",
+    "title": "Meadow Guitar",
+    "description": "Fingerpicked guitar \u00b7 a lilting 6/8 walk",
+    "creator": "Chochi Mochi original arrangement",
+    "source": "scripts/compose-varied-music.py",
     "license": "CC0-1.0",
     "attribution_required": false,
-    "sha256": "768e0efc7398f9235882f5de8c4f2063f17d5e68ff06a4eff8a2413b71908359"
+    "sha256": "13f596fee4c8ab4d68702d0c49cc624972d17cfe18cf155e6f99fa05e584573a",
+    "mastering": "Matched to the existing keyboard track, approximately -29.5 LUFS."
   },
   {
-    "file": "assets/audio/cloud-carousel.mp3",
-    "title": "Cloud Carousel",
-    "creator": "Chochi Mochi original miniature",
-    "source": "scripts/compose-music.py",
+    "file": "assets/audio/willow-flute.mp3",
+    "title": "Willow Flute",
+    "description": "Flute and soft strings \u00b7 a slow 4/4 song",
+    "creator": "Chochi Mochi original arrangement",
+    "source": "scripts/compose-varied-music.py",
     "license": "CC0-1.0",
     "attribution_required": false,
-    "sha256": "d3f4f3a1b943f824d66a9481d5f2a1de0ff6fe44440df4b0f5c572d8792ecfbe"
+    "sha256": "f6022900fcaad76676a2308a76329aeec1d0627da8eb335eb293ed84bf63a88a",
+    "mastering": "Matched to the existing keyboard track, approximately -29.5 LUFS."
   },
   {
-    "file": "assets/audio/bluebell-tea.mp3",
-    "title": "Bluebell Tea",
-    "creator": "Chochi Mochi original miniature",
-    "source": "scripts/compose-music.py",
+    "file": "assets/audio/cloud-bells.mp3",
+    "title": "Cloud Bells",
+    "description": "Soft music-box bells \u00b7 a spacious 4/4 lullaby",
+    "creator": "Chochi Mochi original arrangement",
+    "source": "scripts/compose-varied-music.py",
     "license": "CC0-1.0",
     "attribution_required": false,
-    "sha256": "ac570fc93d148dfeff41cdd86ed3f885aa161d2754346be6e54f5964195ff6d6"
+    "sha256": "a4961a7a5eca3817688c195f50c9254b3cdb25f288722517738b323d8312bf5f",
+    "mastering": "Matched to the existing keyboard track, approximately -29.5 LUFS."
+  },
+  {
+    "file": "assets/audio/bluebell-strings.mp3",
+    "title": "Bluebell Strings",
+    "description": "A gentle string trio \u00b7 a flowing 3/4 lullaby",
+    "creator": "Chochi Mochi original arrangement",
+    "source": "scripts/compose-varied-music.py",
+    "license": "CC0-1.0",
+    "attribution_required": false,
+    "sha256": "f68721f032a2abd04d2348d0de9e6e39246167bfab9d61d59e04724833edaaf3",
+    "mastering": "Matched to the existing keyboard track, approximately -29.5 LUFS."
+  },
+  {
+    "file": "assets/audio/orchard-marimba.mp3",
+    "title": "Orchard Marimba",
+    "description": "Soft marimba and bass \u00b7 a light 4/4 dance",
+    "creator": "Chochi Mochi original arrangement",
+    "source": "scripts/compose-varied-music.py",
+    "license": "CC0-1.0",
+    "attribution_required": false,
+    "sha256": "427623428da073b3b34eadc45098fb8961c924182287388d3260a1b47f904aa8",
+    "mastering": "Matched to the existing keyboard track, approximately -29.5 LUFS."
   }
 ]

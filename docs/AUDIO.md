@@ -29,7 +29,7 @@ CC0 information and legal code: https://creativecommons.org/publicdomain/zero/1.
 
 ## Playback behavior
 
-Music and effects default on for a new player. The first tap or keyboard activation unlocks music under browser autoplay rules. On/off choices and volumes are remembered for each player. Files are hosted with the game; playing them makes no request to a third-party music service. The four-track playlist plays at a low default volume, ducks during read-aloud, and pauses when the tab is hidden. Stop all sound also stops read-aloud. Sound effects give gentle feedback for navigation and learning actions, with no penalty sound for an incorrect answer.
+Music and effects default on for a new player. The first tap or keyboard activation unlocks music under browser autoplay rules. On/off choices and volumes are remembered for each player. Files are hosted with the game; playing them makes no request to a third-party music service. The six-track playlist plays at a low default volume, ducks during read-aloud, and pauses when the tab is hidden. Stop all sound also stops read-aloud. Sound effects give gentle feedback for navigation and learning actions, with no penalty sound for an incorrect answer.
 
 
 ## Pocket music box
@@ -54,3 +54,11 @@ Sound is enabled initially, but browsers may block playback until a user gesture
 ## Version 2.6.2 tune controls
 
 Play our tune and Watch our tune both use the same audible, visual playback. If effects are muted or their volume is zero, either control still shows the visual notes. The background soundtrack pauses completely while a tune plays, including visual playback, and resumes from its existing position afterward only if music is enabled and the tab is visible. Stop all sound remains in effect.
+
+## Version 2.8 varied playlist and track controls
+
+The current playlist has six original pieces: Clover Waltz, Meadow Guitar, Willow Flute, Cloud Bells, Bluebell Strings, and Orchard Marimba. The first retains the original keyboard arrangement. Five new synthesized arrangements use different timbres, registers, meters, accompaniment, rests, and tempos: plucked guitar, flute with strings, soft music-box bells, a string trio, and marimba with bass. These are original synthesized recordings, not sampled acoustic performances or existing classical works.
+
+The new arrangements and recordings are dedicated to CC0 1.0 without an attribution requirement. Source scores and synthesis are in `scripts/compose-varied-music.py`, and hashes remain in the audio manifest. The new tracks were brought close to the original track’s measured loudness, approximately -29.5 LUFS, to avoid a jump when changing songs. The three retired keyboard pieces remain available in earlier releases.
+
+Next track appears in Sound and Comfort & Access. It advances through all six tracks and remembers the selected filename per player. Skipping while music is paused selects the next piece without turning music on. Skipping during a tune selects the next background piece but waits until the tune ends before playing it. The existing music volume, effects volume, quiet settings, and tune suspension behavior remain in effect.

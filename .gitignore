@@ -5,3 +5,5 @@ output/
 .playwright-cli/
 
 /assets/storybook/*-original.png
+
+/assets/objects/*-original.png

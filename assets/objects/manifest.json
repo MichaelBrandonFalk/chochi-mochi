@@ -1,0 +1,312 @@
+[
+  {
+    "file": "assets/objects/basket.webp",
+    "width": 1400,
+    "height": 993,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "e72c9ae9f8cbb83ad3864d5ca531b056628395673b333cd7f8dda3f2a47c7786"
+  },
+  {
+    "file": "assets/objects/garden-bloom.webp",
+    "width": 508,
+    "height": 768,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "991bf3631d8dc5aaac4fb242dabb9f68ec63c04942718dd6e800d540557521e5"
+  },
+  {
+    "file": "assets/objects/garden-table.webp",
+    "width": 768,
+    "height": 682,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "f09df17cd16b520e650490ef7b8138f36e8857c757efa8cd9f6984498aeba09f"
+  },
+  {
+    "file": "assets/objects/gift-01-flags.webp",
+    "width": 768,
+    "height": 296,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "88782f55f76c16bb6da72d6cd3ea7811452fd8d79338071b982b0299c441e287"
+  },
+  {
+    "file": "assets/objects/gift-02-cloth-mint.webp",
+    "width": 768,
+    "height": 609,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "f8bfa43c7b340beecaa34ec34441cf54eb0d7d20dc22a5e5a65766d8305ce6f4"
+  },
+  {
+    "file": "assets/objects/gift-02-cloth.webp",
+    "width": 768,
+    "height": 663,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "f670cdc8629f92b1d469326e967d056ca720082598acbb9f4b63ea8823cdacea"
+  },
+  {
+    "file": "assets/objects/gift-03-song.webp",
+    "width": 768,
+    "height": 576,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "7c920a4e8fb1695ceac06ad4b847fafd72bad62933bb0581fb55bb1924cd2416"
+  },
+  {
+    "file": "assets/objects/gift-04-cup-card.webp",
+    "width": 768,
+    "height": 480,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "1350cda245121610bb71a7dc2b268c2ee7e987d4dda41a3ddcbd069a810f0392"
+  },
+  {
+    "file": "assets/objects/gift-05-flowers-clover.webp",
+    "width": 768,
+    "height": 656,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "45355409f94f414755cd2797edffca99e55aa9ec63b15252d199996704f8b3b8"
+  },
+  {
+    "file": "assets/objects/gift-05-flowers.webp",
+    "width": 720,
+    "height": 768,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "6177f5ea8bdf9481eccc2b76fc8a42f556198bfd8cd54cc940ed3ff6a974a151"
+  },
+  {
+    "file": "assets/objects/gift-06-lanterns-leaf.webp",
+    "width": 713,
+    "height": 768,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "02832b080b4394314bb0b2e211c7af45295a20d3cb3e5f57a59b681aa82c3b24"
+  },
+  {
+    "file": "assets/objects/gift-06-lanterns.webp",
+    "width": 703,
+    "height": 768,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "31daa77c06d7a05a965ff658e0236be5fb6c64cb0dca7a9d8743089808c54c21"
+  },
+  {
+    "file": "assets/objects/gift-07-list.webp",
+    "width": 605,
+    "height": 768,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "98b117a0c5c240f87093ea62bb200d83ad58cf1f06e973ba4fb7d0a8c9c18716"
+  },
+  {
+    "file": "assets/objects/gift-08-ribbons-bows.webp",
+    "width": 768,
+    "height": 572,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "49c3050348c488bcb83b3c18a7056f0da32c78da752448c3f62da6816a1e94bb"
+  },
+  {
+    "file": "assets/objects/gift-08-ribbons.webp",
+    "width": 768,
+    "height": 513,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "e4188680accade39e73bac95e49db965778988fc897375522e7e345169531bbd"
+  },
+  {
+    "file": "assets/objects/gift-09-note.webp",
+    "width": 768,
+    "height": 598,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "84fe6046539f40d1973116ea0e024a2de5fe7c57946907df1241c98faec1298d"
+  },
+  {
+    "file": "assets/objects/gift-10-pebble-dragon.webp",
+    "width": 768,
+    "height": 586,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "92bbff957439859bf2c1cd0cc7aed8e9a4f36a67a33ac53d2faab883a3ea1579"
+  },
+  {
+    "file": "assets/objects/gift-10-pebble.webp",
+    "width": 768,
+    "height": 565,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "c3e30ed699c14f0429f7c1f2b16ac3ea0660c10b3ac1a4b5ba83b80598ac7c87"
+  },
+  {
+    "file": "assets/objects/gift-11-plan.webp",
+    "width": 768,
+    "height": 509,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "70f9599474c917437b2955bdc8ad91a727eb2bdbf1fb18c89b0f5e3e95fc5d1e"
+  },
+  {
+    "file": "assets/objects/gift-12-invitation.webp",
+    "width": 768,
+    "height": 669,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "aa13a854f80d0bbc96794ea157f2274ee41477ae43c0b186be2f37dde1d3d2e7"
+  },
+  {
+    "file": "assets/objects/gift-13-marker.webp",
+    "width": 631,
+    "height": 768,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "9cb952805002952aa8f69007f8016d1e83aa851fd9dca16e0148cb2c98b97783"
+  },
+  {
+    "file": "assets/objects/gift-14-cloud.webp",
+    "width": 768,
+    "height": 539,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "a0907b017418eb62e61506fc09a63f858fd532e3c6c746f861341ee6766db373"
+  },
+  {
+    "file": "assets/objects/gift-15-pause.webp",
+    "width": 768,
+    "height": 514,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "c8974dd32319794af34d2c5303aa657c8b5ebea270d0814825151cb65c6ef4fd"
+  },
+  {
+    "file": "assets/objects/gift-16-song.webp",
+    "width": 768,
+    "height": 554,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "b855d80f9b740a504133f668cd102705f48ee0db5823d4b65da0810603a9357e"
+  },
+  {
+    "file": "assets/objects/gift-17-helper.webp",
+    "width": 768,
+    "height": 491,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "f857389de6766ed4388a6ad6766f929f6fd3e55379a9776dd3a711a19b8aa76a"
+  },
+  {
+    "file": "assets/objects/gift-18-leaf.webp",
+    "width": 768,
+    "height": 601,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "a952c6d458b1f3ca844ad823f2f38d5bbc7e90f9a884ffd7182d4fc919ba91ae"
+  },
+  {
+    "file": "assets/objects/gift-19-book.webp",
+    "width": 721,
+    "height": 768,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "5cc9c70e72ccfbc65978dfa4ade7b3f99bee4a81075639776296c9851c71abf1"
+  },
+  {
+    "file": "assets/objects/letter-envelope.webp",
+    "width": 663,
+    "height": 768,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "5f5de47bb199f6d1ab708f21927d91e249a7115ef342e4f830f23289941dcb87"
+  },
+  {
+    "file": "assets/objects/music-case.webp",
+    "width": 768,
+    "height": 288,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "c3201ea6f285fd7153f84dded644811382b66820e184c352e98bd89b6cbeada1"
+  },
+  {
+    "file": "assets/objects/ride-balloon.webp",
+    "width": 483,
+    "height": 768,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "2ee7ed0fa7382e61e20d73037deed0c5b8ed35c86a1cf4b3dd7a6bec325dc0f7"
+  },
+  {
+    "file": "assets/objects/ride-cloud.webp",
+    "width": 768,
+    "height": 485,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "0d6d42da222ae3bb84443539e6fae2365d77d4758065d4ca7499a0ae22b4ea62"
+  }
+]

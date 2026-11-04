@@ -1,3 +1,12 @@
+## 2.8.0
+
+- Replace the remaining basket, gift, project, keepsake, garden, table, music-frame, and return-ride art with 31 matching watercolor cutouts.
+- Separate gifts for Glaloula from received letters for the players. Remove the numbered envelopes from the basket front and distinguish the leaf invitation from postal mail.
+- Make painted gifts open their close-ups, with larger alternative selection buttons and a return link.
+- Move the map title and subtitle above the map so they cannot cover levels.
+- Add five contrasting original CC0 music arrangements alongside Clover Waltz, with matched loudness and Next track in both sound panels.
+- Remember track choice per player, preserve quiet preferences, and keep background music paused during tune playback even when skipping tracks.
+
 ## 2.7.0
 
 - Add twenty original watercolor chapter paintings, one before each chapter’s opening narrative, with consistent dinosaur and unicorn designs.
