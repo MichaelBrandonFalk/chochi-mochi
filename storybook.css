@@ -137,3 +137,5 @@ body[data-hide-art=true] .hunt-touch-layer{display:none}body[data-hide-art=true]
 .postcard-art img,.postcard-capture-preview img{max-width:100%;height:auto}
 @media(max-width:750px){.postcard-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:430px){.postcard-grid{grid-template-columns:minmax(0,1fr)}}
+
+.project-tools button{margin:12px 0}

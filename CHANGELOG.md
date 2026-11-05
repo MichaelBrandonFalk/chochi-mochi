@@ -1,3 +1,10 @@
+## 2.9.2
+
+- Let players retry learning projects after placing pieces, as promised by the helper instructions.
+- Keep packed gifts, letters, and story completion when a project is retried.
+- In the final gathering, hide the next-part button until the retried project is complete again.
+- Use project-completion wording that fits both the journey and the return home.
+
 ## 2.9.1
 
 - Keep saved postcard images proportional and prevent illustrated album cards from overflowing small screens.
