@@ -6,6 +6,8 @@ Start with the opening story, then follow the numbered places clockwise on the m
 
 Each chapter has seven pages: Arrive, Play & explore, Learn, Make it, Try a reply, Remember, and Pack up. The story introduces the host before the lesson. Story choices appear as part of the arrival. Letters arrive at chapter endings, and received letters can be reopened in Our basket or Our book.
 
+After placing project pieces, Try this project again clears only that project’s pieces. Packed gifts, received letters, completed places, and other players stay. The same control works in the final garden gathering.
+
 Outings are optional. You can read, make a gift, practice, pause, or return to a place at your own pace. There are no timers, lives, rankings, or penalties. The final gathering is a caring conversation, not a measure of anxiety or treatment success.
 
 ## Choose a travelling friend
