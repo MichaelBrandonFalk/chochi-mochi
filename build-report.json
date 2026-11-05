@@ -1,8 +1,8 @@
 {
-  "script": "game-e1ba79368065.js",
-  "scriptBytes": 260439,
-  "stylesheet": "game-f21216a7b04b.css",
-  "stylesheetBytes": 80122,
+  "script": "game-202d9700858f.js",
+  "scriptBytes": 260587,
+  "stylesheet": "game-a9028d4c8388.css",
+  "stylesheetBytes": 81800,
   "modules": [
     "postcard-images.js",
     "object-art.js",

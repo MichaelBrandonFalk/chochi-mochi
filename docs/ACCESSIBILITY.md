@@ -47,6 +47,10 @@ Chapter links now wrap with separate number and label spans, generous horizontal
 
 Player profiles keep independent comfort settings and paragraph positions. Restarting an adventure keeps its comfort settings. Both restart confirmations focus the safe choice first; the final erase button stays disabled until the player checks the named acknowledgement.
 
-The music box offers silent Watch our tune playback. Note names, a numbered score, a beat counter, borders, and matching colors accompany the same timing track used by the audio. Nothing loops automatically. Reduced-motion settings remove the glow shadow while preserving the current-note cue. Playback stops on navigation, hiding the tab, a break, or the stop control. Screen readers are not asked to announce every rapid beat.
+The music box offers Watch our tune playback with synchronized visual notes. It follows the saved effects setting: audible when sound is on, and silent when sound is off. Note names, a numbered score, a beat counter, borders, and matching colors accompany the same timing track used by the audio. Nothing loops automatically. Reduced-motion settings remove the glow shadow while preserving the current-note cue. Playback stops on navigation, hiding the tab, a break, or the stop control. Screen readers are not asked to announce every rapid beat.
 
 The illustrated basket also has named gift buttons, notes, and expandable letters. Hiding artwork keeps this information available. Only the active player’s earned gifts and received letters appear.
+
+## Finding walks and current reading controls
+
+Button’s finding walks have named keyboard targets, hints, larger objects, and an equivalent text-based list of things and places. No color, sound, timer, or pointer precision is required to finish. Found objects also have check marks and text. With illustrations hidden, the text controls remain available. Larger text, plain fonts, spacing, and contrast apply to the finding lists, replies, letters, painted gift captions, and music labels.
