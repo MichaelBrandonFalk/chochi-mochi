@@ -54,3 +54,7 @@ The illustrated basket also has named gift buttons, notes, and expandable letter
 ## Finding walks and current reading controls
 
 Button’s finding walks have named keyboard targets, hints, larger objects, and an equivalent text-based list of things and places. No color, sound, timer, or pointer precision is required to finish. Found objects also have check marks and text. With illustrations hidden, the text controls remain available. Larger text, plain fonts, spacing, and contrast apply to the finding lists, replies, letters, painted gift captions, and music labels.
+
+## Active volume and text controls in 2.9.4
+
+Changing effects volume updates notes and effects that are already playing. Volume zero keeps the visual tune running silently; turning effects off stops its playback. Button’s word-based finding list opens automatically with hidden illustrations or large controls, including after a reload. The standalone companion chooser has its own main heading.

@@ -62,3 +62,7 @@ The current playlist has six original pieces: Clover Waltz, Meadow Guitar, Willo
 The new arrangements and recordings are dedicated to CC0 1.0 without an attribution requirement. Source scores and synthesis are in `scripts/compose-varied-music.py`, and hashes remain in the audio manifest. The new tracks were brought close to the original track’s measured loudness, approximately -29.5 LUFS, to avoid a jump when changing songs. The three retired keyboard pieces remain available in earlier releases.
 
 Next track appears in Sound and Comfort & Access. It advances through all six tracks and remembers the selected filename per player. Skipping while music is paused selects the next piece without turning music on. Skipping during a tune selects the next background piece but waits until the tune ends before playing it. The existing music volume, effects volume, quiet settings, and tune suspension behavior remain in effect.
+
+## Live volume changes
+
+The effects-volume control updates active notes through a shared output gain and updates an existing sound-effect player. It does not restart the tune or its visual score. Volume zero leaves the visual beat running silently. Turning effects off stops active notes and effects. The note envelopes, pitches, and default output level remain unchanged.
