@@ -1,3 +1,13 @@
+## 2.9.1
+
+- Keep saved postcard images proportional and prevent illustrated album cards from overflowing small screens.
+
+- Align the opening story, About page, and playing instructions with Button’s finding walks and Pipkin’s songs.
+- Use the saved cloth, flower, lantern, and pebble choices consistently in finding pictures and basket gifts.
+- Extend reading size, plain fonts, spacing, and contrast to the newer finding lists, gift captions, letters, and music labels.
+- Synchronize sound-off notices immediately when effects are changed in the Sound menu.
+- Remove a repeated character name, correct a story pronoun, and give the standalone map a main heading.
+
 ## 2.9.0
 
 - Give Button twenty painted hidden-object walks, with three themed treasures and three optional tiny wonders per place.

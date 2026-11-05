@@ -157,3 +157,12 @@ test('finding replays and old musical postcards survive save cleaning',()=>{
  assert.equal(old.snapshots.native.mode,'tune');const legacy=cleanTrail({games:{native:g},cards:['native']},0,choices);assert.equal(legacy.snapshots.native.mode,'tune');assert.deepEqual(old.snapshots.native.game.notes,g.notes);assert.equal(old.games.native.huntRound,12);assert.deepEqual(old.games.native.found,[]);assert.equal(old.games.native.huntVersion,1);
  const snap=cleanSnapshot({huntVersion:1,mode:'seek',game:g},c);assert.equal(snap.huntVersion,1);assert.equal(snap.game.huntRound,12);
 });
+
+test('finding art and labels follow the same saved choices as basket gifts',()=>{
+ for(let level=0;level<20;level++)for(const choice of [0,1]){
+  const choices=Object.fromEntries(Array.from({length:19},(_,i)=>[i,choice]));choices[0]=0;
+  const c=gameConfig(level,choices,nativeTool(level,choices)),g=newGame(c),objects=huntObjects(level,c,g);
+  assert.equal(new Set(objects.map(o=>o.src)).size,6);
+  for(const o of objects.filter(o=>o.target)){const i=hunts[level].gifts[c.findSlots.indexOf(o.slot)];assert.equal(o.src,giftSrc(i,c.storyChoices));assert.equal(o.name,basketGiftName(i,c.storyChoices).toLowerCase());}
+ }
+});

@@ -7,3 +7,16 @@ body[data-simple=true] #reader-repeat{display:none}
 body{font-size:calc(18px * var(--reading-scale))}dialog{font-size:calc(18px * var(--reading-scale))}dialog fieldset{min-width:0}dialog select{font-size:calc(17px * var(--reading-scale))}dialog legend{font-size:calc(22px * var(--reading-scale))}dialog .access-note{font-size:calc(15px * var(--reading-scale))}body[data-large-controls=true] nav button{font-size:calc(15px * var(--reading-scale))}.map-grid .place b{font-size:calc(16px * var(--reading-scale))}.map-grid .place small{font-size:calc(12px * var(--reading-scale))}.access-check:has(input:disabled){color:#4c5f4d}
 body[data-reading-font=sans] legend{font-family:Arial,Helvetica,sans-serif}
 .choice{font-size:calc(18px * var(--reading-scale))}.direct-plot-grid button,.toy-controls button,.toy-footer button,.mix-picks button,.charm-shelf button,.reading-pager button,dialog button{font-size:calc(16px * var(--reading-scale))}.direct-controls>p{font-size:calc(16px * var(--reading-scale))}
+
+/* Shared reading preferences cover the newer painted cards and finding walks. */
+.hunt-list li,.hunt-progress,.hunt-word-list button,.hunt-controls button{font-size:calc(16px * var(--reading-scale))}
+.hunt-clue,.hunt-finish p,.letter-page>p{font-size:calc(18px * var(--reading-scale))}
+.hunt-list strong,.letter-open-hint{font-size:calc(14px * var(--reading-scale))}
+.painted-basket figcaption,.painted-project>span,.music-track{font-size:calc(15px * var(--reading-scale))}
+.painted-basket figcaption strong{font-size:calc(22px * var(--reading-scale))}
+.basket-letter-list summary strong,.basket-top-layout .basket-letter-list summary strong{font-size:calc(18px * var(--reading-scale))}
+body[data-reading-font=sans] :is(.hunt-list li,.hunt-list strong,.painted-basket figcaption,.painted-project>span,.basket-letter-list summary strong,.picnic-plan .picnic-gift-count,.music-track){font-family:Arial,Helvetica,sans-serif}
+body[data-spacing=true] :is(.hunt-list li,.hunt-word-list button,.letter-page>p,.painted-basket figcaption){line-height:1.9;letter-spacing:.025em;word-spacing:.06em}
+body[data-large-controls=true] .hunt-word-list button{min-height:48px}
+body[data-contrast=true] .hunt-list strong{color:#20382b}
+.picnic-plan .picnic-gift-count{font-size:calc(16px * var(--reading-scale))}

@@ -1,63 +1,39 @@
-# Play along the way
+# Playing Chochi Mochi
 
-Version 2.1 adds a small outing to every learning place, plus one at Glaloula’s garden. Each outing has an original scene, a local host, and a postcard to make. The teaching pages and final review remain available at the same chapter links.
+Start with the opening story, then follow the numbered places clockwise on the map. Chochi the Dinosaur and Mochi the Unicorn visit nineteen places before returning to their fairy friend, Glaloula. The final garden gathering puts the ideas into practice.
 
-## Choices that travel
+## A chapter at a time
 
-Every selected story detail becomes a tool in the travelling kit at that place and every later place. Pick a tool from the illustrated strip or the whole-kit menu to open a toy using it. The companion chooses a different local game at every stop. Other choices affect materials, search layouts, wheel patterns, skies, table arrangements, or the kit’s available toys.
+Each chapter has seven pages: Arrive, Play & explore, Learn, Make it, Try a reply, Remember, and Pack up. The story introduces the host before the lesson. Story choices appear as part of the arrival. Letters arrive at chapter endings, and received letters can be reopened in Our basket or Our book.
 
-Some concrete differences:
+Outings are optional. You can read, make a gift, practice, pause, or return to a place at your own pace. There are no timers, lives, rankings, or penalties. The final gathering is a caring conversation, not a measure of anxiety or treatment success.
 
-- Button’s local outings differ from Pipkin’s. Finding games look among ground objects or high branches.
-- A folded leaf boat visits a three-dock pond. A flower-sail boat opens a five-dock pond. Steering changes which neighbor meets the boat.
-- Star lanterns have four-turn paper wheels. Leaf lanterns have three-turn wheels.
-- One round table and two little tables arrange the garden plots differently.
-- Moth invitations send the finding game up into the sky; fox invitations use the ground places.
-- The chosen cloth colors, flower seeds, ribbons, and cloud shapes recur in later scenery.
+## Choose a travelling friend
 
-Earlier choices also determine a stable layout for each later outing. Future choices do not leak into earlier outings.
+**Button the snail** notices small things. Each of the twenty painted finding walks has its own story and three treasures to spot. Three optional tiny wonders have little story replies, too. Use a hint, make the objects bigger, ask Button to find one, or open Find things with words. Every method gives the same progress. After finding the treasures, Hide them in new places starts another walk while the saved postcard stays unchanged.
 
-## Six toys
+**Pipkin the robin** makes songs. Pick four notes for a tune, try the local pattern, or make something of your own. Play our tune and Watch our tune both follow the same colored notes and beat counter. They play sound when effects are on; with effects off, the visual song still works. Background music pauses during tune playback. There is no wrong tune.
 
-- **Finding game:** open six illustrated hiding places to find three local objects. Other places introduce tiny neighbors. Nothing is lost by looking elsewhere.
-- **Boat trip:** steer at three bends. Every dock welcomes the friends. Launch again to visit another neighbor.
-- **Music box:** make any four-note pentatonic tune, play it, lift a note, and change it. Sound uses the existing optional effects control.
-- **Ribbon loom:** cycle three rows through different colors and shapes. Every finished pattern is valid.
-- **Tiny world:** place, change, and lift shapes in nine plots. Fill three or arrange the whole scene.
-- **Turning-paper puzzle:** turn three wheels to match their arrows. The travelling friend can take a turn whenever the player wants.
+Each companion keeps that familiar kind of outing throughout the trip. The paintings, stories, treasures, patterns, and hiding places vary by place. Earlier story choices also affect later visits. Future choices do not change earlier outings.
 
-All toys have a companion-help action. On small screens, larger buttons replace the smaller illustration touch areas.
+## Our pictures and story choices
 
-## Things made together
+Save a picture of our game shows the scene that will become a postcard. Save this picture keeps it; Replace saved picture updates it. Editing or replaying the outing does not change the saved picture. The album keeps each version of the trip and lets you follow its earlier choices again. Old toy postcards from earlier game releases remain viewable.
 
-Try two kit items at the mixing bench. Five pairs make new charms: ribbon + boat, flower + lantern, song + cup picture, pebble + club sign, and invitation + tiny guest. Discovered charms can decorate pictures at that place and later places on the same version of the trip.
+Your cloth, flowers, lanterns, and other story details appear in later scenes and garden plans. Changing an earlier choice opens another version of later outings. Lesson completion and packed gifts remain yours.
 
-A kept tune can be heard at later places or used as the starting tune in another music box. A kept garden or loom pattern can be brought into a later toy of the same kind; patterns also decorate the travelling cloth. A postcard and a dock visit return in the following chapter’s story.
+## Gifts and letters
 
-## Replay and saves
+Gifts enter the basket when you pack them at the end of a chapter. Choose a gift in the basket or its named button below to inspect it. Letters for us is a separate place for received letters from Glaloula. Future letters stay hidden. The objects in a finding picture are for that picture; finding one does not pack a lesson gift early.
 
-An outing’s save key includes only the story choices available up to that chapter. Changing an earlier choice creates a different version of later outings. Existing versions keep their toy states, postcards, and charms. The postcard album shows the actual saved pictures and lets players follow an older version’s choices again. Following a postcard restores choices through that point and leaves later choices available.
+## Players and saves
 
-Replaying does not erase lesson completion or keepsakes. Existing game saves gain an empty outing collection. Outing pages and unfinished toys can resume after a reload. Everything stays in this browser; there is no account or tracking service.
+Players is optional. My adventure is the original save. Add up to four more players, with a name or an automatic name. Each player has a separate story, sound settings, reading position, and comfort settings. No password or account is needed. Progress stays in this browser and does not sync between devices.
 
-These are playful variations of twenty authored scenes, not twenty separate novels for every combination. No timer, lives, rankings, or compulsory side-game score is used. The toys are not clinical exercises or measures of anxiety.
+Restart from scratch names the current player and asks twice, including a final checkbox. It clears only that player’s adventure and reading position. Comfort settings and the other players stay. Replaying a finding walk or changing a story choice does not restart the adventure.
 
-## Chapter flow in 2.3.0
+## Sound and comfort
 
-Meet each host and see the story choice in the arrival scene. At Clover Gate, Tuck introduces Button and Pipkin before you pick a companion. Button suggests a tiny picnic; Pipkin suggests a welcome song.
+New players start with music and effects enabled after their first tap or key press, subject to browser playback rules. Sound and Comfort & Access let you change volume, stop sound, or skip to the next of six music tracks. Saved quiet choices are respected.
 
-Play & explore opens the outing itself. Try something from our bag opens the alternate toys from earlier choices. These toys keep their own saved work. Keep our postcard saves a picture for the album and a memory for the next stop. The chapter’s main button invites you to sit with the teacher, then make a gift, try a conversation, remember, and pack up. Outings remain optional.
-
-## Players, the basket, and songs in 2.5.0
-
-Players is optional. The original adventure keeps its save and is called My adventure. Add up to four more players, with names or automatic Player names. Pick a player to switch to their home screen and continue their own story. Comfort settings and reading positions belong to each player. There are no passwords or online accounts.
-
-Restart from scratch is inside Players. It names the active player, asks twice, and requires a checkbox before the final erase button becomes available. It clears that player’s adventure, letters, and reading position. It keeps their comfort settings and the other players.
-
-The basket fills when gifts are packed at chapter endings. Choose a gift below the illustration to inspect it and open Notes from this place. Received letters appear as envelopes and can be reopened in Letters from Glaloula. Future letters stay hidden. A letter becomes received when its chapter-ending delivery is shown, or when that chapter is packed. Older completed chapters retain their letters.
-
-Song sound starts off. Turn on song sound to listen, or choose Watch our tune for silent playback. The scene, note keys, and numbered score mark each beat together. Stop the tune ends playback. Note names and the beat counter give information in addition to color.
-
-Save a picture of our game shows the exact scene that will become a postcard. Save this picture keeps it; Replace saved picture updates it. Editing a toy later does not change the saved picture. The album offers all saved toy pictures within each trip version.
-
-Helper buttons say what they will do and appear only while they can make a useful move. Mixing appears only when the bag holds a complete recipe; unrelated objects are left out. Replay guidance lives on About the game rather than at every stop.
+Comfort & Access offers larger text, spacing, a plain font, stronger contrast, fewer pictures, reduced motion, larger controls, a list map, and optional read-aloud. Take a break stops sound and saves your place. Finding walks also have text controls, and songs have a visual beat. These choices ask for preferences, not a diagnosis.

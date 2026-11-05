@@ -37,7 +37,7 @@ export function initAudio(){
  document.querySelector('#music-toggle').onclick=()=>{unlocked=true;if(musicOn){pauseMusic();status('Music paused.');}else{musicOn=true;paint();persist();startMusic();}};
  const unlock=e=>{if(unlocked||e.target.closest('.audio-settings,#comfort-dialog,#players-dialog'))return;unlocked=true;if(musicOn)startMusic();};
  document.addEventListener('pointerdown',unlock);document.addEventListener('keydown',e=>{if(['Enter',' '].includes(e.key))unlock(e);});
- document.querySelector('#effects-toggle').onchange=e=>{effectsOn=e.target.checked;persist();if(!effectsOn)stopTune();status(effectsOn?'Soft sound effects are on.':'Sound effects are off.');};
+ document.querySelector('#effects-toggle').onchange=e=>{setAudioSettings({effectsOn:e.target.checked});status(effectsOn?'Soft sound effects are on.':'Sound effects are off.');};
  document.querySelector('#sound-preview').onclick=()=>{if(!effectsOn){status('Turn on sound effects to hear a preview.');return;}playEffect('note');status('Playing a soft sound preview.');};
  document.querySelector('#music-volume').oninput=e=>{musicVolume=Number(e.target.value)/100;persist();gain();window.dispatchEvent(new Event('audio-settings-changed'));};
  document.querySelector('#effects-volume').oninput=e=>{effectsVolume=Number(e.target.value)/100;persist();window.dispatchEvent(new Event('audio-settings-changed'));};

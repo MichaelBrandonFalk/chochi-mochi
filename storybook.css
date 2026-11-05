@@ -132,3 +132,8 @@ img[data-postcard-svg]{object-fit:contain;background:#f8f2e4}
 .hunt-finish{padding:16px 20px;background:#f2eaf1;border-radius:12px;margin:20px 0}.hunt-finish h3{margin:0 0 10px}.hunt-finish p{margin:0;font-size:18px}
 body[data-hide-art=true] .hunt-touch-layer{display:none}body[data-hide-art=true] .hunt-list img{display:none}body[data-contrast=true] :is(.hunt-list li,.hunt-clue,.hunt-finish){background:#fffdf4;color:#20382b;border:1px solid #687960}
 @media(max-width:600px){.hunt-list{gap:6px}.hunt-list li{font-size:14px;padding:9px 4px}.hunt-list img{width:58px;height:52px}.hunt-word-list{grid-template-columns:1fr}}
+/* Saved SVG postcards keep their aspect ratio without widening grid tracks. */
+.outing-postcard,.postcard-version,.postcard-art{min-width:0}
+.postcard-art img,.postcard-capture-preview img{max-width:100%;height:auto}
+@media(max-width:750px){.postcard-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:430px){.postcard-grid{grid-template-columns:minmax(0,1fr)}}
