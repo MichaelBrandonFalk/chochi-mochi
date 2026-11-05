@@ -16,7 +16,7 @@ Outings are optional. You can read, make a gift, practice, pause, or return to a
 
 **Pipkin the robin** makes songs. Pick four notes for a tune, try the local pattern, or make something of your own. Play our tune and Watch our tune both follow the same colored notes and beat counter. They play sound when effects are on; with effects off, the visual song still works. Background music pauses during tune playback. There is no wrong tune.
 
-Each companion keeps that familiar kind of outing throughout the trip. The paintings, stories, treasures, patterns, and hiding places vary by place. Earlier story choices also affect later visits. Future choices do not change earlier outings.
+If you reach an outing before picking a travelling friend, a short choice lets you pick Button or Pipkin there. Each companion keeps that familiar kind of outing throughout the trip. The paintings, stories, treasures, patterns, and hiding places vary by place. Earlier story choices also affect later visits. Future choices do not change earlier outings.
 
 ## Our pictures and story choices
 
