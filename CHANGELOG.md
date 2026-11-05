@@ -1,3 +1,10 @@
+## 2.9.3
+
+- Keep keyboard Skip to the story on the current page instead of routing home.
+- Match older finding-postcard text descriptions to their saved artwork.
+- Offer a companion choice when an outing is reached without one, so the activity and character labels agree.
+- Correct singular gift, flower, outing, version, story-choice, and tiny-wonder counts.
+
 ## 2.9.2
 
 - Let players retry learning projects after placing pieces, as promised by the helper instructions.
