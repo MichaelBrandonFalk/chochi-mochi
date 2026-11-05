@@ -1,3 +1,10 @@
+## 2.9.4
+
+- Apply effects-volume changes immediately to active tunes and sound effects without restarting tune playback.
+- Open Button’s text finding controls automatically when illustrations are hidden or large controls are selected.
+- Give the standalone companion chooser a main heading while keeping an embedded chooser beneath its chapter heading.
+- Add audio-controller regression checks for live volume changes and turning effects off.
+
 ## 2.9.3
 
 - Keep keyboard Skip to the story on the current page instead of routing home.

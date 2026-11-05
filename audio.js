@@ -40,7 +40,7 @@ export function initAudio(){
  document.querySelector('#effects-toggle').onchange=e=>{setAudioSettings({effectsOn:e.target.checked});status(effectsOn?'Soft sound effects are on.':'Sound effects are off.');};
  document.querySelector('#sound-preview').onclick=()=>{if(!effectsOn){status('Turn on sound effects to hear a preview.');return;}playEffect('note');status('Playing a soft sound preview.');};
  document.querySelector('#music-volume').oninput=e=>{musicVolume=Number(e.target.value)/100;persist();gain();window.dispatchEvent(new Event('audio-settings-changed'));};
- document.querySelector('#effects-volume').oninput=e=>{effectsVolume=Number(e.target.value)/100;persist();window.dispatchEvent(new Event('audio-settings-changed'));};
+ document.querySelector('#effects-volume').oninput=e=>setAudioSettings({effectsVolume:Number(e.target.value)/100});
  document.querySelector('#mute-all').onclick=silenceAudio;
  document.addEventListener('visibilitychange',()=>{if(document.hidden){stopTune();playGeneration++;if(music)music.pause();if(effect)effect.pause();status('Music paused while you were away.');}else if(unlocked&&musicOn)startMusic();});
  window.addEventListener('pagehide',()=>{stopTune();if(music)music.pause();if(effect)effect.pause();});
@@ -50,7 +50,7 @@ export function initAudio(){
  paint();status(musicOn?'Music starts with your first tap.':'Music is paused.');
 }
 // Original, softly synthesized pentatonic notes for the user-operated music box.
-let tuneContext=null,tuneNodes=[],tuneFrame=0,tuneToken=0,tuneFinished=null;
+let tuneContext=null,tuneGain=null,tuneNodes=[],tuneFrame=0,tuneToken=0,tuneFinished=null;
 export function stopTune(){background.release();tuneToken++;cancelAnimationFrame(tuneFrame);tuneFrame=0;for(const node of tuneNodes){try{node.stop();}catch{}try{node.disconnect();}catch{}}tuneNodes=[];const finish=tuneFinished;tuneFinished=null;finish?.(false);}
 export function playTune(notes,variant=0,options={}){
  const score=tuneScore(notes),silent=options.silent===true;
@@ -61,13 +61,14 @@ export function playTune(notes,variant=0,options={}){
  const start=(audible)=>{
   if(token!==tuneToken)return;
   background.hold();const at=audible?tuneContext.currentTime+.03:performance.now()/1000;
-  if(audible)for(const beat of score){const oscillator=tuneContext.createOscillator(),envelope=tuneContext.createGain(),time=at+beat.at;oscillator.type=variant?'triangle':'sine';oscillator.frequency.value=notePaint[beat.note].frequency*(variant?.75:1);envelope.gain.setValueAtTime(0,time);envelope.gain.linearRampToValueAtTime(effectsVolume*.12,time+.04);envelope.gain.exponentialRampToValueAtTime(.0001,time+beat.duration);oscillator.connect(envelope);envelope.connect(tuneContext.destination);oscillator.start(time);oscillator.stop(time+beat.duration+.02);tuneNodes.push(oscillator,envelope);oscillator.onended=()=>{oscillator.disconnect();envelope.disconnect();tuneNodes=tuneNodes.filter(n=>n!==oscillator&&n!==envelope);};}
+  if(audible)for(const beat of score){const oscillator=tuneContext.createOscillator(),envelope=tuneContext.createGain(),time=at+beat.at;oscillator.type=variant?'triangle':'sine';oscillator.frequency.value=notePaint[beat.note].frequency*(variant?.75:1);envelope.gain.setValueAtTime(0,time);envelope.gain.linearRampToValueAtTime(.12,time+.04);envelope.gain.exponentialRampToValueAtTime(.0001,time+beat.duration);oscillator.connect(envelope);envelope.connect(tuneGain);oscillator.start(time);oscillator.stop(time+beat.duration+.02);tuneNodes.push(oscillator,envelope);oscillator.onended=()=>{oscillator.disconnect();envelope.disconnect();tuneNodes=tuneNodes.filter(n=>n!==oscillator&&n!==envelope);};}
   let last=-1;
   const tick=()=>{if(token!==tuneToken)return;const elapsed=(audible?tuneContext.currentTime:performance.now()/1000)-at;if(elapsed>=score.length*beatSeconds){tuneFrame=0;background.release();const finish=tuneFinished;tuneFinished=null;finish?.(true);return;}const i=Math.floor(elapsed/beatSeconds);if(i>=0&&i!==last){last=i;options.onBeat?.(score[i],score.length);}tuneFrame=requestAnimationFrame(tick);};
   tuneFrame=requestAnimationFrame(tick);
  };
- try{if(silent)start(false);else{tuneContext ||=new Audio();tuneContext.resume().then(()=>{if(token!==tuneToken)return;if(tuneContext.state!=='running'){options.onError?.();start(false);}else start(true);}).catch(()=>{if(token!==tuneToken)return;options.onError?.();start(false);});}return true;}catch{stopTune();return false;}
+ try{if(silent)start(false);else{tuneContext ||=new Audio();if(!tuneGain){tuneGain=tuneContext.createGain();tuneGain.connect(tuneContext.destination);}applyEffectsVolume();tuneContext.resume().then(()=>{if(token!==tuneToken)return;if(tuneContext.state!=='running'){options.onError?.();start(false);}else start(true);}).catch(()=>{if(token!==tuneToken)return;options.onError?.();start(false);});}return true;}catch{stopTune();return false;}
 }
 export function getAudioState(){return {musicOn,effectsOn,musicVolume,effectsVolume,track,trackTitle:playlist[track].title,trackDescription:playlist[track].description};}
-export function setAudioSettings(value={}){if(Number.isFinite(value.musicVolume))musicVolume=Math.max(0,Math.min(1,value.musicVolume));if(Number.isFinite(value.effectsVolume))effectsVolume=Math.max(0,Math.min(1,value.effectsVolume));if(typeof value.effectsOn==='boolean'){effectsOn=value.effectsOn;if(!effectsOn){stopTune();if(effect)effect.pause();}}persist();document.querySelector('#music-volume').value=Math.round(musicVolume*100);document.querySelector('#effects-volume').value=Math.round(effectsVolume*100);paint();gain();window.dispatchEvent(new Event('audio-settings-changed'));}
+function applyEffectsVolume(){const volume=effectsOn?effectsVolume:0;if(effect)effect.volume=volume;if(tuneGain&&tuneContext)tuneGain.gain.setValueAtTime(volume,tuneContext.currentTime);}
+export function setAudioSettings(value={}){if(Number.isFinite(value.musicVolume))musicVolume=Math.max(0,Math.min(1,value.musicVolume));if(Number.isFinite(value.effectsVolume))effectsVolume=Math.max(0,Math.min(1,value.effectsVolume));if(typeof value.effectsOn==='boolean'){effectsOn=value.effectsOn;if(!effectsOn){stopTune();if(effect)effect.pause();}}applyEffectsVolume();persist();document.querySelector('#music-volume').value=Math.round(musicVolume*100);document.querySelector('#effects-volume').value=Math.round(effectsVolume*100);paint();gain();window.dispatchEvent(new Event('audio-settings-changed'));}
 export function silenceAudio(){pauseMusic();effectsOn=false;persist();stopTune();if(effect)effect.pause();window.dispatchEvent(new Event('stop-all-audio'));paint();status('All sound is off.');window.dispatchEvent(new Event('audio-settings-changed'));}
