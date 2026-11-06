@@ -9,3 +9,5 @@
 - Music loads only as needed. The game downloads no external recordings or services while playing.
 
 The native release workflow checks packaged Windows, universal Mac, Linux, and Mint-base installation before publishing the updated offline downloads. Existing progress and comfort settings use the same storage keys and formats, with one optional music-position field added.
+
+Browser verification: Paper Boats loaded and played from the bundled MP3. Pausing at about 37 seconds, reloading, and requesting playback resumed at that position. The paused preference survived reload. Next track while paused selected Meadow Guitar at zero seconds without turning music on. The source desktop diagnostic also passed for the secure origin, local save bridge, images, and bundled audio. All 74 Node checks passed.
