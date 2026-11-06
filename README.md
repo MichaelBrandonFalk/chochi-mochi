@@ -80,3 +80,7 @@ The six-track original CC0 playlist has distinct arrangements and Next track con
 The production build uses esbuild (`npm ci` before building) to produce one fingerprinted script and one stylesheet. The game no longer imports all postcard paintings as base64 during startup. Visible postcard previews embed only their own painting and music frame, caching the unchanged WebP bytes. Full-size chapter paintings and gift images retain their existing quality.
 
 Button now leads twenty painted finding walks, each with a story, three treasures, and optional tiny wonders. Hints, a larger view, keyboard targets, and text controls offer equal progress without a timer. Replays shift the objects while the saved postcard remains unchanged. Pipkin retains the song game. Old musical postcard snapshots remain viewable.
+
+### Offline desktop editions
+
+Version 3 adds portable Windows, universal Mac, and Linux Mint downloads, plus installers. See [download and USB instructions](docs/DOWNLOADS.md) and [desktop build notes](docs/DESKTOP.md). Portable progress lives beside the game in Chochi Mochi Data; installed copies use per-user saves. Website and desktop profiles are separate.

@@ -1,0 +1,3 @@
+Chochi Mochi desktop edition
+
+The rights and terms for the game source and artwork are unchanged by this package. Electron and its bundled components retain their included third-party licenses. Audio reuse terms are recorded in the included docs/AUDIO.md.

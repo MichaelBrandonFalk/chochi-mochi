@@ -41,6 +41,6 @@ export function createPlayerStore(storage,makeId=()=> 'p-'+crypto.randomUUID()){
  };
 }
 let storage;
-try{storage=window.localStorage;}catch{storage={getItem(){throw new Error('Storage unavailable');},setItem(){throw new Error('Storage unavailable');},removeItem(){throw new Error('Storage unavailable');}};}
+try{storage=window.chochiDesktop?.storage||window.localStorage;}catch{storage={getItem(){throw new Error('Storage unavailable');},setItem(){throw new Error('Storage unavailable');},removeItem(){throw new Error('Storage unavailable');}};}
 export const playerStore=createPlayerStore(storage);
 export const playerStorage=playerStore;

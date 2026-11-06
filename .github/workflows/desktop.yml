@@ -1,0 +1,87 @@
+name: Build offline desktop games
+on:
+  push:
+    tags: ['v3.*']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  desktop:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            platform: windows
+            args: --win --x64
+          - os: macos-14
+            platform: macos
+            args: --mac --universal
+          - os: ubuntu-22.04
+            platform: linux
+            args: --linux --x64
+    runs-on: ${{ matrix.os }}
+    env:
+      CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: node node_modules/electron/install.js
+      - run: npm test
+      - run: npm run desktop:build -- ${{ matrix.args }}
+      - if: runner.os != 'Linux'
+        run: node scripts/desktop-smoke.mjs
+      - if: runner.os == 'Linux'
+        run: xvfb-run -a node scripts/desktop-smoke.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: desktop-${{ matrix.platform }}
+          if-no-files-found: error
+          retention-days: 14
+          path: |
+            desktop-release/*.exe
+            desktop-release/*.zip
+            desktop-release/*.dmg
+            desktop-release/*.AppImage
+            desktop-release/*.deb
+            desktop-release/*.tar.gz
+  mint-base:
+    needs: desktop
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: desktop-linux
+          path: packages
+      - name: Install the Mint 22 base package
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ./packages/*.deb
+      - name: Check installed offline game on the Mint 22 Ubuntu base
+        run: xvfb-run -a chochi-mochi --self-test
+  release:
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: [desktop, mint-base]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: desktop-*
+          merge-multiple: true
+          path: packages
+      - name: Publish tested downloads
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          cd packages
+          sha256sum * > SHA256SUMS.txt
+          gh release view "$TAG" || gh release create "$TAG" --title "Chochi Mochi $TAG: Offline desktop games" --notes "Offline Windows, Mac, and Linux Mint editions. Portable USB copies and installers. See the download page for opening instructions and saved-game locations."
+          gh release upload "$TAG" *

@@ -7,3 +7,6 @@ output/
 /assets/storybook/*-original.png
 
 /assets/objects/*-original.png
+
+desktop-release/
+/build/icon.png

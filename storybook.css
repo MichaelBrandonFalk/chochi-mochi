@@ -141,3 +141,12 @@ body[data-hide-art=true] .hunt-touch-layer{display:none}body[data-hide-art=true]
 .project-tools button{margin:12px 0}
 
 .companion-start{padding:24px;margin:20px 0;background:#f9f3e7;border:1px solid #d6cbb3;border-radius:14px}.companion-start .actions{gap:12px}.companion-start p{font-size:calc(18px * var(--reading-scale,1));line-height:1.75}
+/* Offline downloads sit outside the story, with familiar quiet reading surfaces. */
+.download-page{max-width:1160px;margin:auto}.download-page>p{max-width:780px}
+.download-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin:32px 0}
+.download-card{min-width:0;padding:26px 22px;background:#fffaf0;border:1px solid #d7cbb4;border-radius:16px;display:flex;flex-direction:column;gap:14px}
+.download-card h2{margin:0}.download-card p{flex:1;margin:0;font-size:calc(17px * var(--reading-scale,1));line-height:1.75}
+.download-card .eyebrow{line-height:1.8;letter-spacing:.06em}.download-card :is(.primary,.secondary){display:block;text-align:center;white-space:normal;line-height:1.5}
+.download-help{max-width:850px;padding:28px;background:#f3eee2;border:1px solid #d7cbb4;border-radius:14px}.download-help p{font-size:calc(17px * var(--reading-scale,1));line-height:1.8}
+body[data-contrast=true] :is(.download-card,.download-help){background:#fffdf4;border-color:#687960}
+@media(max-width:900px){.download-grid{grid-template-columns:1fr}.download-card{padding:22px}.download-help{padding:22px 18px}}

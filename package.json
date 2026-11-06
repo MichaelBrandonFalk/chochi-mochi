@@ -1,1 +1,27 @@
-{"name":"chochi-mochi","version":"2.9.4","private":true,"type":"module","scripts":{"test":"node --test scripts/*.test.mjs","start":"python3 -m http.server 4173","build":"node scripts/build.mjs"},"devDependencies":{"esbuild":"^0.28.2"}}
+{
+  "name": "chochi-mochi",
+  "version": "3.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test scripts/*.test.mjs",
+    "start": "python3 -m http.server 4173",
+    "build": "node scripts/build.mjs",
+    "desktop:icons": "node scripts/prepare-desktop-icon.mjs",
+    "desktop:dev": "npm run build && electron desktop/main.cjs",
+    "desktop:build": "npm run build && npm run desktop:icons && electron-builder --publish never",
+    "desktop:check": "electron desktop/main.cjs --self-test"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "2.6.2",
+    "electron": "45.2.3",
+    "electron-builder": "26.18.0",
+    "esbuild": "^0.28.2"
+  },
+  "productName": "Chochi Mochi",
+  "description": "A peaceful storybook adventure about care, trust, and friendship.",
+  "author": "MichaelBrandonFalk",
+  "license": "UNLICENSED",
+  "main": "desktop/main.cjs",
+  "homepage": "https://michaelbrandonfalk.github.io/chochi-mochi/"
+}

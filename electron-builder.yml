@@ -1,0 +1,70 @@
+appId: com.michaelbrandonfalk.chochimochi
+productName: Chochi Mochi
+asar: true
+npmRebuild: false
+forceCodeSigning: false
+directories:
+  output: desktop-release
+  buildResources: build
+files:
+  - desktop/**
+  - dist/**
+  - package.json
+extraMetadata:
+  main: desktop/main.cjs
+mac:
+  category: public.app-category.education
+  icon: build/icon.png
+  identity: '-'
+  hardenedRuntime: false
+  notarize: false
+  artifactName: Chochi-Mochi-${version}-macOS-${arch}.${ext}
+  target:
+    - target: zip
+      arch: [universal]
+    - target: dmg
+      arch: [universal]
+dmg:
+  sign: false
+win:
+  icon: build/icon.png
+  target:
+    - target: portable
+      arch: [x64]
+    - target: nsis
+      arch: [x64]
+portable:
+  artifactName: Chochi-Mochi-${version}-Windows-${arch}-Portable.exe
+nsis:
+  artifactName: Chochi-Mochi-${version}-Windows-${arch}-Setup.exe
+  oneClick: true
+  perMachine: false
+  createDesktopShortcut: true
+  deleteAppDataOnUninstall: false
+linux:
+  executableName: chochi-mochi
+  category: Education
+  icon: build/icon.png
+  maintainer: Michael Brandon Falk <michaelbrandonfalk@users.noreply.github.com>
+  artifactName: Chochi-Mochi-${version}-Linux-${arch}.${ext}
+  target:
+    - target: AppImage
+      arch: [x64]
+    - target: deb
+      arch: [x64]
+    - target: tar.gz
+      arch: [x64]
+
+deb:
+  depends:
+    - libgtk-3-0 | libgtk-3-0t64
+    - libnotify4
+    - libnss3
+    - libxss1
+    - libxtst6
+    - xdg-utils
+    - libatspi2.0-0 | libatspi2.0-0t64
+    - libuuid1
+    - libsecret-1-0
+    - libasound2 | libasound2t64
+    - libgbm1

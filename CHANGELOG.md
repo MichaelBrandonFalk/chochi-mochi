@@ -1,3 +1,11 @@
+## 3.0.0
+
+- Bundle the complete game for offline Windows, Mac, and Linux Mint play.
+- Add portable USB save files shared across platform editions, native installers, and a universal Intel/Apple-silicon Mac app.
+- Add a website Download page and home/header links with versioned downloads, USB instructions, and first-opening notes.
+- Keep renderer isolation and sandboxing enabled, block renderer network requests, and use a narrow atomic-save bridge.
+- Add native packaged startup checks, Mint-base installation checks, and desktop save/protocol regression tests.
+
 ## 2.9.4
 
 - Apply effects-volume changes immediately to active tunes and sound effects without restarting tune playback.
