@@ -1,0 +1,38 @@
+[
+  {
+    "file": "assets/audio/teacup-two-step.mp3",
+    "LUFS": -29.64,
+    "peak_dBTP": -20.02,
+    "range_LU": 2.1
+  },
+  {
+    "file": "assets/audio/paper-boats.mp3",
+    "LUFS": -29.79,
+    "peak_dBTP": -21.23,
+    "range_LU": 3.1
+  },
+  {
+    "file": "assets/audio/pebble-waltz.mp3",
+    "LUFS": -29.64,
+    "peak_dBTP": -21.47,
+    "range_LU": 2.5
+  },
+  {
+    "file": "assets/audio/fern-and-feather.mp3",
+    "LUFS": -29.71,
+    "peak_dBTP": -21.47,
+    "range_LU": 2.8
+  },
+  {
+    "file": "assets/audio/cloud-picnic.mp3",
+    "LUFS": -29.67,
+    "peak_dBTP": -21.75,
+    "range_LU": 2.0
+  },
+  {
+    "file": "assets/audio/homeward-lanterns.mp3",
+    "LUFS": -29.79,
+    "peak_dBTP": -22.2,
+    "range_LU": 3.4
+  }
+]

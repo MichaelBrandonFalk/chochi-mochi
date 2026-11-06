@@ -29,7 +29,7 @@ CC0 information and legal code: https://creativecommons.org/publicdomain/zero/1.
 
 ## Playback behavior
 
-Music and effects default on for a new player. The first tap or keyboard activation unlocks music under browser autoplay rules. On/off choices and volumes are remembered for each player. Files are hosted with the game; playing them makes no request to a third-party music service. The six-track playlist plays at a low default volume, ducks during read-aloud, and pauses when the tab is hidden. Stop all sound also stops read-aloud. Sound effects give gentle feedback for navigation and learning actions, with no penalty sound for an incorrect answer.
+Music and effects default on for a new player. The first tap or keyboard activation unlocks music under browser autoplay rules. On/off choices and volumes are remembered for each player. Files are hosted with the game; playing them makes no request to a third-party music service. The twelve-track playlist plays at a low default volume, ducks during read-aloud, and pauses when the tab is hidden. Stop all sound also stops read-aloud. Sound effects give gentle feedback for navigation and learning actions, with no penalty sound for an incorrect answer.
 
 
 ## Pocket music box
@@ -57,12 +57,30 @@ Play our tune and Watch our tune both use the same audible, visual playback. If 
 
 ## Version 2.8 varied playlist and track controls
 
-The current playlist has six original pieces: Clover Waltz, Meadow Guitar, Willow Flute, Cloud Bells, Bluebell Strings, and Orchard Marimba. The first retains the original keyboard arrangement. Five new synthesized arrangements use different timbres, registers, meters, accompaniment, rests, and tempos: plucked guitar, flute with strings, soft music-box bells, a string trio, and marimba with bass. These are original synthesized recordings, not sampled acoustic performances or existing classical works.
+Version 2.8 introduced six original pieces: Clover Waltz, Meadow Guitar, Willow Flute, Cloud Bells, Bluebell Strings, and Orchard Marimba. The first retains the original keyboard arrangement. Five new synthesized arrangements use different timbres, registers, meters, accompaniment, rests, and tempos: plucked guitar, flute with strings, soft music-box bells, a string trio, and marimba with bass. These are original synthesized recordings, not sampled acoustic performances or existing classical works.
 
 The new arrangements and recordings are dedicated to CC0 1.0 without an attribution requirement. Source scores and synthesis are in `scripts/compose-varied-music.py`, and hashes remain in the audio manifest. The new tracks were brought close to the original track’s measured loudness, approximately -29.5 LUFS, to avoid a jump when changing songs. The three retired keyboard pieces remain available in earlier releases.
 
-Next track appears in Sound and Comfort & Access. It advances through all six tracks and remembers the selected filename per player. Skipping while music is paused selects the next piece without turning music on. Skipping during a tune selects the next background piece but waits until the tune ends before playing it. The existing music volume, effects volume, quiet settings, and tune suspension behavior remain in effect.
+Next track appears in Sound and Comfort & Access. It advanced through all six tracks and remembers the selected filename per player. Skipping while music is paused selects the next piece without turning music on. Skipping during a tune selects the next background piece but waits until the tune ends before playing it. The existing music volume, effects volume, quiet settings, and tune suspension behavior remain in effect.
 
 ## Live volume changes
 
 The effects-volume control updates active notes through a shared output gain and updates an existing sound-effect player. It does not restart the tune or its visual score. Volume zero leaves the visual beat running silently. Turning effects off stops active notes and effects. The note envelopes, pitches, and default output level remain unchanged.
+
+
+## Version 3.1: a longer storybook soundtrack
+
+Six additional original recordings join the earlier six. The playlist alternates instruments and rhythms across twelve pieces. It runs for about 34 minutes before returning to the first piece.
+
+- Teacup Two-Step: soft piano in a small two-beat dance.
+- Paper Boats: warm clarinet and harp, with long phrases and room between them.
+- Pebble Waltz: harp and plucked strings in three beats.
+- Fern and Feather: wooden flute and guitar in a sunny walking song.
+- Cloud Picnic: soft reeds and guitar in a swaying three-beat song.
+- Homeward Lanterns: cello and soft piano, with a slower homecoming melody.
+
+These are synthesized instrument sounds, not sampled acoustic performances or borrowed classical compositions. Each new piece lasts roughly three and a half to four and a half minutes, with returning themes, a contrasting middle, rests, a resolving ending, restrained stereo reflections, and faded edges. They use no drums, alarms, sudden stingers, or environmental sounds that might be mistaken for something happening nearby. The new pieces target the earlier music’s measured level, approximately -29.5 LUFS. Source scores, synthesis, and recordings in scripts/compose-storybook-music.py are dedicated to CC0 1.0 without attribution requirements. The developer renderer needs numpy and ffmpeg; the game does not.
+
+Routine page and selection clicks use 55 percent of the effects setting, and keepsake feedback uses 80 percent. The player-made musical notes retain their existing effect-volume behavior. Routine effects wait at least 250 milliseconds between triggers and stay silent while a player-made tune is playing. There is still no error sound, countdown, competitive fanfare, or sound required to understand a lesson.
+
+The selected track and playback position are saved per player approximately every fifteen seconds while music plays, as well as on pause and departure. Reloading resumes near that position after the player’s next interaction. Next track resets the position to the beginning of the selected piece. Explicit silence and zero-volume choices survive. Background music continues to duck during narration and pause completely during player-made tunes, with visual notes available in quiet.

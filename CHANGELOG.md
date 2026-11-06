@@ -1,5 +1,13 @@
 ## 3.0.0
 
+## 3.1.0
+
+- Expanded the soundtrack from six to twelve pieces, alternating instruments and rhythms across about 34 minutes.
+- Added original piano, clarinet, harp, wooden flute, soft reed, and cello arrangements, all CC0.
+- Remembered each player’s music position, softened routine feedback, and prevented interface effects from overlapping musical games.
+- Kept explicit quiet settings, narration ducking, tune pauses, and visual music controls.
+
+
 - Bundle the complete game for offline Windows, Mac, and Linux Mint play.
 - Add portable USB save files shared across platform editions, native installers, and a universal Intel/Apple-silicon Mac app.
 - Add a website Download page and home/header links with versioned downloads, USB instructions, and first-opening notes.

@@ -6,19 +6,19 @@ import {playlist,audioPreferences,nextTrack} from './audio-settings.js';
 let saved={};try{saved=JSON.parse(playerStorage.getItem('little-lights-audio')||'{}')||{};}catch{}
 const initial=audioPreferences(saved);
 let music,effect,musicOn=initial.musicOn,effectsOn=initial.effectsOn,narrating=false,fadeFrame,lastEffect=0,playGeneration=0;
-let musicVolume=initial.musicVolume,effectsVolume=initial.effectsVolume,track=initial.track,unlocked=false,startMusic=()=>{};
+let musicVolume=initial.musicVolume,effectsVolume=initial.effectsVolume,track=initial.track,unlocked=false,startMusic=()=>{},resumeAt=initial.position,pendingSeek=initial.position>0,lastPositionSave=0;
 const background=tuneBackground({pause:()=>{playGeneration++;cancelAnimationFrame(fadeFrame);if(music)music.pause();},resume:()=>startMusic(),canResume:()=>musicOn&&unlocked&&!document.hidden});
 const source=name=>new URL(`./assets/audio/${name}`,import.meta.url).href;
 const status=text=>{document.querySelector('#audio-status').textContent=text;};
-function persist(){try{playerStorage.setItem('little-lights-audio',JSON.stringify({musicOn,effectsOn,musicVolume,effectsVolume,track:playlist[track].file}));}catch{}}
-function paint(){const label=document.querySelector('#music-track');if(label)label.textContent=playlist[track].title+' · '+playlist[track].description;const button=document.querySelector('#music-toggle');button.textContent=musicOn?'Pause music':'Play music';button.setAttribute('aria-pressed',String(musicOn));document.querySelector('#effects-toggle').checked=effectsOn;window.dispatchEvent(new Event('audio-settings-changed'));}
+function persist(){if(music&&!pendingSeek&&music.readyState>=1&&Number.isFinite(music.currentTime))resumeAt=music.currentTime;try{playerStorage.setItem('little-lights-audio',JSON.stringify({musicOn,effectsOn,musicVolume,effectsVolume,track:playlist[track].file,position:resumeAt}));}catch{}}
+function paint(){const label=document.querySelector('#music-track');if(label)label.textContent=(track+1)+' of '+playlist.length+' · '+playlist[track].title+' · '+playlist[track].description;const button=document.querySelector('#music-toggle');button.textContent=musicOn?'Pause music':'Play music';button.setAttribute('aria-pressed',String(musicOn));document.querySelector('#effects-toggle').checked=effectsOn;window.dispatchEvent(new Event('audio-settings-changed'));}
 function gain(){if(!music)return;cancelAnimationFrame(fadeFrame);const from=music.volume,to=musicVolume*(narrating ? 0.18 : 1),start=performance.now();function step(now){const t=Math.min(1,(now-start)/200);music.volume=from+(to-from)*t;if(t<1)fadeFrame=requestAnimationFrame(step);}fadeFrame=requestAnimationFrame(step);}
 export function setNarrating(value){narrating=value;if(value)stopTune();gain();}
 export function playEffect(kind='touch'){
- if(!effectsOn||narrating||document.hidden)return;
- const now=performance.now();if(now-lastEffect<140)return;lastEffect=now;
+ if(!effectsOn||narrating||background.held||document.hidden)return;
+ const now=performance.now();if(now-lastEffect<250)return;lastEffect=now;
  if(effect){effect.pause();effect.remove();}
- effect=document.createElement('audio');effect.dataset.gameEffect=kind;effect.preload='none';effect.src=source(kind==='touch'?'page-touch.mp3':'keepsake.mp3');effect.volume=effectsVolume;document.querySelector('#audio-engine').append(effect);effect.play().catch(()=>status('This browser could not play the sound. The story still works.'));
+ effect=document.createElement('audio');effect.dataset.gameEffect=kind;effect.preload='none';effect.src=source(kind==='touch'?'page-touch.mp3':'keepsake.mp3');effect.volume=effectsVolume*(kind==='touch'?.55:.8);document.querySelector('#audio-engine').append(effect);effect.play().catch(()=>status('This browser could not play the sound. The story still works.'));
 }
 function pauseMusic(remember=true){playGeneration++;musicOn=false;if(music)music.pause();paint();if(remember)persist();}
 export function initAudio(){
@@ -28,22 +28,25 @@ export function initAudio(){
   if(background.held||!musicOn||document.hidden)return;
   if(!music){music=document.createElement('audio');music.id='garden-music';music.preload='none';music.src=source(playlist[track].file);document.querySelector('#audio-engine').append(music);
    music.addEventListener('ended',()=>advanceTrack());
+   const restorePosition=()=>{if(!pendingSeek||!Number.isFinite(music.duration)||music.duration<=0)return;try{music.currentTime=Math.min(resumeAt,Math.max(0,music.duration-1));pendingSeek=false;lastPositionSave=performance.now();}catch{}};
+   music.addEventListener('loadedmetadata',restorePosition);music.addEventListener('durationchange',restorePosition);music.addEventListener('canplay',restorePosition);
+   music.addEventListener('timeupdate',()=>{const now=performance.now();if(now-lastPositionSave>=15000&&!music.paused){lastPositionSave=now;persist();}});
    music.addEventListener('error',()=>{pauseMusic(false);status('The music could not load. You can keep playing quietly.');});}
   music.volume=musicVolume*(narrating?.18:1);const generation=++playGeneration;
   try{await music.play();if(generation!==playGeneration||background.held){if(background.held||!musicOn||document.hidden)music.pause();return;}status('Playing '+playlist[track].title+'.');}catch{if(generation!==playGeneration)return;status('Tap Play music to start the music.');musicOn=false;paint();}
  };
- const advanceTrack=()=>{track=nextTrack(track);playGeneration++;if(music){music.pause();music.src=source(playlist[track].file);}persist();paint();if(background.held)status('Next track: '+playlist[track].title+'. It will start after our tune.');else if(musicOn)startMusic();else status('Selected '+playlist[track].title+'. Music is paused.');};
+ const advanceTrack=()=>{track=nextTrack(track);resumeAt=0;pendingSeek=false;playGeneration++;if(music){music.pause();music.src=source(playlist[track].file);}persist();paint();if(background.held)status('Next track: '+playlist[track].title+'. It will start after our tune.');else if(musicOn)startMusic();else status('Selected '+playlist[track].title+'. Music is paused.');};
  document.querySelector('#music-next').onclick=()=>{unlocked=true;advanceTrack();};
  document.querySelector('#music-toggle').onclick=()=>{unlocked=true;if(musicOn){pauseMusic();status('Music paused.');}else{musicOn=true;paint();persist();startMusic();}};
  const unlock=e=>{if(unlocked||e.target.closest('.audio-settings,#comfort-dialog,#players-dialog'))return;unlocked=true;if(musicOn)startMusic();};
  document.addEventListener('pointerdown',unlock);document.addEventListener('keydown',e=>{if(['Enter',' '].includes(e.key))unlock(e);});
  document.querySelector('#effects-toggle').onchange=e=>{setAudioSettings({effectsOn:e.target.checked});status(effectsOn?'Soft sound effects are on.':'Sound effects are off.');};
- document.querySelector('#sound-preview').onclick=()=>{if(!effectsOn){status('Turn on sound effects to hear a preview.');return;}playEffect('note');status('Playing a soft sound preview.');};
+ document.querySelector('#sound-preview').onclick=()=>{if(!effectsOn){status('Turn on sound effects to hear a preview.');return;}if(background.held){status('Let our tune finish, then try a soft sound.');return;}playEffect('note');status('Playing a soft sound preview.');};
  document.querySelector('#music-volume').oninput=e=>{musicVolume=Number(e.target.value)/100;persist();gain();window.dispatchEvent(new Event('audio-settings-changed'));};
  document.querySelector('#effects-volume').oninput=e=>setAudioSettings({effectsVolume:Number(e.target.value)/100});
  document.querySelector('#mute-all').onclick=silenceAudio;
- document.addEventListener('visibilitychange',()=>{if(document.hidden){stopTune();playGeneration++;if(music)music.pause();if(effect)effect.pause();status('Music paused while you were away.');}else if(unlocked&&musicOn)startMusic();});
- window.addEventListener('pagehide',()=>{stopTune();if(music)music.pause();if(effect)effect.pause();});
+ document.addEventListener('visibilitychange',()=>{if(document.hidden){persist();stopTune();playGeneration++;if(music)music.pause();if(effect)effect.pause();status('Music paused while you were away.');}else if(unlocked&&musicOn)startMusic();});
+ window.addEventListener('pagehide',()=>{persist();stopTune();if(music)music.pause();if(effect)effect.pause();});
  document.addEventListener('click',e=>{const t=e.target.closest('a[href^="#"],[data-view],[data-level],summary');if(t&&!t.closest('.audio-settings'))playEffect('touch');});
  document.addEventListener('click',e=>{if(!e.target.closest('.audio-settings'))document.querySelector('.audio-settings').open=false;});
  document.querySelector('.audio-settings').addEventListener('keydown',e=>{if(e.key==='Escape'){e.currentTarget.open=false;e.currentTarget.querySelector('summary').focus();}});
@@ -69,6 +72,6 @@ export function playTune(notes,variant=0,options={}){
  try{if(silent)start(false);else{tuneContext ||=new Audio();if(!tuneGain){tuneGain=tuneContext.createGain();tuneGain.connect(tuneContext.destination);}applyEffectsVolume();tuneContext.resume().then(()=>{if(token!==tuneToken)return;if(tuneContext.state!=='running'){options.onError?.();start(false);}else start(true);}).catch(()=>{if(token!==tuneToken)return;options.onError?.();start(false);});}return true;}catch{stopTune();return false;}
 }
 export function getAudioState(){return {musicOn,effectsOn,musicVolume,effectsVolume,track,trackTitle:playlist[track].title,trackDescription:playlist[track].description};}
-function applyEffectsVolume(){const volume=effectsOn?effectsVolume:0;if(effect)effect.volume=volume;if(tuneGain&&tuneContext)tuneGain.gain.setValueAtTime(volume,tuneContext.currentTime);}
+function applyEffectsVolume(){const volume=effectsOn?effectsVolume:0;if(effect)effect.volume=volume*(effect.dataset.gameEffect==='touch'?.55:.8);if(tuneGain&&tuneContext)tuneGain.gain.setValueAtTime(volume,tuneContext.currentTime);}
 export function setAudioSettings(value={}){if(Number.isFinite(value.musicVolume))musicVolume=Math.max(0,Math.min(1,value.musicVolume));if(Number.isFinite(value.effectsVolume))effectsVolume=Math.max(0,Math.min(1,value.effectsVolume));if(typeof value.effectsOn==='boolean'){effectsOn=value.effectsOn;if(!effectsOn){stopTune();if(effect)effect.pause();}}applyEffectsVolume();persist();document.querySelector('#music-volume').value=Math.round(musicVolume*100);document.querySelector('#effects-volume').value=Math.round(effectsVolume*100);paint();gain();window.dispatchEvent(new Event('audio-settings-changed'));}
 export function silenceAudio(){pauseMusic();effectsOn=false;persist();stopTune();if(effect)effect.pause();window.dispatchEvent(new Event('stop-all-audio'));paint();status('All sound is off.');window.dispatchEvent(new Event('audio-settings-changed'));}

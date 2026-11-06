@@ -14,7 +14,7 @@ import {learning,letters} from '../learning.js';
 test('every chapter has worked reply outcomes, a reason to explain, and a distinct transfer situation',()=>{assert.equal(learning.length,19);assert.deepEqual(Object.keys(letters).map(Number),[0,4,9,14,18]);for(const d of learning){assert.ok(d.stake&&d.because&&d.scene&&d.model);assert.equal(d.replies.length,2);for(const r of d.replies)assert.ok(r.say&&r.result&&r.reason);assert.ok(d.reasons[d.right]);assert.ok(d.transfer.choices[d.transfer.answer]);assert.ok(!lessons.some(l=>l.story===d.transfer.story));}});
 import {readFile} from 'node:fs/promises';
 test('the map begins with the opening before its 20 numbered places',()=>{const map=trailMap(lessons,[],false);assert.ok(map.indexOf('href="#story-1"')<map.indexOf('href="#level-1"'));assert.ok(map.includes('BEFORE LEVEL 1'));});
-test('bundled audio has complete CC0 source records and intact files',async()=>{const entries=JSON.parse(await readFile(new URL('../assets/audio/manifest.json',import.meta.url),'utf8'));assert.equal(entries.length,8);for(const entry of entries){assert.equal(entry.license,'CC0-1.0');assert.equal(entry.attribution_required,false);const bytes=await readFile(new URL('../'+entry.file,import.meta.url));const {createHash}=await import('node:crypto');assert.equal(createHash('sha256').update(bytes).digest('hex'),entry.sha256);}});
+test('bundled audio has complete CC0 source records and intact files',async()=>{const entries=JSON.parse(await readFile(new URL('../assets/audio/manifest.json',import.meta.url),'utf8'));assert.equal(entries.length,14);for(const entry of entries){assert.equal(entry.license,'CC0-1.0');assert.equal(entry.attribution_required,false);const bytes=await readFile(new URL('../'+entry.file,import.meta.url));const {createHash}=await import('node:crypto');assert.equal(createHash('sha256').update(bytes).digest('hex'),entry.sha256);}});
 import {adventures,normalizeChoices,selectedChoice,storyEchoes,freshProject,placeCard,isProjectComplete,partyStyle} from '../adventure.js';
 import {partyActs,partyProject} from '../party.js';
 import {mapStops} from '../atlas.js';
@@ -78,7 +78,7 @@ test('Pipkin’s flight has three welcoming story endings rather than dock count
 
 import {audioPreferences,playlist,nextTrack} from '../audio-settings.js';
 import {companionPattern,patternReply} from '../companion-game.js';
-test('new players have sound on while explicit quiet preferences survive',()=>{assert.equal(audioPreferences().musicOn,true);assert.equal(audioPreferences().effectsOn,true);assert.equal(audioPreferences({musicOn:false,effectsOn:false}).musicOn,false);assert.equal(audioPreferences({musicOn:false,effectsOn:false}).effectsOn,false);assert.equal(audioPreferences({musicVolume:0}).musicVolume,0);assert.equal(playlist.length,6);assert.deepEqual(Array.from({length:6},(_,i)=>nextTrack(i)),[1,2,3,4,5,0]);});
+test('new players have sound on while explicit quiet preferences survive',()=>{assert.equal(audioPreferences().musicOn,true);assert.equal(audioPreferences().effectsOn,true);assert.equal(audioPreferences({musicOn:false,effectsOn:false}).musicOn,false);assert.equal(audioPreferences({musicOn:false,effectsOn:false}).effectsOn,false);assert.equal(audioPreferences({musicVolume:0}).musicVolume,0);assert.equal(playlist.length,12);assert.deepEqual(Array.from({length:playlist.length},(_,i)=>nextTrack(i)),[1,2,3,4,5,6,7,8,9,10,11,0]);assert.equal(audioPreferences({position:75}).position,75);assert.equal(audioPreferences({position:-1}).position,0);assert.equal(audioPreferences({position:Infinity}).position,0);});
 test('each companion keeps a distinct outing through all twenty places',()=>{for(let level=0;level<20;level++)for(const choice of [0,1]){assert.equal(nativeTool(level,{0:choice}).mode,choice===1?'tune':'seek');const pattern=companionPattern(gameConfig(level,{0:choice},nativeTool(level,{0:choice})).seed);assert.equal(pattern.length,4);assert.ok(pattern.every(n=>Number.isInteger(n)&&n>=0&&n<5));assert.match(patternReply(pattern,gameConfig(level,{0:choice},nativeTool(level,{0:choice})).seed,choice===1,'Our host'),/learned this place/);}});
 test('story character mentions carry their species and each chapter adds at most one name',()=>{const seen=new Set(['Chochi','Mochi','Glaloula','Fern','Button','Pipkin']);const names=['Tuck','Rue','Olive','Moss','Sol','Luma','Ada','Kit','Bea','Tansy','Mira','Wren','Ori','Alba','Brin','Nell','Fenn','Linn'];for(const chapter of chapters){const text=JSON.stringify(chapter);assert.ok(!/\bChochi\b(?! the Dinosaur)/.test(text));assert.ok(!/\bMochi\b(?! the Unicorn)/.test(text));const fresh=names.filter(n=>new RegExp('\\b'+n+'\\b').test(text)&&!seen.has(n));assert.ok(fresh.length<=1,'Too many new names: '+fresh.join(', '));for(const n of fresh)seen.add(n);}});
 
@@ -123,7 +123,7 @@ test('painted gifts have distinct art and preserve the five visual story choices
 });
 test('map title sits outside the level artwork and saved track choices remain valid',()=>{
  const map=trailMap(lessons,[],false);assert.ok(map.indexOf('atlas-book-title')<map.indexOf('atlas-viewport'));const svg=map.slice(map.indexOf('<svg'),map.indexOf('</svg>'));assert.ok(!svg.includes('The Valley of Little Lights'));
- assert.equal(audioPreferences({track:'willow-flute.mp3',musicOn:false}).track,2);assert.equal(audioPreferences({track:'missing.mp3'}).track,0);assert.equal(audioPreferences({musicOn:false}).musicOn,false);
+ assert.equal(playlist[audioPreferences({track:'willow-flute.mp3',musicOn:false}).track].file,'willow-flute.mp3');assert.equal(audioPreferences({track:'missing.mp3'}).track,0);assert.equal(audioPreferences({musicOn:false}).musicOn,false);
 });
 test('all object cutouts are prepared with alpha and recorded checksums',async()=>{
  const entries=JSON.parse(await readFile(new URL('../assets/objects/manifest.json',import.meta.url),'utf8'));assert.equal(entries.length,31);const {createHash}=await import('node:crypto');for(const e of entries){assert.equal(e.alpha[0],0);assert.ok(e.alpha[1]>200);assert.equal(createHash('sha256').update(await readFile(new URL('../'+e.file,import.meta.url))).digest('hex'),e.sha256);}
@@ -165,4 +165,10 @@ test('finding art and labels follow the same saved choices as basket gifts',()=>
   assert.equal(new Set(objects.map(o=>o.src)).size,6);
   for(const o of objects.filter(o=>o.target)){const i=hunts[level].gifts[c.findSlots.indexOf(o.slot)];assert.equal(o.src,giftSrc(i,c.storyChoices));assert.equal(o.name,basketGiftName(i,c.storyChoices).toLowerCase());}
  }
+});
+
+test('every soundtrack selection has a bundled CC0 record',async()=>{
+ const manifest=JSON.parse(await readFile(new URL('../assets/audio/manifest.json',import.meta.url),'utf8'));
+ for(const track of playlist){const item=manifest.find(m=>m.file==='assets/audio/'+track.file);assert.ok(item,track.file);assert.equal(item.license,'CC0-1.0');assert.equal(item.attribution_required,false);}
+ assert.equal(new Set(playlist.map(t=>t.file)).size,playlist.length);
 });
