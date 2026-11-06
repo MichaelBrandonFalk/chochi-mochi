@@ -9,7 +9,7 @@ export function initPlayers(saveCurrent){
  document.body.append(dialog);
  let stage='list',restartId=null;
  const paintName=()=>{const name=playerStore.active().name;opener.setAttribute('aria-label','Players. Playing as '+name);document.querySelector('#player-name').textContent='Player: '+name;};
- const error=err=>{const status=dialog.querySelector('[data-player-status]');status.textContent=err.message?.startsWith('Please ')||err.message?.startsWith('That ')||err.message?.startsWith('All five')?err.message:'This browser could not save that change. Your current game is still here. Check that browser storage is allowed.';status.focus();};
+ const error=err=>{const status=dialog.querySelector('[data-player-status]');status.textContent=err.message?.startsWith('Please ')||err.message?.startsWith('That ')||err.message?.startsWith('All five')?err.message:(window.chochiDesktop?'The game could not save that change. Check that your drive is connected and writable. Your last saved game is still there.':'This browser could not save that change. Your current game is still here. Check that browser storage is allowed.');status.focus();};
  const saveBeforeLeaving=()=>{if(saveCurrent()===false)throw new Error('Storage could not save the current game');};
  const reloadAt=hash=>{silenceAudio();stopReader();history.replaceState(null,'',hash);location.reload();};
  function paint(){

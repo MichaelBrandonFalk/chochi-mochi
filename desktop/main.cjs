@@ -26,6 +26,13 @@ app.whenReady().then(async () => {
     location = selfTest ? { directory: path.join(smokeDirectory, 'Chochi Mochi Data'), portable: true } : saveLocation({ platform: process.platform, executable: app.getPath('exe'), portableDirectory: process.env.PORTABLE_EXECUTABLE_DIR, appImage: process.env.APPIMAGE, userData: app.getPath('userData'), packaged: app.isPackaged });
     if (!selfTest && app.isPackaged && process.platform === 'darwin') {
       const bundleParent = path.resolve(path.dirname(app.getPath('exe')), '../../..');
+      // Gatekeeper may isolate a first-open app from its original folder.
+      // Ask for the portable folder instead of changing any system protections.
+      if (bundleParent.includes('/AppTranslocation/')) {
+        const chosen = await dialog.showOpenDialog({ title: 'Choose your portable game folder', message: 'Choose the folder on your USB drive that holds Chochi Mochi. Your players will stay in Chochi Mochi Data inside that folder.', properties: ['openDirectory', 'dontAddToRecent'] });
+        if (chosen.canceled || !chosen.filePaths[0]) { app.quit(); return; }
+        location = { directory: path.join(chosen.filePaths[0], 'Chochi Mochi Data'), portable: true };
+      }
       if (bundleParent.startsWith('/Volumes/')) {
         try {
           const plist = execFileSync('/usr/bin/hdiutil', ['info', '-plist'], { timeout: 5000 });

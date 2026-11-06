@@ -4,7 +4,7 @@ The desktop edition uses Electron with bundled static dist files. It serves them
 
 A narrow context-isolated storage bridge replaces the browser storage adapter. It accepts only game-prefixed keys, validates the sending origin, bounds values, and writes a versioned JSON save file atomically. A failed write leaves the previous saved bytes and in-memory values intact. A corrupt file stops startup with an explanation rather than being replaced. An application-instance lock prevents concurrent normal copies from racing over the same saves.
 
-Portable locations are derived from the Windows portable wrapper’s executable-directory variable, the original Linux AppImage path or extracted-folder executable, and the Mac app’s parent folder. For a mounted Mac DMG, hdiutil and plutil identify the original image directory, so USB progress is stored beside the DMG. Installed Windows, Applications-folder Mac, and /opt or /usr Linux copies use per-user application data.
+Portable locations are derived from the Windows portable wrapper’s executable-directory variable, the original Linux AppImage path or extracted-folder executable, and the Mac app’s parent folder. For a mounted Mac DMG, hdiutil and plutil identify the original image directory, so USB progress is stored beside the DMG. If macOS App Translocation hides the original folder, a native folder picker asks the player to choose the portable folder without altering Gatekeeper. Installed Windows, Applications-folder Mac, and /opt or /usr Linux copies use per-user application data.
 
 ## Build
 

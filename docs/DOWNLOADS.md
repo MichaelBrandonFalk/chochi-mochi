@@ -21,6 +21,8 @@ macOS 13 or newer. The universal app supports Intel and Apple silicon.
 - **Installation:** drag Chochi Mochi from the disk image into Applications, then open that installed copy. Its progress stays on the Mac.
 - **ZIP alternative:** extract the app into a normal Mac folder or copy it to Applications. For direct USB play on exFAT or FAT drives, use the DMG instead of extracting the app bundle there.
 
+If macOS opens the app in an isolated first-open location, the game asks you to choose the folder holding the DMG. Choose that folder on your USB drive so your players stay with it. It does not change macOS security settings.
+
 These builds are locally/ad-hoc signed for execution but do not have an Apple Developer ID or Apple notarization. macOS may ask for approval before opening them. Use the normal system approval controls for a trusted download. The game does not change Gatekeeper settings. See [Apple’s opening guidance](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unknown-developer-mh40616/mac).
 
 ## Linux Mint
