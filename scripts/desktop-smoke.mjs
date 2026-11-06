@@ -12,3 +12,10 @@ const env={...process.env};delete env.ELECTRON_RUN_AS_NODE;
 const result=await run(executable,['--self-test'],{timeout:45000,maxBuffer:4*1024*1024,env});
 if(!result.stdout.includes('CHOCHI_DESKTOP_OK'))throw Error('Desktop startup check did not report success.\n'+result.stdout+'\n'+result.stderr);
 console.log(result.stdout.trim());
+if(process.platform==='win32'&&!process.argv[2]){
+ const portable=(await readdir(root)).find(n=>n.endsWith('-Portable.exe'));
+ if(!portable)throw Error('No Windows portable package');
+ // The NSIS wrapper forwards arguments and returns the hidden game's exit code.
+ await run(path.join(root,portable),['--self-test'],{timeout:120000,maxBuffer:4*1024*1024,env});
+ console.log('CHOCHI_PORTABLE_WRAPPER_OK');
+}
