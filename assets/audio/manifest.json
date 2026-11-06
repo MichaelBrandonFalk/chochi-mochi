@@ -80,5 +80,71 @@
     "attribution_required": false,
     "sha256": "427623428da073b3b34eadc45098fb8961c924182287388d3260a1b47f904aa8",
     "mastering": "Matched to the existing keyboard track, approximately -29.5 LUFS."
+  },
+  {
+    "file": "assets/audio/teacup-two-step.mp3",
+    "title": "Teacup Two-Step",
+    "description": "Soft piano \u00b7 a small, cheerful dance",
+    "creator": "Chochi Mochi original arrangement",
+    "source": "scripts/compose-storybook-music.py",
+    "license": "CC0-1.0",
+    "attribution_required": false,
+    "sha256": "652b71ffa270dd85a5ff60d638b78beda401180eb772709740669e53aa8b42a5",
+    "mastering": "Approximately -29.5 LUFS, softened attacks and faded edges."
+  },
+  {
+    "file": "assets/audio/paper-boats.mp3",
+    "title": "Paper Boats",
+    "description": "Warm clarinet and harp \u00b7 a rocking boat song",
+    "creator": "Chochi Mochi original arrangement",
+    "source": "scripts/compose-storybook-music.py",
+    "license": "CC0-1.0",
+    "attribution_required": false,
+    "sha256": "239e812731a79ed4295052bb95f79268cfdeced76814c7ac3d26a1b659fcc29f",
+    "mastering": "Approximately -29.5 LUFS, softened attacks and faded edges."
+  },
+  {
+    "file": "assets/audio/pebble-waltz.mp3",
+    "title": "Pebble Waltz",
+    "description": "Harp and plucked strings \u00b7 a light woodland waltz",
+    "creator": "Chochi Mochi original arrangement",
+    "source": "scripts/compose-storybook-music.py",
+    "license": "CC0-1.0",
+    "attribution_required": false,
+    "sha256": "82617bb84fed1eafcc8f0d539fbdef930aec8b6995d4f8f222d2b0673c701069",
+    "mastering": "Approximately -29.5 LUFS, softened attacks and faded edges."
+  },
+  {
+    "file": "assets/audio/fern-and-feather.mp3",
+    "title": "Fern and Feather",
+    "description": "Wooden flute and guitar \u00b7 a sunny walking song",
+    "creator": "Chochi Mochi original arrangement",
+    "source": "scripts/compose-storybook-music.py",
+    "license": "CC0-1.0",
+    "attribution_required": false,
+    "sha256": "bf2a93c519336e3758922099168d63aa4d5b8a1cf0b5d98a5010d5d4ef88d5a6",
+    "mastering": "Approximately -29.5 LUFS, softened attacks and faded edges."
+  },
+  {
+    "file": "assets/audio/cloud-picnic.mp3",
+    "title": "Cloud Picnic",
+    "description": "Soft reeds and guitar \u00b7 a swaying picnic song",
+    "creator": "Chochi Mochi original arrangement",
+    "source": "scripts/compose-storybook-music.py",
+    "license": "CC0-1.0",
+    "attribution_required": false,
+    "sha256": "77de77ace751941b12b819c0d853ac87c2a9158de708ef6ddf5f21ff3bd05705",
+    "mastering": "Approximately -29.5 LUFS, softened attacks and faded edges."
+  },
+  {
+    "file": "assets/audio/homeward-lanterns.mp3",
+    "title": "Homeward Lanterns",
+    "description": "Cello and soft piano \u00b7 a warm homecoming",
+    "creator": "Chochi Mochi original arrangement",
+    "source": "scripts/compose-storybook-music.py",
+    "license": "CC0-1.0",
+    "attribution_required": false,
+    "sha256": "2ca66ddfc836b60faf8f5a26ea6ab168ebe47c9294ac8413683fea5a3e895fbf",
+    "mastering": "Approximately -29.5 LUFS, softened attacks and faded edges."
   }
 ]
