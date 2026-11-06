@@ -1,5 +1,14 @@
 ## 3.0.0
 
+## 3.2.0
+
+- Replaced crowded phone map labels with a clear valley overview and a readable place card, large Visit control, and previous/next controls.
+- Kept the larger picture map available and opened the comfortable place list on phones. Preserved the clockwise route, opening story, and home beside level 1.
+- Spaced desktop labels and map targets, including at narrow widths and during rotation.
+- Fixed wide and tall project pictures so each placed piece reveals visible art; removed excess empty picture space and clarified the unpainted state.
+- Kept the original watercolor artwork and existing progress, sound, and comfort preferences.
+
+
 ## 3.1.1
 
 - Kept the Sound panel inside the viewport when the header wraps, with scrolling for short screens and larger text.

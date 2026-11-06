@@ -172,3 +172,15 @@ test('every soundtrack selection has a bundled CC0 record',async()=>{
  for(const track of playlist){const item=manifest.find(m=>m.file==='assets/audio/'+track.file);assert.ok(item,track.file);assert.equal(item.license,'CC0-1.0');assert.equal(item.attribution_required,false);}
  assert.equal(new Set(playlist.map(t=>t.file)).size,playlist.length);
 });
+
+test('compact map starts with the story, then suggests the next unfinished place',()=>{
+ const initial=trailMap(lessons,[],false,false,{});assert.match(initial,/class="atlas-preview" data-selected="-1"/);assert.match(initial,/data-map-visit href="#story-1"/);
+ const next=trailMap(lessons,[0,1],false,true,{});assert.match(next,/class="atlas-preview" data-selected="2"/);assert.match(next,/data-map-visit href="#level-3"/);
+ const finished=trailMap(lessons,Array.from({length:19},(_,i)=>i),true,true,{});assert.match(finished,/class="atlas-preview" data-selected="19"/);
+ for(let i=0;i<20;i++)assert.ok(next.includes('data-atlas-place="'+i+'"'));
+});
+test('wide project pictures reveal a visible slice with the first placed piece',()=>{
+ const first=craftPainting(0,1,3);assert.match(first,/clip-path:inset\(0 67% 0 0\)/);
+ assert.match(craftPainting(0,3,3),/clip-path:inset\(0 0% 0 0\)/);
+ assert.ok(craftPainting(0,0,3).includes('Our picture will fill with color.'));
+});

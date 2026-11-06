@@ -155,3 +155,51 @@ header{position:relative}
 header .audio-settings{position:static}
 header .audio-panel{top:100%;right:24px;left:auto;width:min(340px,calc(100vw - 32px));max-height:60dvh;overflow-y:auto;overscroll-behavior:contain}
 @media(max-width:650px){header .audio-panel{right:16px}}
+/* Small maps show the route; readable names and Visit controls live below it. */
+.hex-atlas{min-width:calc(1200px * var(--reading-scale,1));aspect-ratio:1300/980}
+.atlas-viewport{padding:8px}
+.hex-atlas :is(.trail-stop,.hex-story-start){width:calc(76px * var(--reading-scale,1))}
+.hex-atlas .hex-face{width:calc(76px * var(--reading-scale,1));height:calc(84px * var(--reading-scale,1))}
+.hex-atlas .hex-name{min-width:0;width:calc(108px * var(--reading-scale,1));max-width:none;font-size:calc(12px * var(--reading-scale,1))}
+.atlas-preview{display:none;padding:18px 20px;border:1px solid var(--line);border-radius:14px;background:var(--paper,#fffaf0);margin-top:14px}
+.atlas-preview h3{font-size:calc(25px * var(--reading-scale,1));line-height:1.35;margin:5px 0 16px}
+.atlas-preview small{font:14px/1.5 Arial,sans-serif;color:var(--muted)}
+.atlas-preview-actions{display:grid;grid-template-columns:48px minmax(0,1fr) 48px;gap:10px;align-items:stretch}
+.atlas-preview-actions :is(button,a){min-height:48px;display:grid;place-items:center;text-align:center;padding:10px;line-height:1.4}
+.atlas-overview .hex-atlas{min-width:0;width:100%}
+.atlas-overview .hex-atlas :is(.trail-stop,.hex-story-start){width:clamp(24px,5vw,54px)}
+.atlas-overview .hex-atlas .hex-face{width:100%;height:auto;aspect-ratio:1/1.1}
+.atlas-overview .hex-face b{font-size:clamp(12px,2vw,22px)}
+.atlas-overview :is(.hex-name,.hex-face small){display:none}
+.atlas-overview .atlas-selected .hex-face{outline:none;filter:drop-shadow(0 0 4px #795883);background:#e6d7ee!important}
+.atlas-overview+.atlas-preview{display:block}
+.atlas-overview-help{display:none}
+.atlas-overview~.atlas-help .atlas-overview-help{display:inline}
+.atlas-overview~.atlas-help .atlas-large-help{display:none}
+body[data-map-list=true] :is(.atlas-book-title,.atlas-preview){display:none!important}
+@media(max-width:700px){
+ .atlas-viewport:not(.big-map) .hex-atlas{min-width:0;width:100%}
+ .atlas-overview .hex-atlas :is(.trail-stop,.hex-story-start){width:clamp(24px,7vw,28px)}
+ .atlas-overview .hex-face b{font-size:12px}
+ .atlas-viewport.big-map{max-height:65svh}
+ .map-list .map-grid{grid-template-columns:1fr!important;gap:10px}
+ .map-list .place{min-height:84px;display:grid;grid-template-columns:40px minmax(0,1fr);column-gap:12px;padding:14px 16px}
+ .map-list .place :is(.number,b,small){grid-column:2;font-size:14px;line-height:1.5;margin:0;letter-spacing:0}
+ .map-list .place b{font-size:calc(18px * var(--reading-scale,1))}
+ .map-list .place .glyph{grid-column:1;grid-row:1/4;align-self:center;font-size:26px}
+}
+/* Reveal the picture itself, not empty space around a short or narrow object. */
+.painted-project-image{display:grid;place-items:center;height:auto;min-height:130px;padding:12px 0}
+.painted-project-image img{position:static;inset:auto;grid-area:1/1;max-width:100%;max-height:240px;width:auto;height:auto;min-width:0}
+.atlas-overview svg text{display:none}
+.project-sketch{opacity:.25;filter:grayscale(.4)}
+/* Apply compact geometry immediately during a phone resize, before JS events. */
+@media(max-width:700px){
+ .atlas-viewport:not(.big-map) .hex-atlas :is(.trail-stop,.hex-story-start){width:clamp(24px,7vw,28px)}
+ .atlas-viewport:not(.big-map) .hex-atlas .hex-face{width:100%;height:auto;aspect-ratio:1/1.1}
+ .atlas-viewport:not(.big-map) .hex-face b{font-size:12px}
+ .atlas-viewport:not(.big-map) :is(.hex-name,.hex-face small,svg text){display:none}
+ .atlas-viewport:not(.big-map)+.atlas-preview{display:block}
+ .atlas-viewport:not(.big-map)~.atlas-help .atlas-overview-help{display:inline}
+ .atlas-viewport:not(.big-map)~.atlas-help .atlas-large-help{display:none}
+}
