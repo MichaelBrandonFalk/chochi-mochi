@@ -1,5 +1,10 @@
 ## 3.0.0
 
+## 3.1.1
+
+- Kept the Sound panel inside the viewport when the header wraps, with scrolling for short screens and larger text.
+
+
 ## 3.1.0
 
 - Expanded the soundtrack from six to twelve pieces, alternating instruments and rhythms across about 34 minutes.

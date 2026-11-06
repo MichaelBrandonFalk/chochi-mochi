@@ -150,3 +150,8 @@ body[data-hide-art=true] .hunt-touch-layer{display:none}body[data-hide-art=true]
 .download-help{max-width:850px;padding:28px;background:#f3eee2;border:1px solid #d7cbb4;border-radius:14px}.download-help p{font-size:calc(17px * var(--reading-scale,1));line-height:1.8}
 body[data-contrast=true] :is(.download-card,.download-help){background:#fffdf4;border-color:#687960}
 @media(max-width:900px){.download-grid{grid-template-columns:1fr}.download-card{padding:22px}.download-help{padding:22px 18px}}
+/* Keep sound controls inside the page even when their header button wraps. */
+header{position:relative}
+header .audio-settings{position:static}
+header .audio-panel{top:100%;right:24px;left:auto;width:min(340px,calc(100vw - 32px));max-height:60dvh;overflow-y:auto;overscroll-behavior:contain}
+@media(max-width:650px){header .audio-panel{right:16px}}
