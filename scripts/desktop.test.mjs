@@ -32,11 +32,11 @@ test('only known HTTPS reference sites open outside the game',()=>{
 });
 test('portable editions select the USB folder while installed copies use user saves',()=>{
  const base={userData:'/user/data',packaged:true};
- assert.equal(saveLocation({...base,platform:'win32',executable:'/game/app.exe',portableDirectory:'/usb'}).directory,path.join('/usb','Chochi Mochi Data'));
- assert.equal(saveLocation({...base,platform:'linux',executable:'/tmp/mount/chochi-mochi',appImage:'/usb/Chochi.AppImage'}).directory,path.join('/usb','Chochi Mochi Data'));
+ assert.equal(saveLocation({...base,platform:'win32',executable:'E:/game/app.exe',portableDirectory:'E:/USB'}).directory,path.win32.join('E:/USB','Chochi Mochi Data'));
+ assert.equal(saveLocation({...base,platform:'linux',executable:'/tmp/mount/chochi-mochi',appImage:'/usb/Chochi.AppImage'}).directory,path.posix.join('/usb','Chochi Mochi Data'));
  assert.equal(saveLocation({...base,platform:'linux',executable:'/media/usb/game/chochi-mochi'}).portable,true);
  assert.equal(saveLocation({...base,platform:'linux',executable:'/opt/Chochi Mochi/chochi-mochi'}).portable,false);
- assert.equal(saveLocation({...base,platform:'darwin',executable:'/Volumes/USB/Chochi Mochi.app/Contents/MacOS/Chochi Mochi'}).directory,path.join('/Volumes/USB','Chochi Mochi Data'));
+ assert.equal(saveLocation({...base,platform:'darwin',executable:'/Volumes/USB/Chochi Mochi.app/Contents/MacOS/Chochi Mochi'}).directory,path.posix.join('/Volumes/USB','Chochi Mochi Data'));
  assert.equal(saveLocation({...base,platform:'darwin',executable:'/Applications/Chochi Mochi.app/Contents/MacOS/Chochi Mochi'}).portable,false);
 });
 test('download links are versioned and cover every produced desktop artifact',()=>{
