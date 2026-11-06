@@ -1,9 +1,10 @@
 {
-  "script": "game-71ed837614bf.js",
-  "scriptBytes": 262335,
-  "stylesheet": "game-0fbed891c070.css",
-  "stylesheetBytes": 82064,
+  "script": "game-9f0ace777f41.js",
+  "scriptBytes": 267262,
+  "stylesheet": "game-cce37382ae59.css",
+  "stylesheetBytes": 83187,
   "modules": [
+    "downloads.js",
     "postcard-images.js",
     "object-art.js",
     "storybook.js",
