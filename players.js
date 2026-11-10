@@ -15,7 +15,7 @@ export function initPlayers(saveCurrent){
  function paint(){
   const current=playerStore.active(),players=playerStore.list();
   dialog.innerHTML=`<div class="access-dialog-head"><h2 id="players-title">${stage==='list'?'Players':stage==='first'?'Start again?':'One last check'}</h2><button class="secondary" data-player-close>Done</button></div>${stage==='list'?`
-   <p>Each player has their own story and comfort settings. No password is needed. Names and progress stay ${window.chochiDesktop?'with this copy of the game':'in this browser'}.</p>
+   <p>Each player has their own story and comfort settings. No password is needed. Names and progress stay ${window.chochiDesktop?'in your local save location':'in this browser'}.</p>
    <p class="access-note">Playing as <strong>${esc(current.name)}</strong> · ${players.length} of ${maxPlayers} player spaces</p>
    <div class="player-list" aria-label="Choose a player">${players.map(p=>`<button class="player-card secondary" data-switch-player="${p.id}" ${p.id===playerStore.activeId?'aria-current="true"':''}><strong>${esc(p.name)}</strong><span>${playerStore.summary(p.id)} of 20 places shining${p.id===playerStore.activeId?' · Playing now':' · Switch to this player'}</span></button>`).join('')}</div>
    <form data-add-player><h3>Add a player</h3><label for="new-player-name">Name (you can leave this blank)</label><input id="new-player-name" name="name" maxlength="24" autocomplete="off" ${players.length>=maxPlayers?'disabled':''}><button class="primary" type="submit" ${players.length>=maxPlayers?'disabled':''}>Add player</button>${players.length>=maxPlayers?'<p class="access-note">All five spaces are in use. You can rename a player or restart their adventure below.</p>':''}</form>

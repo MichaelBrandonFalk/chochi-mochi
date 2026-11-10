@@ -184,3 +184,10 @@ test('wide project pictures reveal a visible slice with the first placed piece',
  assert.match(craftPainting(0,3,3),/clip-path:inset\(0 0% 0 0\)/);
  assert.ok(craftPainting(0,0,3).includes('Our picture will fill with color.'));
 });
+
+import {packedGiftIds,madeGiftMessage} from '../basket-art.js';
+test('finished projects enter the basket before chapter completion without delivering future letters',()=>{
+ const done=[],projects=[0];assert.deepEqual(packedGiftIds(done,projects),[0]);assert.deepEqual(done,[]);assert.deepEqual(receivedLetterIds(done,[]),[]);
+ assert.deepEqual(packedGiftIds([0,2],[2,1,19,-1,'3']),[0,1,2]);
+ assert.match(madeGiftMessage(0),/You made welcome flags\. They are now in your basket\./);assert.match(madeGiftMessage(18),/made a storybook\. It is now/);
+});

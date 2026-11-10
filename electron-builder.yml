@@ -20,8 +20,6 @@ mac:
   notarize: false
   artifactName: Chochi-Mochi-${version}-macOS-${arch}.${ext}
   target:
-    - target: zip
-      arch: [universal]
     - target: dmg
       arch: [universal]
 dmg:

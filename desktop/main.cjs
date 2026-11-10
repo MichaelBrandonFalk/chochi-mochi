@@ -6,43 +6,47 @@ const { execFileSync } = require('node:child_process');
 const { pathToFileURL } = require('node:url');
 const { ORIGIN, CSP, isGameURL, assetPath, isExternalLink, saveLocation, diskImageSource } = require('./policy.cjs');
 const { SaveStore } = require('./save-store.cjs');
+const { readMacLocation, writeMacLocation, portableSaveDirectory, openMacLocation, importSavedPlayers } = require('./mac-saves.cjs');
 protocol.registerSchemesAsPrivileged([{ scheme: 'chochi', privileges: { standard: true, secure: true, supportFetchAPI: true, corsEnabled: true, stream: true } }]);
 const selfTest = process.argv.includes('--self-test');
 const smokeDirectory = selfTest ? fs.mkdtempSync(path.join(os.tmpdir(), 'chochi-smoke-')) : null;
 if (selfTest) app.setPath('userData', path.join(smokeDirectory, 'runtime'));
 const hasLock = selfTest || app.requestSingleInstanceLock();
-let mainWindow, store, location, quitting = false;
+let mainWindow, store, location, quitting = false, changingLocation = false;
 if (!hasLock) app.quit();
 app.on('second-instance', () => { if (mainWindow) { if (mainWindow.isMinimized()) mainWindow.restore(); mainWindow.focus(); } });
 function external(url) { if (isExternalLink(url)) shell.openExternal(url).catch(() => {}); }
 function fail(error) {
   if (selfTest) { process.stderr.write('Desktop check failed: ' + error.message + '\n'); app.exit(1); return; }
-  dialog.showErrorBox('Chochi Mochi could not open', 'The game needs a writable place for its saved players. Copy the game to a writable folder or USB drive, then open it again.\n\nYour existing saved game has not been erased.\n\n' + error.message);
+  dialog.showErrorBox('Chochi Mochi could not open', 'The game could not open its saved players. Your existing saved files have not been erased.\n\nIf you chose a portable folder, check that the folder or drive is available.\n\n' + error.message);
   app.quit();
 }
 app.whenReady().then(async () => {
   if (!hasLock) return;
   try {
-    location = selfTest ? { directory: path.join(smokeDirectory, 'Chochi Mochi Data'), portable: true } : saveLocation({ platform: process.platform, executable: app.getPath('exe'), portableDirectory: process.env.PORTABLE_EXECUTABLE_DIR, appImage: process.env.APPIMAGE, userData: app.getPath('userData'), packaged: app.isPackaged });
-    if (!selfTest && app.isPackaged && process.platform === 'darwin') {
+    const userData = app.getPath('userData');
+    const macPortableDirectory = !selfTest && app.isPackaged && process.platform === 'darwin' ? readMacLocation(userData) : null;
+    if (macPortableDirectory && !fs.existsSync(macPortableDirectory)) {
+      const answer = await dialog.showMessageBox({ type: 'question', title: 'Portable saves are not available', message: 'Your portable save folder is not connected.', detail: 'You can reconnect it and reopen the game, or use the players saved on this Mac. The portable files will stay unchanged.', buttons: ['Use this Mac', 'Quit'], defaultId: 0, cancelId: 1 });
+      if (answer.response === 0) { writeMacLocation(userData, null); app.relaunch(); app.exit(0); } else app.quit();
+      return;
+    }
+    location = selfTest ? { directory: path.join(smokeDirectory, 'Chochi Mochi Data'), portable: true } : saveLocation({ platform: process.platform, executable: app.getPath('exe'), portableDirectory: process.env.PORTABLE_EXECUTABLE_DIR, appImage: process.env.APPIMAGE, userData, packaged: app.isPackaged, macPortableDirectory });
+    store = new SaveStore(location.directory);
+    // Preserve discoverable saves from earlier Mac copies without assuming USB use.
+    if (!selfTest && app.isPackaged && process.platform === 'darwin' && !location.portable && !fs.existsSync(store.file)) {
       const bundleParent = path.resolve(path.dirname(app.getPath('exe')), '../../..');
-      // Gatekeeper may isolate a first-open app from its original folder.
-      // Ask for the portable folder instead of changing any system protections.
-      if (bundleParent.includes('/AppTranslocation/')) {
-        const chosen = await dialog.showOpenDialog({ title: 'Choose your portable game folder', message: 'Choose the folder on your USB drive that holds Chochi Mochi. Your players will stay in Chochi Mochi Data inside that folder.', properties: ['openDirectory', 'dontAddToRecent'] });
-        if (chosen.canceled || !chosen.filePaths[0]) { app.quit(); return; }
-        location = { directory: path.join(chosen.filePaths[0], 'Chochi Mochi Data'), portable: true };
-      }
-      if (bundleParent.startsWith('/Volumes/')) {
+      let legacy = !bundleParent.includes('/AppTranslocation/') && path.basename(bundleParent) !== 'Applications' ? bundleParent : null;
+      if (legacy?.startsWith('/Volumes/')) {
         try {
           const plist = execFileSync('/usr/bin/hdiutil', ['info', '-plist'], { timeout: 5000 });
           const info = JSON.parse(execFileSync('/usr/bin/plutil', ['-convert', 'json', '-o', '-', '-'], { input: plist, timeout: 5000 }).toString());
-          const source = diskImageSource(info, bundleParent);
-          if (source) location = { directory: path.join(source, 'Chochi Mochi Data'), portable: true };
-        } catch { /* A normal writable USB folder still uses its original location. */ }
+          legacy = diskImageSource(info, bundleParent);
+        } catch { legacy = null; }
       }
+      const file = legacy && path.join(legacy, 'Chochi Mochi Data', 'saved-game.json');
+      if (file && fs.existsSync(file)) importSavedPlayers(file, store);
     }
-    store = new SaveStore(location.directory);
     const root = path.join(__dirname, '..', 'dist');
     protocol.handle('chochi', async request => {
       try {
@@ -60,6 +64,7 @@ app.whenReady().then(async () => {
     ses.webRequest.onBeforeRequest({ urls: ['http://*/*', 'https://*/*', 'ws://*/*', 'wss://*/*'] }, (details, callback) => { networkRequests.push(details.url); callback({ cancel: true }); });
     ipcMain.on('chochi:save', (event, action, key, value) => {
       try {
+        if (changingLocation) throw new Error('The game is reopening with the selected players.');
         if (!isGameURL(event.senderFrame?.url)) throw new Error('Unknown game window.');
         let result = null;
         if (action === 'get') result = store.getItem(key);
@@ -69,11 +74,42 @@ app.whenReady().then(async () => {
         event.returnValue = { ok: true, value: result };
       } catch (error) { event.returnValue = { ok: false, error: error.message }; }
     });
-    mainWindow = new BrowserWindow({ width: 1280, height: 850, minWidth: 700, minHeight: 600, title: 'Chochi Mochi', backgroundColor: '#faf8f2', show: !selfTest, autoHideMenuBar: process.platform !== 'darwin', webPreferences: { preload: path.join(__dirname, 'preload.cjs'), nodeIntegration: false, contextIsolation: true, sandbox: true, webSecurity: true, webviewTag: false } });
+    mainWindow = new BrowserWindow({ width: 1280, height: 850, minWidth: 700, minHeight: 600, title: 'Chochi Mochi · v' + app.getVersion(), backgroundColor: '#faf8f2', show: !selfTest, autoHideMenuBar: process.platform !== 'darwin', webPreferences: { preload: path.join(__dirname, 'preload.cjs'), nodeIntegration: false, contextIsolation: true, sandbox: true, webSecurity: true, webviewTag: false } });
+    app.setAboutPanelOptions({ applicationName: 'Chochi Mochi', applicationVersion: app.getVersion(), version: app.getVersion() });
+    mainWindow.webContents.on('page-title-updated', event => { event.preventDefault(); mainWindow.setTitle('Chochi Mochi · v' + app.getVersion()); });
     mainWindow.webContents.setWindowOpenHandler(({ url }) => { external(url); return { action: 'deny' }; });
     mainWindow.webContents.on('will-navigate', (event, url) => { if (!isGameURL(url)) { event.preventDefault(); external(url); } });
     mainWindow.webContents.on('will-attach-webview', event => event.preventDefault());
-    const fileMenu = { label: 'Game', submenu: [ { label: 'Show saved game folder', click: () => shell.openPath(location.directory) }, { type: 'separator' }, { role: 'quit' } ] };
+    const restart = () => { changingLocation = true; app.relaunch(); app.exit(0); };
+    const paintSaveMenu = () => { const menu = Menu.getApplicationMenu(); if (menu?.getMenuItemById('mac-save-local')) { menu.getMenuItemById('mac-save-local').checked = !location.portable; menu.getMenuItemById('mac-save-portable').checked = location.portable; } };
+    const changeMacLocation = async (directory, portable) => {
+      try {
+        if (path.resolve(directory) === path.resolve(location.directory)) return;
+        const hasPlayers = fs.existsSync(path.join(directory, 'saved-game.json'));
+        if (hasPlayers) {
+          const answer = await dialog.showMessageBox(mainWindow, { type: 'question', title: 'Open saved players', message: portable ? 'Open the players already in this portable folder?' : 'Open the players saved on this Mac?', detail: 'Your current players will stay in their current folder. Neither location will be overwritten.', buttons: ['Open these players', 'Cancel'], defaultId: 0, cancelId: 1 });
+          if (answer.response !== 0) return;
+        }
+        openMacLocation(directory, store.values);
+        writeMacLocation(userData, portable ? directory : null);
+        restart();
+      } catch (error) { dialog.showErrorBox('The save location did not change', error.message + '\n\nYour current saved players are still in their original location.'); } finally { paintSaveMenu(); }
+    };
+    const choosePortable = async () => {
+      const chosen = await dialog.showOpenDialog(mainWindow, { title: 'Use a portable save folder', message: 'Choose any folder on this Mac or an external drive. The game will keep Chochi Mochi Data here and reopen with those players.', properties: ['openDirectory', 'createDirectory', 'dontAddToRecent'] });
+      if (!chosen.canceled && chosen.filePaths[0]) await changeMacLocation(portableSaveDirectory(chosen.filePaths[0]), true);
+      paintSaveMenu();
+    };
+    const importPlayers = async () => {
+      const chosen = await dialog.showOpenDialog(mainWindow, { title: 'Import saved players', message: 'Choose saved-game.json from an older Chochi Mochi Data folder.', filters: [{ name: 'Saved players', extensions: ['json'] }], properties: ['openFile', 'dontAddToRecent'] });
+      if (chosen.canceled || !chosen.filePaths[0]) return;
+      const answer = await dialog.showMessageBox(mainWindow, { type: 'question', title: 'Import saved players', message: 'Use the players in this saved game?', detail: 'The game will back up the current players in the saved game folder before importing. The original file will stay unchanged. The game will then reopen.', buttons: ['Import and reopen', 'Cancel'], defaultId: 1, cancelId: 1 });
+      if (answer.response !== 0) return;
+      try { importSavedPlayers(chosen.filePaths[0], store); restart(); }
+      catch (error) { dialog.showErrorBox('The saved players were not imported', error.message + '\n\nYour previous saved game has not been erased.'); }
+    };
+    const macItems = process.platform === 'darwin' ? [{ label: 'Save location', submenu: [{ id: 'mac-save-local', label: 'On this Mac', type: 'radio', checked: !location.portable, click: () => changeMacLocation(path.join(userData, 'Saved game'), false) }, { id: 'mac-save-portable', label: 'Portable folder…', type: 'radio', checked: location.portable, click: choosePortable }] }, { label: 'Import saved players…', click: importPlayers }] : [];
+    const fileMenu = { label: 'Game', submenu: [...macItems, { label: 'Show saved game folder', click: () => shell.openPath(location.directory) }, { type: 'separator' }, { role: 'quit' }] };
     Menu.setApplicationMenu(Menu.buildFromTemplate([...(process.platform === 'darwin' ? [{ role: 'appMenu' }] : []), fileMenu, { role: 'editMenu' }, { label: 'View', submenu: [{ role: 'resetZoom' }, { role: 'zoomIn' }, { role: 'zoomOut' }, { role: 'togglefullscreen' }] }, { label: 'Help', submenu: [{ label: 'Download help', click: () => mainWindow.loadURL(ORIGIN + '/index.html#download') }, { label: 'Visit the website', click: () => external('https://michaelbrandonfalk.github.io/chochi-mochi/') }] }]));
     mainWindow.on('closed', () => { mainWindow = null; });
     await mainWindow.loadURL(ORIGIN + '/index.html#home');

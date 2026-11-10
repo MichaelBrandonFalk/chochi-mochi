@@ -36,15 +36,47 @@ test('portable editions select the USB folder while installed copies use user sa
  assert.equal(saveLocation({...base,platform:'linux',executable:'/tmp/mount/chochi-mochi',appImage:'/usb/Chochi.AppImage'}).directory,path.posix.join('/usb','Chochi Mochi Data'));
  assert.equal(saveLocation({...base,platform:'linux',executable:'/media/usb/game/chochi-mochi'}).portable,true);
  assert.equal(saveLocation({...base,platform:'linux',executable:'/opt/Chochi Mochi/chochi-mochi'}).portable,false);
- assert.equal(saveLocation({...base,platform:'darwin',executable:'/Volumes/USB/Chochi Mochi.app/Contents/MacOS/Chochi Mochi'}).directory,path.posix.join('/Volumes/USB','Chochi Mochi Data'));
+ for(const executable of ['/Applications/Chochi Mochi.app/Contents/MacOS/Chochi Mochi','/Users/test/Downloads/Chochi Mochi.app/Contents/MacOS/Chochi Mochi','/Volumes/Chochi Mochi/Chochi Mochi.app/Contents/MacOS/Chochi Mochi','/private/AppTranslocation/abc/d/Chochi Mochi.app/Contents/MacOS/Chochi Mochi'])assert.deepEqual(saveLocation({...base,platform:'darwin',executable}),{directory:'/user/data/Saved game',portable:false});
+ assert.deepEqual(saveLocation({...base,platform:'darwin',executable:'/Applications/Chochi Mochi.app/Contents/MacOS/Chochi Mochi',macPortableDirectory:'/portable/Chochi Mochi Data'}),{directory:'/portable/Chochi Mochi Data',portable:true});
  assert.equal(saveLocation({...base,platform:'darwin',executable:'/Applications/Chochi Mochi.app/Contents/MacOS/Chochi Mochi'}).portable,false);
 });
 test('download links are versioned and cover every produced desktop artifact',()=>{
- const pkg=JSON.parse(fs.readFileSync(new URL('../package.json',import.meta.url)));assert.equal(desktopVersion,pkg.version);assert.equal(Object.keys(desktopFiles).length,7);assert.equal(new Set(Object.values(desktopFiles)).size,7);
+ const pkg=JSON.parse(fs.readFileSync(new URL('../package.json',import.meta.url)));assert.equal(desktopVersion,pkg.version);assert.equal(Object.keys(desktopFiles).length,6);assert.equal(new Set(Object.values(desktopFiles)).size,6);
  for(const name of Object.values(desktopFiles)){assert.ok(name.includes(desktopVersion));assert.ok(assetURL(name).startsWith('https://github.com/MichaelBrandonFalk/chochi-mochi/releases/download/v'+pkg.version+'/'));}
 });
-test('Mac disk images keep portable saves beside the original DMG, not on its read-only mount',()=>{
+test('legacy Mac disk-image saves can be found without using the read-only mount',()=>{
  const {diskImageSource}=require('../desktop/policy.cjs');
  const info={images:[{'image-path':'/Volumes/USB/Games/Chochi.dmg','system-entities':[{'mount-point':'/Volumes/Chochi Mochi'}]}]};
  assert.equal(diskImageSource(info,'/Volumes/Chochi Mochi'),'/Volumes/USB/Games');assert.equal(diskImageSource(info,'/Volumes/Another disk'),null);assert.equal(diskImageSource({},'/Volumes/Chochi Mochi'),null);
+});
+
+const {readMacLocation,writeMacLocation,portableSaveDirectory,openMacLocation,importSavedPlayers}=require('../desktop/mac-saves.cjs');
+test('Mac portable saves are an explicit preference that can return to local saving',()=>temporary(root=>{
+ assert.equal(readMacLocation(root),null);const portable=portableSaveDirectory(path.join(root,'Travel'));
+ assert.equal(portableSaveDirectory(portable),portable);writeMacLocation(root,portable);assert.equal(readMacLocation(root),portable);
+ writeMacLocation(root,null);assert.equal(readMacLocation(root),null);assert.throws(()=>writeMacLocation(root,'relative/folder'));
+}));
+test('switching save locations copies into an empty folder and never overwrites its existing players',()=>temporary(root=>{
+ const source=new SaveStore(path.join(root,'Mac'));source.setItem('little-lights-v1','current');
+ const dest=openMacLocation(path.join(root,'Portable'),source.values);assert.equal(dest.getItem('little-lights-v1'),'current');
+ dest.setItem('little-lights-v1','portable');const before=fs.readFileSync(dest.file,'utf8');
+ assert.equal(openMacLocation(path.join(root,'Portable'),source.values).getItem('little-lights-v1'),'portable');
+ assert.equal(fs.readFileSync(dest.file,'utf8'),before);assert.equal(source.getItem('little-lights-v1'),'current');
+}));
+test('imported players preserve the source and back up the previous saved game',()=>temporary(root=>{
+ const source=new SaveStore(path.join(root,'Old'));source.setItem('little-lights-v1','older progress');const original=fs.readFileSync(source.file,'utf8');
+ const dest=new SaveStore(path.join(root,'Mac'));dest.setItem('little-lights-v1','current progress');
+ const backup=importSavedPlayers(source.file,dest);assert.equal(dest.getItem('little-lights-v1'),'older progress');
+ assert.equal(JSON.parse(fs.readFileSync(backup)).values['little-lights-v1'],'current progress');assert.equal(fs.readFileSync(source.file,'utf8'),original);
+ const before=fs.readFileSync(dest.file,'utf8');fs.writeFileSync(source.file,'broken');assert.throws(()=>importSavedPlayers(source.file,dest));assert.equal(fs.readFileSync(dest.file,'utf8'),before);
+ assert.equal(importSavedPlayers(dest.file,dest),null);
+}));
+test('a failed location-setting write keeps the previous location intact',()=>temporary(root=>{
+ writeMacLocation(root,null);const before=fs.readFileSync(path.join(root,'save-location.json'),'utf8'),rename=fs.renameSync;
+ try{fs.renameSync=()=>{throw Error('read-only');};assert.throws(()=>writeMacLocation(root,path.resolve(root,'Travel')),/read-only/);}finally{fs.renameSync=rename;}
+ assert.equal(fs.readFileSync(path.join(root,'save-location.json'),'utf8'),before);assert.deepEqual(fs.readdirSync(root),['save-location.json']);
+}));
+test('the Mac card offers one versioned DMG download',async()=>{
+ const {downloadMarkup}=await import('../downloads.js');const html=downloadMarkup();const card=html.split('<h2>Mac</h2>')[1].split('</article>')[0];
+ assert.equal((card.match(/<a /g)||[]).length,1);assert.ok(card.includes('.dmg'));assert.ok(card.includes('v'+desktopVersion));assert.ok(!html.toLowerCase().includes('zip'));
 });

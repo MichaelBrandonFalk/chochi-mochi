@@ -203,3 +203,13 @@ body[data-map-list=true] :is(.atlas-book-title,.atlas-preview){display:none!impo
  .atlas-viewport:not(.big-map)~.atlas-help .atlas-overview-help{display:inline}
  .atlas-viewport:not(.big-map)~.atlas-help .atlas-large-help{display:none}
 }
+.project-success-story{display:block;margin-top:10px}
+.worked-together button:disabled{cursor:default;opacity:.75;background:#eef1e7}
+.sort-current-card{border:1px solid var(--line);border-radius:14px;background:#fffdf5;padding:22px;margin:12px 0 16px;text-align:center}
+.sort-current-card h3{font-size:calc(23px * var(--reading-scale,1));line-height:1.5;margin:0}
+.sort-targets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0}
+.sort-targets button{min-height:58px;padding:14px;font-size:calc(17px * var(--reading-scale,1));line-height:1.5}
+.project-placed .craft-docks{margin-top:16px}.craft-status:focus{outline:3px solid var(--access-focus,#624480);outline-offset:5px}
+@media(max-width:480px){.sort-targets{grid-template-columns:1fr}}
+
+.craft-project [hidden]{display:none!important}

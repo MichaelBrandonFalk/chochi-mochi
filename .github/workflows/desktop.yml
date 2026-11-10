@@ -44,7 +44,6 @@ jobs:
           retention-days: 14
           path: |
             desktop-release/*.exe
-            desktop-release/*.zip
             desktop-release/*.dmg
             desktop-release/*.AppImage
             desktop-release/*.deb

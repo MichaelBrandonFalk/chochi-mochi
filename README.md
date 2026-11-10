@@ -1,6 +1,6 @@
 # Chochi Mochi: The Garden of Little Lights
 
-A peaceful, text-led browser adventure with a three-page opening and seven-page story chapters: 19 learning places and a five-part garden gathering with Glaloula. Original SVG artwork, early-reader prose, optional browser read-aloud, local progress, a keepsake book, and adult notes. No timers, penalties, trackers, accounts, runtime packages, or build dependencies.
+A peaceful, text-led browser adventure with a three-page opening and seven-page story chapters: 19 learning places and a five-part garden gathering with Glaloula. Original SVG artwork, early-reader prose, optional browser read-aloud, local progress, a keepsake book, and adult notes. No timers, penalties, trackers, or required accounts. The browser game runs as static files; the build uses the development dependencies in package.json.
 
 This independent educational adaptation introduces SPACE principles. It is not official SPACE treatment, endorsed by its developers, or clinically validated. Children do not need to play for their caregivers to use SPACE. See [research and curriculum notes](docs/RESEARCH.md).
 
@@ -83,4 +83,4 @@ Button now leads twenty painted finding walks, each with a story, three treasure
 
 ### Offline desktop editions
 
-Version 3 adds portable Windows, universal Mac, and Linux Mint downloads, plus installers. See [download and USB instructions](docs/DOWNLOADS.md) and [desktop build notes](docs/DESKTOP.md). Portable progress lives beside the game in Chochi Mochi Data; installed copies use per-user saves. Website and desktop profiles are separate.
+Version 3 adds portable Windows, universal Mac, and Linux Mint downloads, plus installers. See [download and USB instructions](docs/DOWNLOADS.md) and [desktop build notes](docs/DESKTOP.md). Windows and Linux portable progress lives beside the game in Chochi Mochi Data; installed copies use per-user saves. Mac offers one versioned DMG, saves on the Mac by default, and has an optional portable save location in the Game menu. Website and desktop profiles are separate.

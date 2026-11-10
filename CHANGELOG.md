@@ -1,4 +1,11 @@
-## 3.0.0
+## 3.3.0
+
+- Offer one versioned Mac DMG with normal local saving, optional portable saving, and backed-up imports of older players.
+- Show the native version in the window title and version numbers on every download.
+- Put completed gifts in the basket automatically, while keeping letters at chapter endings.
+- Make Chochi’s help visibly complete projects, then hide the finished helper control.
+- Replace two-stage sorting with one card and directly named choices; keep gentle retries and saved work.
+- Correct Nell’s pronouns and parent role, gift articles/plurals, and remaining-place wording.
 
 ## 3.2.0
 
@@ -21,6 +28,8 @@
 - Remembered each player’s music position, softened routine feedback, and prevented interface effects from overlapping musical games.
 - Kept explicit quiet settings, narration ducking, tune pauses, and visual music controls.
 
+
+## 3.0.0
 
 - Bundle the complete game for offline Windows, Mac, and Linux Mint play.
 - Add portable USB save files shared across platform editions, native installers, and a universal Intel/Apple-silicon Mac app.
