@@ -17,11 +17,11 @@ The first release has no verified publisher signature. Windows may ask whether y
 
 macOS 13 or newer. The universal app supports Intel and Apple silicon.
 
-- **Disk image (.dmg):** recommended for USB play. Put the DMG on the USB drive, open it, then open Chochi Mochi inside. The app detects the original disk-image file and saves Chochi Mochi Data beside that DMG, rather than on its read-only mounted volume. This also keeps the app’s internal links intact on USB formats such as exFAT.
-- **Installation:** drag Chochi Mochi from the disk image into Applications, then open that installed copy. Its progress stays on the Mac.
-- **ZIP alternative:** extract the app into a normal Mac folder or copy it to Applications. For direct USB play on exFAT or FAT drives, use the DMG instead of extracting the app bundle there.
+Download the single versioned **DMG**. Open it, drag Chochi Mochi into Applications, then open the app from Applications. Players save on this Mac by default. No save-folder chooser appears on a normal first launch.
 
-If macOS opens the app in an isolated first-open location, the game asks you to choose the folder holding the DMG. Choose that folder on your USB drive so your players stay with it. It does not change macOS security settings.
+Portable saving is optional: choose **Game > Save location > Portable folder…**, then choose any writable folder on the Mac or an external drive. The game creates Chochi Mochi Data there and reopens. An empty location receives a copy of your current players. If it already has players, the game asks before opening them and leaves both locations intact. Choose **On this Mac** to return to local saving.
+
+For an older copy, the app can recover an adjacent data folder when its original location is available. If older players do not appear, choose **Game > Import saved players…** and select saved-game.json from the old Chochi Mochi Data folder. Importing requires confirmation and backs up the current save before replacing it. The original file stays unchanged.
 
 These builds are locally/ad-hoc signed for execution but do not have an Apple Developer ID or Apple notarization. macOS may ask for approval before opening them. Use the normal system approval controls for a trusted download. The game does not change Gatekeeper settings. See [Apple’s opening guidance](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unknown-developer-mh40616/mac).
 
@@ -43,7 +43,7 @@ Portable editions store the five player slots, story progress, sound, and comfor
 
 Keep that folder with the game when copying or updating it. Close the game before copying saves or unplugging the USB drive. The JSON format is the same on Windows, Mac, and Linux. To move between different platform folders, copy this complete data folder beside the new portable edition before opening it.
 
-Single-file portable copies placed in the same folder can share that data folder: the Windows portable EXE, Mac DMG, and Linux AppImage. Installed editions instead keep their saves in the normal per-user application-data location. The Game menu can open the active saved-game folder.
+Windows portable EXEs and Linux AppImages placed in the same folder can share that data folder. On Mac, select that folder through Game > Save location > Portable folder. The Mac app and installed Windows/Linux editions use per-user saves by default. The Game menu can open the active saved-game folder.
 
 Website progress and desktop progress are separate. Downloading the app does not automatically copy browser profiles. Temporary runtime files and caches may use the computer; portable story progress is kept in the data folder.
 
