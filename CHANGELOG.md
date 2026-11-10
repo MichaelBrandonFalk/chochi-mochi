@@ -1,3 +1,11 @@
+## 3.3.1
+
+- Proofread all chapter stories, lessons, replies, letters, projects, outings, and interface copy.
+- Keep Nell and Kit in their parent roles in older activities and keepsake summaries.
+- Clarify awkward choices, the ribbon-pocket letter, and the question about Brin’s own feelings.
+- Fix generated possessive phrases in finding replies and postcard memories.
+- Make the final arrival fit either ride home and keep garden-save wording accurate in the desktop game.
+
 ## 3.3.0
 
 - Offer one versioned Mac DMG with normal local saving, optional portable saving, and backed-up imports of older players.

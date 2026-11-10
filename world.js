@@ -9,7 +9,7 @@ export const treasures = [
  ['Seed packet','Sol trusted his son to cope.'],
  ['Two lanterns','Luma put care and trust together.'],
  ['Apple stamp','Ada planned her own actions.'],
- ['Green ribbon','Kit’s dad kept useful help while changing one habit.'],
+ ['Green ribbon','Kit kept useful help while changing one habit.'],
  ['Pond paper','Bea noticed her own pattern without blame.'],
  ['Sun pebble','Tansy chose one small step.'],
  ['Mira’s map','Mira wrote down what the adult would do and when.'],
@@ -17,7 +17,7 @@ export const treasures = [
  ['Wave stamp','Ori kept a warm, steady pace.'],
  ['Flower drawing','Alba knew a step could count while worry stayed.'],
  ['Tea cup','Brin paused before choosing her words.'],
- ['Music note','Nell’s dad offered trust without a perfect promise.'],
+ ['Music note','Nell offered trust without a perfect promise.'],
  ['Oak drawing','Fenn’s team showed how adults lead care.'],
  ['Pressed petal','The badger noticed small tries.'],
  ['Star stamp','Linn left room to review and learn again.']

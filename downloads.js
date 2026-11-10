@@ -1,4 +1,4 @@
-export const desktopVersion='3.3.0';
+export const desktopVersion='3.3.1';
 export const releaseURL='https://github.com/MichaelBrandonFalk/chochi-mochi/releases/tag/v'+desktopVersion;
 export const assetURL=name=>'https://github.com/MichaelBrandonFalk/chochi-mochi/releases/download/v'+desktopVersion+'/'+name;
 export const desktopFiles={

@@ -1,5 +1,5 @@
 import {giftSrc,objectSrc,giftSlots} from './object-art.js';
-export const basketGifts=['Welcome flags','Picnic cloth','Song page','Cup card','Flower pot','Two lanterns','Helper’s list','Ribbon path','Plan note','Painted pebble','Plan card','Garden invitation','Path marker','Flower picture','Pause card','Garden song','Helper cards','Small steps picture','Our storybook'];
+export const basketGifts=['Welcome flags','Picnic cloth','Song page','Cup card','Flower pot','Two lanterns','Helper’s list','Ribbon path','Plan note','Painted pebble','Plan card','Garden invitation','Path marker','Flower picture','Pause card','Garden song','Helper cards','Picture of small steps','Our storybook'];
 export function basketGiftName(i,choices={}){if(i===1)return choices[1]===1?'Mint picnic cloth':choices[1]===0?'Lilac picnic cloth':basketGifts[i];if(i===4)return choices[4]===1?'Pink clover pot':choices[4]===0?'Moon daisy pot':basketGifts[i];if(i===5)return choices[5]===1?'Leaf lanterns':choices[5]===0?'Star lanterns':basketGifts[i];if(i===9)return choices[9]===1?'Dragon pebble':choices[9]===0?'Sun pebble':basketGifts[i];return basketGifts[i];}
 export function basketPainting(done=[],choices={},selected=-1,received=[]){
  const packed=[...new Set(done.filter(n=>Number.isInteger(n)&&n>=0&&n<19))].sort((a,b)=>a-b),slots=giftSlots(packed.length);

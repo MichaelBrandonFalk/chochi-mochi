@@ -34,7 +34,7 @@ export function huntObjects(level,c,g){
   const extras=bonus.filter(([slug])=>!hunt.gifts.some(i=>giftSrc(i,c.storyChoices)===objectSrc(slug)));
   const src=gift===null?objectSrc(extras[bonusIndex][0]):giftSrc(gift,c.storyChoices),name=gift===null?extras[bonusIndex][1]:basketGiftName(gift,c.storyChoices).toLowerCase();
   const a=anchors[(slot+shift)%6],dx=((c.seed+slot*7+round*11)%19)-9,dy=((level*3+slot*5)%15)-7;
-  return {slot,target:target>=0,src,slug:src.split('/').pop().replace('.webp',''),name,reply:gift===null?extras[bonusIndex][2]:`“The ${name}!” says Button. “That will be lovely for ${level===19?'our garden afternoon':'our little picture'}.”`,x:a.x+dx,y:a.y+dy,place:a.place,turn:(slot*7+level*3)%17-8};
+  return {slot,target:target>=0,src,slug:src.split('/').pop().replace('.webp',''),name,reply:gift===null?extras[bonusIndex][2]:`“${name.startsWith('our ')?'Our '+name.slice(4):'The '+name}!” says Button. “That will be lovely for ${level===19?'our garden afternoon':'our little picture'}.”`,x:a.x+dx,y:a.y+dy,place:a.place,turn:(slot*7+level*3)%17-8};
  });
 }
 export function huntChecklist(level,c,g){const objects=huntObjects(level,c,g);return `<ul class="hunt-list" aria-label="Three treasures to find">${objects.filter(o=>o.target).map(o=>`<li class="${g.found.includes(o.slot)?'found':''}"><img src="${o.src}" alt="" width="58" height="48"><span>${o.name}</span><strong>${g.found.includes(o.slot)?'✓ Found':'To find'}</strong></li>`).join('')}</ul>`;}

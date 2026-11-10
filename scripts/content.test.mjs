@@ -191,3 +191,12 @@ test('finished projects enter the basket before chapter completion without deliv
  assert.deepEqual(packedGiftIds([0,2],[2,1,19,-1,'3']),[0,1,2]);
  assert.match(madeGiftMessage(0),/You made welcome flags\. They are now in your basket\./);assert.match(madeGiftMessage(18),/made a storybook\. It is now/);
 });
+
+
+test('generated finding replies keep possessive gift names without doubled articles',()=>{
+ for(let level=0;level<20;level++)for(const variant of [0,1]){
+  const choices=Object.fromEntries(Array.from({length:19},(_,i)=>[i,variant]));choices[0]=0;
+  const config=gameConfig(level,choices,nativeTool(level,choices));
+  for(const object of huntObjects(level,config,newGame(config)))assert.doesNotMatch(object.reply,/\b(?:the our|our our|a our)\b/i);
+ }
+});
