@@ -1,6 +1,6 @@
 # Research and curriculum notes
 
-Researched November 2, 2026. This is an original educational adaptation, not a reproduction of a SPACE manual, a treatment protocol, or an endorsed SPACE product. No clinical review or clinical efficacy testing of the game has occurred.
+Researched November 2, 2026; official program and author overview rechecked November 11, 2026. This is an original educational adaptation, not a reproduction of a SPACE manual, a treatment protocol, or an endorsed SPACE product. No clinical review or clinical efficacy testing of the game has occurred.
 
 ## Primary and authoritative sources
 
@@ -24,7 +24,7 @@ The 19 lessons are small teaching units chosen for the story, not official SPACE
 | 8 | Ribbon Bridge | Recognize accommodation versus supportive help |
 | 9 | Pattern Pond | Observe caregiver accommodation patterns |
 | 10 | One Pebble Path | Select one manageable target |
-| 11 | Mapmaker’s Nook | Define a specific caregiver action and timing |
+| 11 | Mapmaker’s Nook | Define timing, a specific caregiver change, and support retained |
 | 12 | Letter Tree | Announce changes in advance |
 | 13 | Steady Stream | Warm, consistent implementation |
 | 14 | Cloud Garden | Do not equate distress with failure |
@@ -42,7 +42,7 @@ The 19 lessons are small teaching units chosen for the story, not official SPACE
 - Keep appropriate medical, disability, sensory, developmental, and safety supports. Not all assistance is anxiety accommodation.
 - Individual plans, pace, and difficult reactions need clinical judgment. A caregiver’s warm consistency is not permission for coercion or ignoring needs.
 - Simple prose, short paragraphs, and concrete fantasy examples target roughly age seven. No formal reading-age certification is claimed. Adult notes are intentionally more advanced.
-- The final review reuses the 19 lesson choices as a gentle knowledge-retrieval exercise. It is not a standardized or clinical exam.
+- The five-part final gathering applies the 19 ideas through new fictional situations. It is not a standardized or clinical exam.
 - No copied artwork, logos, questionnaires, proprietary manual text, or treatment worksheets are included.
 
 ## Expanded story edition (1.1.0)
@@ -65,3 +65,12 @@ New fictional teacher memories and Glaloula’s letters connect the principles t
 ### Version 2 game design
 
 The garden art afternoon, creative forks, hexagon route, craft projects, and five-part finale are original game design, not clinical SPACE session activities. All 19 ideas remain represented in the finale (see `partyActs.ideas` in `party.js`). The fictional caregiver Fern leads planning with a trained helper; Chochi and Mochi practice friendship. Needed access and care remain in place. Progress and decorative brightness mark learning and story completion, not Glaloula’s anxiety or treatment outcome. Creative choices change fictional details and never ask for a player’s own mental-health history.
+
+
+## Curriculum expansion (3.4.0)
+
+The parent-only path, Learn with Aunt Fern, is available before the child prologue and independently of all story completion. Nineteen original notes follow one fictional art-time example through support, observation, target selection, a detailed adult plan, advance announcement, implementation, preparation for reactions, and review. These are topics, not nineteen clinical sessions. Sources 1–2 support the parent-focused sequence, acceptance plus confidence, detailed plans, and preparation for difficult reactions. Source 3 supports the treatment background, not the game’s efficacy.
+
+The child story adds a four-part accommodation loop, paired access-versus-taking-over examples, and a precise three-part plan. New-story practice revisits ideas at levels 6, 8, 10, 11, 13, 14, 16, and 19. The finale retains all nineteen ideas and five acts; its seven-card planning activity now unfolds in three small groups. A response need not produce agreement or calm to be supportive. Access and genuine new needs still require attention.
+
+The early-reader explanations, low table and ribbon examples, Fern’s plan, review prompts, and practice alternatives are original educational design. They are not copied or validated SPACE instruments. No family information is requested or recorded by the parent notes or mixed practice. Read-aloud uses the existing browser speech option. A SPACE-trained licensed clinician should review any proposed clinical use; this implementation has not received that independent review.
