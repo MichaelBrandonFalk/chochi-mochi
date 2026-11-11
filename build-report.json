@@ -1,9 +1,10 @@
 {
-  "script": "game-d24e9ae3ec62.js",
-  "scriptBytes": 274438,
+  "script": "game-d8ab2f4353b7.js",
+  "scriptBytes": 275048,
   "stylesheet": "game-afcc7369acfe.css",
   "stylesheetBytes": 87999,
   "modules": [
+    "reading-route.js",
     "atlas-controls.js",
     "downloads.js",
     "postcard-images.js",
