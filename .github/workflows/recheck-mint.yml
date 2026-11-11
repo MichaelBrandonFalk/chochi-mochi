@@ -1,0 +1,60 @@
+name: Recheck exact Mint installer
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: Original desktop build run ID
+        required: true
+        type: string
+      tag:
+        description: Immutable release tag for that run
+        required: true
+        type: string
+permissions:
+  contents: read
+  actions: read
+jobs:
+  recheck-mint:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Verify source and native build provenance
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          BUILD_RUN: ${{ inputs.run_id }}
+          RELEASE_TAG: ${{ inputs.tag }}
+        run: |
+          [[ "$BUILD_RUN" =~ ^[0-9]+$ ]]
+          [[ "$RELEASE_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]
+          gh api "repos/$GH_REPO/actions/runs/$BUILD_RUN" > original-run.json
+          test "$(jq -r .name original-run.json)" = 'Build offline desktop games'
+          test "$(jq -r .head_branch original-run.json)" = "$RELEASE_TAG"
+          test "$(jq -r .head_sha original-run.json)" = "$(gh api "repos/$GH_REPO/git/ref/tags/$RELEASE_TAG" --jq .object.sha)"
+          gh api --paginate "repos/$GH_REPO/actions/runs/$BUILD_RUN/jobs?filter=latest" --jq '.jobs[] | select(.name | startswith("desktop (")) | .conclusion' > native-results.txt
+          test "$(wc -l < native-results.txt)" -eq 3
+          test "$(sort -u native-results.txt)" = success
+      - uses: actions/download-artifact@v4
+        with:
+          name: desktop-linux
+          path: packages
+          run-id: ${{ inputs.run_id }}
+          github-token: ${{ github.token }}
+      - name: Install with standard signed Ubuntu repositories
+        env:
+          RELEASE_TAG: ${{ inputs.tag }}
+        run: |
+          test "$(dpkg-deb -f packages/*.deb Version)" = "${RELEASE_TAG#v}"
+          mkdir /tmp/chochi-empty-sources
+          cat > /tmp/chochi-ubuntu.list <<'SOURCES'
+          deb [signed-by=/usr/share/keyrings/ubuntu-archive-keyring.gpg] https://archive.ubuntu.com/ubuntu noble main universe restricted multiverse
+          deb [signed-by=/usr/share/keyrings/ubuntu-archive-keyring.gpg] https://archive.ubuntu.com/ubuntu noble-updates main universe restricted multiverse
+          deb [signed-by=/usr/share/keyrings/ubuntu-archive-keyring.gpg] https://security.ubuntu.com/ubuntu noble-security main universe restricted multiverse
+          SOURCES
+          options=(-o Dir::Etc::sourcelist=/tmp/chochi-ubuntu.list -o Dir::Etc::sourceparts=/tmp/chochi-empty-sources -o Acquire::Retries=1 -o Acquire::http::Timeout=20 -o Acquire::https::Timeout=20)
+          sudo apt-get "${options[@]}" -o APT::Update::Error-Mode=any update
+          sudo apt-get "${options[@]}" install -y ./packages/*.deb
+      - name: Check the exact installed offline game
+        run: |
+          sha256sum packages/*.deb
+          xvfb-run -a chochi-mochi --self-test
