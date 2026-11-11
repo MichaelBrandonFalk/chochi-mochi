@@ -213,3 +213,21 @@ body[data-map-list=true] :is(.atlas-book-title,.atlas-preview){display:none!impo
 @media(max-width:480px){.sort-targets{grid-template-columns:1fr}}
 
 .craft-project [hidden]{display:none!important}
+
+/* Quiet, readable spaces for optional adult learning and new-story practice. */
+.parent-guide{max-width:880px;margin-inline:auto}
+.parent-guide h1,.parent-guide h2,.parent-guide h3,.care-cycle h3,.project-round h2{overflow-wrap:anywhere;line-height:1.4}
+.parent-note-list{padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.parent-note-list a{display:flex;flex-direction:column;gap:8px;height:100%;padding:18px;border:1px solid var(--line);border-radius:14px;text-decoration:none;background:#f3f0e9}
+.parent-note-list small{font-family:Arial,sans-serif;font-size:calc(14px * var(--reading-scale,1))}
+.parent-note-list strong{font-weight:normal;font-size:calc(21px * var(--reading-scale,1));line-height:1.5}
+.parent-question,.care-cycle,.project-round{padding:20px;border:1px solid var(--line);border-radius:16px;background:#eef1e9;margin-block:24px}
+.parent-question h2,.project-round h2{margin-top:0}
+.care-cycle ol{padding-left:26px}.care-cycle li{padding:8px 4px;margin-bottom:14px}.care-cycle h3{font-size:calc(22px * var(--reading-scale,1));margin:0 0 8px}.care-cycle p{line-height:1.75}
+.support-pairs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.support-pairs section{padding:16px;background:#faf8f2;border-radius:12px}
+.mixed-review{margin-block:28px}.review-story{padding-block:20px;border-bottom:1px solid var(--line)}
+.review-story h3{font-size:calc(25px * var(--reading-scale,1));line-height:1.5}
+.review-feedback:empty{display:none}.review-feedback{padding:18px;background:#eef1e9;border-radius:12px;line-height:1.75}
+.project-round .micro{margin-top:0}.project-round h2{margin-bottom:0;font-size:calc(23px * var(--reading-scale,1))}
+@media(max-width:600px){.parent-note-list,.support-pairs{grid-template-columns:1fr}.parent-question,.care-cycle,.project-round{padding:16px}}

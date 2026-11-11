@@ -1,5 +1,14 @@
 ## 3.3.3
 
+## 3.4.0 · Clearer teaching and Aunt Fern’s notes
+
+- Add nineteen optional parent notes following one connected fictional caregiver example. Read every note independently of child progress.
+- Explain the accommodation loop and distinguish a taking-over habit from access, sensory, medical, developmental, and safety support.
+- Make the example adult plan observable: when, what changes, and what needed help stays. Show continued warmth when agreement or calm does not follow.
+- Add optional new-story practice at eight places, including paired access and reassurance examples. Use more plausible alternatives with explanatory retries and no score.
+- Divide the finale’s seven planning notes into three automatically advancing groups. Preserve existing boards, helpers, gifts, letters, and player saves.
+- Keep independent educational status explicit. These changes are source-informed editorial work, not clinical review or validation.
+
 - Preserve the current reading page when players preview the finale or homeward ride before finishing the journey.
 - Recover older unavailable bookmarks to the next unfinished chapter.
 - Make the early-finale recap say the garden visit is still ahead.

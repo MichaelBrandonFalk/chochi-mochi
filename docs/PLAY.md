@@ -39,3 +39,12 @@ Restart from scratch names the current player and asks twice, including a final 
 New players start with music and effects enabled after their first tap or key press, subject to browser playback rules. Sound and Comfort & Access let you change volume, stop sound, or skip to the next of twelve music tracks. Saved quiet choices are respected.
 
 Comfort & Access offers larger text, spacing, a plain font, stronger contrast, fewer pictures, reduced motion, larger controls, a list map, and optional read-aloud. Take a break stops sound and saves your place. Finding walks also have text controls, and songs have a visual beat. These choices ask for preferences, not a diagnosis.
+
+
+## Learn with Aunt Fern
+
+The home page and About the game link to nineteen optional notes for grown-ups. They follow Fern’s fictional learning with a trained clinician. All notes are available without playing the opening or completing any child chapter. Visiting them does not change Continue our story. Each chapter’s note for grown-ups links to its related parent note. Thinking prompts request no typed response and save nothing.
+
+At eight Remember pages, Try the idea in a new story offers optional practice. Both answers have explanations, and either can be tried again. There are no scores or progress requirements.
+
+In the third part of the final gathering, Fern’s planning cards appear in three small groups. Completing a group shows the next one automatically. Earlier pieces remain available under See the pieces we used. Chochi’s help can finish the whole activity at any point. Existing partially completed boards open at their first unfinished group.
