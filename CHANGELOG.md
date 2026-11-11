@@ -1,3 +1,13 @@
+## 3.3.2
+
+- Keep chapter navigation, Back, and read-aloud on goodbye pages; use Say goodbye for the final chapter step.
+- Restore keyboard focus after placing a project card and reset focus and scrolling between final scenes.
+- Show each finale result once and use review-specific replay wording.
+- Match garden headings and accessible labels to the chosen gift artwork.
+- Keep the finale basket count tied to earned gifts, and leave the companion undecided before the player chooses.
+- Clarify mirror-reply wording, the storybook mouse, the painted pebble ending, and the recap.
+- Update the play guide for automatic gifts, twelve music tracks, current controls, and desktop saves.
+
 ## 3.3.1
 
 - Proofread all chapter stories, lessons, replies, letters, projects, outings, and interface copy.

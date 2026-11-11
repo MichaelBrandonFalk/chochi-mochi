@@ -8,7 +8,7 @@ import {opening,chapters} from '../chapters.js';
 test('every chapter teaches through a worked scene before practice',()=>{assert.equal(opening.length,3);assert.equal(chapters.length,lessons.length);for(const c of chapters){assert.ok(c.arrival.length>=2);assert.ok(c.explore.length>80);assert.ok(c.teach.length>=3);assert.ok(c.practice.length>=2);assert.ok(c.ending.length>80);const words=[...c.arrival,c.explore,...c.teach,...c.practice,c.ending].join(' ').split(/\s+/).length;assert.ok(words>=190,`Chapter too brief: ${words}`);}});
 import { activities,finalChallenges } from '../activities.js';
 test('practice and final review cover every lesson with valid choices',()=>{assert.equal(activities.length,19);assert.equal(finalChallenges.length,19);for(const a of activities){assert.ok(['pick','both','order'].includes(a.kind));assert.ok(a.prompt&&a.reply);if(a.kind==='pick')assert.ok(a.options[a.answer]);else assert.ok(a.options.length>=2);}for(const c of finalChallenges){assert.ok(c.story&&c.why);assert.ok(c.choices[c.answer]);assert.ok(!lessons.some(l=>l.question===c.question));}});
-import {treasures,gatherings,practicePicture,trailMap} from '../world.js';
+import {treasures,gatherings,practicePicture,trailMap,giftGarden} from '../world.js';
 test('world content covers each place and the final story scenes in order',()=>{assert.equal(treasures.length,lessons.length);assert.deepEqual(gatherings.map(g=>g.at),[0,6,13,17]);for(const g of gatherings)assert.ok(g.text.length>=3&&g.next);const map=trailMap(lessons,[],false);assert.equal((map.match(/class="trail-stop /g)||[]).length,20);assert.ok(practicePicture(5,0,2).includes('0 of 2 lanterns lit'));assert.ok(practicePicture(5,2,2).includes('2 of 2 lanterns lit'));});
 import {learning,letters} from '../learning.js';
 test('every chapter has worked reply outcomes, a reason to explain, and a distinct transfer situation',()=>{assert.equal(learning.length,19);assert.deepEqual(Object.keys(letters).map(Number),[0,4,9,14,18]);for(const d of learning){assert.ok(d.stake&&d.because&&d.scene&&d.model);assert.equal(d.replies.length,2);for(const r of d.replies)assert.ok(r.say&&r.result&&r.reason);assert.ok(d.reasons[d.right]);assert.ok(d.transfer.choices[d.transfer.answer]);assert.ok(!lessons.some(l=>l.story===d.transfer.story));}});
@@ -199,4 +199,15 @@ test('generated finding replies keep possessive gift names without doubled artic
   const config=gameConfig(level,choices,nativeTool(level,choices));
   for(const object of huntObjects(level,config,newGame(config)))assert.doesNotMatch(object.reply,/\b(?:the our|our our|a our)\b/i);
  }
+});
+
+
+test('garden gift labels follow the player’s chosen art rather than old keepsake names',()=>{
+ const garden=giftGarden([0,5,9],9,{5:1,9:1});
+ for(const name of ['Welcome flags','Leaf lanterns','Dragon pebble'])assert.ok(garden.includes('Read about '+name));
+ assert.ok(!garden.includes('Read about Sun pebble'));
+});
+test('garden plans leave the companion undecided until the player chooses',()=>{
+ const waiting=picnicPainting({});assert.ok(waiting.includes('A place for a travelling friend'));assert.ok(!waiting.includes('Button the snail'));
+ assert.ok(picnicPainting({0:0}).includes('Button the snail'));assert.ok(picnicPainting({0:1}).includes('Pipkin the robin'));
 });
