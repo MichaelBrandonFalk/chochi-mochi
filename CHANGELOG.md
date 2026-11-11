@@ -1,3 +1,11 @@
+## 3.3.3
+
+- Preserve the current reading page when players preview the finale or homeward ride before finishing the journey.
+- Recover older unavailable bookmarks to the next unfinished chapter.
+- Make the early-finale recap say the garden visit is still ahead.
+- Clarify the two-strip mirror reply and the badger’s outing link wording.
+- Use the already-verified standard signed Ubuntu repository setup for the Mint installation check.
+
 ## 3.3.2
 
 - Keep chapter navigation, Back, and read-aloud on goodbye pages; use Say goodbye for the final chapter step.

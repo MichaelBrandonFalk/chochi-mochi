@@ -211,3 +211,16 @@ test('garden plans leave the companion undecided until the player chooses',()=>{
  const waiting=picnicPainting({});assert.ok(waiting.includes('A place for a travelling friend'));assert.ok(!waiting.includes('Button the snail'));
  assert.ok(picnicPainting({0:0}).includes('Button the snail'));assert.ok(picnicPainting({0:1}).includes('Pipkin the robin'));
 });
+
+
+import {readingBookmark} from '../reading-route.js';
+test('unavailable ending previews cannot replace a resumable reading page',()=>{
+ let bookmark=readingBookmark('level-3-scene-3',[]);
+ for(const preview of ['level-20','level-20-scene-1','homeward'])bookmark=readingBookmark(preview,[])||bookmark;
+ assert.equal(bookmark,'level-3-scene-3');
+ const complete=Array.from({length:19},(_,i)=>i);
+ assert.equal(readingBookmark('level-20',complete),'level-20');assert.equal(readingBookmark('homeward',complete),'homeward');
+ assert.equal(readingBookmark('homeward',Array(19).fill(0)),null);
+ for(const route of ['level-0','level-21','outing-21','outing-2-scene-3','story-4',null])assert.equal(readingBookmark(route,complete),null);
+ for(const route of ['story-1','level-1','level-19-scene-7','outing-20'])assert.equal(readingBookmark(route,[]),route);
+});
