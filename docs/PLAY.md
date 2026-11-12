@@ -48,3 +48,6 @@ The home page and About the game link to nineteen optional notes for grown-ups. 
 At eight Remember pages, Try the idea in a new story offers optional practice. Both answers have explanations, and either can be tried again. There are no scores or progress requirements.
 
 In the third part of the final gathering, Fern’s planning cards appear in three small groups. Completing a group shows the next one automatically. Earlier pieces remain available under See the pieces we used. Chochi’s help can finish the whole activity at any point. Existing partially completed boards open at their first unfinished group.
+
+
+Version 3.4.1 removes the outing memory and shape-shelf controls. Existing postcard pictures remain available. Next-stop dialogue reflects the actual previous story choice. It names a basket gift only if its project has been made, and saved songs or finding pictures use the correct activity name.
