@@ -1,5 +1,13 @@
 ## 3.3.3
 
+## 3.4.1 · Story and outing continuity
+
+- Make Sol a mother throughout the story, choices, teaching, keepsake notes, and image description.
+- Describe Luma’s lamps on two stands to match the painting.
+- Remove the inactive earlier-stop memory section and the shape-selection shelf from outings. Keep previously saved postcards intact.
+- Build next-stop callbacks from the previous story choice, and only claim a gift is in the basket when it has been earned. Use choice-dependent gift names.
+- Name saved pictures by their actual activity, including legacy postcard modes, instead of obsolete souvenir labels such as paper town.
+
 ## 3.4.0 · Clearer teaching and Aunt Fern’s notes
 
 - Add nineteen optional parent notes following one connected fictional caregiver example. Read every note independently of child progress.

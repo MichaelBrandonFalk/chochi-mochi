@@ -3,7 +3,7 @@ export const chapterArt=[
  ['dewdrop-meadow','Dewdrop Meadow','Rue the rabbit shares baskets of cloth in a soft green meadow.'],
  ['listening-grove','Listening Grove','Olive the owl welcomes the friends to a listening bench beneath tall trees.'],
  ['mirror-pool','Mirror Pool','Moss the frog holds a clay cup beside a quiet pool and reeds.'],
- ['sunseed-field','Sunseed Field','Sol the hare plants beans with small pots and useful scoops.'],
+ ['sunseed-field','Sunseed Field','Sol, a mother hare, plants beans with small pots and useful scoops.'],
  ['twin-lanterns','Twin Lanterns','Luma the moth tends two paper lanterns outside a little workshop.'],
  ['choice-orchard','Choice Orchard','Ada the deer waters an apple tree in an orchard full of soft light.'],
  ['ribbon-bridge','Ribbon Bridge','Kit the sprite sets out ribbons at a low table beside a little bridge.'],

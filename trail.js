@@ -1,3 +1,5 @@
+import {lessons} from './content.js';
+import {basketGiftName} from './basket-art.js';
 import {adventures,normalizeChoices,selectedChoice} from './adventure.js';
 import {outings,toolKinds,toolGlyphs,recipes} from './trail-data.js';
 const modes=['seek','boat','tune','weave','garden','wheels'];
@@ -27,7 +29,21 @@ return g;}
 export function mixTools(ids,kit){const selected=ids.map(id=>kit.find(t=>t.id===id)).filter(Boolean);if(selected.length!==2)return null;return recipes.find(r=>r.needs.every(i=>selected.some(t=>t.index===i)))||null;}
 export function trailCards(records){return Object.entries(records||{}).flatMap(([key,r])=>r.cards?.length?[{key,level:Number(key.split(':')[0]),signature:key.split(':')[1],cards:r.cards,mixes:r.mixes||[]}]:[]).sort((a,b)=>a.level-b.level||a.key.localeCompare(b.key));}
 export function choicesFromKey(key){const choices={};[...(key.split(':')[1]||'')].forEach((v,i)=>{if(v==='0'||v==='1')choices[i]=Number(v);});return normalizeChoices(choices);}
-export function travelGreeting(level,choices,records){if(level===0)return '';const prev=records?.[trailKey(level-1,choices)];const souvenir=prev?.cards?.length?outings[level-1].souvenir:null;const boatId=prev?.cards?.find(id=>activeTool(level-1,choices,{active:id}).mode==='boat'&&prev.games?.[id]?.boat?.row===3);const dock=boatId?prev.games[boatId].boat.col:null;return [souvenir?'“We brought our '+souvenir.replace(/^Our /,'').toLowerCase()+' from the last stop,” says Chochi the Dinosaur.':'',dock!==null?'The '+(dock%2?'book':'tea')+' dock neighbor has tucked a note into their basket.':''].filter(Boolean).join(' ');}
+// Saved pictures describe the actual activity, including older postcard modes.
+export function postcardLabel(level,choices,record,id=record?.cards?.at(-1)){
+ const tool=activeTool(level,choices,{active:id}),mode=record?.snapshots?.[id]?.mode||tool.mode;
+ const picture={seek:'finding picture',tune:'song',boat:'boat-trip picture',weave:'ribbon picture',garden:'little garden picture',wheels:'paper-wheel picture'}[mode]||'picture';
+ return picture+' from '+outings[level].host.replace(/^The /,'the ');
+}
+export function travelGreeting(level,choices,records,packed=[]){
+ if(!Number.isInteger(level)||level<=0||level>19)return '';
+ const previous=level-1,choice=selectedChoice(previous,choices),record=records?.[trailKey(previous,choices)];
+ const lines=[];
+ if(choice){const label=[0,10,15].includes(previous)?choice.label:choice.label[0].toLowerCase()+choice.label.slice(1);lines.push('“At '+lessons[previous].place+', we chose '+label+',” says Chochi the Dinosaur.');}
+ if(packed.includes(previous)){const gift=basketGiftName(previous,choices);lines.push('Our '+gift[0].toLowerCase()+gift.slice(1)+' '+([0,5,16].includes(previous)?'are':'is')+' in the basket.');}
+ else if(record?.cards?.length)lines.push('Our '+postcardLabel(previous,choices,record)+' is saved in our postcard album.');
+ return lines.join(' ');
+}
 export function carriedCharms(level,choices,records){const ids=new Set();for(let i=0;i<=level;i++)for(const id of records?.[trailKey(i,choices)]?.mixes||[])ids.add(id);return recipes.filter(r=>ids.has(r.id));}
 export function lastPostcard(level,choices,records){for(let i=level-1;i>=0;i--){const r=records?.[trailKey(i,choices)];if(r?.cards?.length)return {level:i,record:r};}return null;}
 export function carriedTune(level,choices,records){for(let i=level-1;i>=0;i--){const r=records?.[trailKey(i,choices)];if(!r)continue;for(const id of [...(r.cards||[])].reverse()){const tool=activeTool(i,choices,{active:id}),g=r.snapshots?.[id]?.game||r.games?.[id];if((r.snapshots?.[id]?.mode||tool.mode)==='tune'&&g?.notes?.length===4)return {level:i,notes:[...g.notes],variant:tool.variant};}}return null;}

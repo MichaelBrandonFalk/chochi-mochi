@@ -7,7 +7,7 @@ export const treasures = [
  ['Yellow cloth','Rue made room for more than one feeling.'],
  ['Leaf bookmark','Olive gave the mouse time to finish.'],
  ['Reed stone','Moss showed how to reflect a feeling.'],
- ['Seed packet','Sol trusted his son to cope.'],
+ ['Seed packet','Sol trusted her son to cope.'],
  ['Two lanterns','Luma put care and trust together.'],
  ['Apple stamp','Ada planned her own actions.'],
  ['Green ribbon','Kit kept useful help while changing one habit.'],
