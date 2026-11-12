@@ -1,6 +1,8 @@
 # Playing Chochi Mochi
 
-Start with the opening story, then follow the numbered places clockwise on the map. Chochi the Dinosaur and Mochi the Unicorn visit nineteen places before returning to their fairy friend, Glaloula. The final garden gathering puts the ideas into practice.
+New players can choose **A child or family** to begin the story or **A grown-up** to open Fern’s notes. Home remembers the preferred path for each optional player. Both paths remain available, and switching keeps the story bookmark and Fern reading page separate. Existing story players keep their familiar Home screen.
+
+On the story path, start with the opening story, then follow the numbered places clockwise on the map. Chochi the Dinosaur and Mochi the Unicorn visit nineteen places before returning to their fairy friend, Glaloula. The final garden gathering puts the ideas into practice.
 
 ## A chapter at a time
 
