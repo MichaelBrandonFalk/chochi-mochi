@@ -40,3 +40,5 @@ export function outingAction(mode, level, choices={}) {
 }
 
 export function helperAction(mode,friend){return 'Ask '+friend+' to '+{seek:'find one thing',tune:'add a note',wheels:'match one wheel',weave:'weave one row',garden:'add one shape',boat:'guide us to a dock'}[mode];}
+
+export function outingTitle(level,choices={}){const host=outings[level]?.host.replace(/^The /,'the ')||'our friends';return choices[0]===1?'A song with '+host:choices[0]===0?'A finding walk with '+host:'A little outing with '+host;}

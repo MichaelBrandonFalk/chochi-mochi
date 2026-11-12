@@ -43,5 +43,5 @@ test('three finale groups cover all seven notes once and resume old partial boar
 });
 test('new prose avoids em dashes and only valid parent routes are handled',async()=>{
  for(const file of ['curriculum.js','curriculum-view.js'])assert.ok(!(await readFile(new URL('../'+file,import.meta.url),'utf8')).includes('—'));
- const app=await readFile(new URL('../app.js',import.meta.url),'utf8');assert.ok(app.includes('bindReview(root,i,stopVoice)'));assert.ok(app.includes('parentGuide(n)'));
+ const app=await readFile(new URL('../app.js',import.meta.url),'utf8');assert.ok(app.includes('bindReview(root,i,stopVoice)'));assert.ok(app.includes('parentGuide(n,state.tripChoices)'));
 });

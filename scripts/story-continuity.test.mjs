@@ -40,3 +40,13 @@ test('retired memory and charm controls are absent while saved-picture support r
  for(const retired of ['Something we brought from an earlier stop','Things we made together. Pick one','data-memory-tune','data-memory-design','data-charm='])assert.ok(!source.includes(retired),retired);
  assert.ok(source.includes('snapshot.charm'));assert.ok(source.includes('data-keep'));
 });
+
+import {outingTitle} from '../trail-data.js';
+test('every outing title matches its current companion rather than a retired game',()=>{
+ for(let level=0;level<20;level++){
+  const finding=outingTitle(level,{0:0}),music=outingTitle(level,{0:1});
+  assert.match(finding,/finding walk/);assert.match(music,/song/);assert.notEqual(finding,music);
+  assert.ok(!/boat|wheel|loom|paper town/.test(finding+' '+music));
+ }
+ assert.equal(outingTitle(6,{0:0}),'A finding walk with Ada');assert.equal(outingTitle(6,{0:1}),'A song with Ada');
+});

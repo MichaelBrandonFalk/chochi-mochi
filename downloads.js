@@ -1,4 +1,5 @@
-export const desktopVersion='3.5.0';
+import {smallStoryArt} from './page-art.js';
+export const desktopVersion='3.6.0';
 export const releaseURL='https://github.com/MichaelBrandonFalk/chochi-mochi/releases/tag/v'+desktopVersion;
 export const assetURL=name=>'https://github.com/MichaelBrandonFalk/chochi-mochi/releases/download/v'+desktopVersion+'/'+name;
 export const desktopFiles={
@@ -10,7 +11,7 @@ export const desktopFiles={
  linuxDeb:`Chochi-Mochi-${desktopVersion}-Linux-amd64.deb`
 };
 export function downloadMarkup(desktop=false){return `<section class="download-page">
- <div class="eyebrow">Chochi Mochi · Version ${desktopVersion}</div><h1>Play offline</h1>
+ <div class="eyebrow">Chochi Mochi · Version ${desktopVersion}</div><h1>Play offline</h1>${smallStoryArt(18,{},'book')}
  <p class="story">Download the game for your computer. The story, pictures, and music come with it. No internet is needed to play.</p>
  ${desktop?'<p class="lesson">You are playing the downloaded game. The Game menu can show where your players are saved.</p>':''}
  <div class="download-grid">

@@ -242,3 +242,25 @@ body[data-map-list=true] :is(.atlas-book-title,.atlas-preview){display:none!impo
 body[data-reading-font=sans] :is(.parent-decision,.review-story,.fern-diary){font-family:Arial,Helvetica,sans-serif}
 body[data-spacing=true] :is(.parent-decision p,.parent-decision button,.review-story p,.review-story button,.fern-diary p){line-height:1.9;letter-spacing:.025em;word-spacing:.06em}
 body[data-contrast=true] :is(.parent-decision,.review-feedback,.fern-diary li){color:#20382b;border-color:#55705b}
+
+/* Feedback appears after a choice; unopened conversations leave no empty cards. */
+.lab-result:empty,.lab-compare:empty,.explain-feedback:empty{display:none}
+:is(.parent-decision,.review-story) .choice[aria-pressed=true]{background:var(--wash-lilac,#ece4ed);border-color:#8b7495;box-shadow:inset 3px 0 #8b7495}
+.review-story h2{scroll-margin-top:24px}
+
+/* A single small watercolor anchor on quiet reading pages. */
+.quiet-illustration{width:176px;max-width:60%;height:132px;margin:8px auto 24px;padding:0;pointer-events:none}
+.quiet-illustration img{display:block;width:100%;height:100%;object-fit:contain}
+.packed-gift-art{width:112px;height:84px;object-fit:contain;flex-shrink:0;pointer-events:none}
+.fern-entry{padding:22px;border:1px solid var(--line);border-radius:16px;background:#eef1e9;margin:28px 0}
+.fern-entry h2{margin:0 0 12px}.fern-entry p{margin-bottom:18px}
+.fern-home-link{white-space:normal}
+body[data-hide-art=true] :is(.quiet-illustration,.packed-gift-art){display:none}
+body[data-simple=true] .quiet-illustration{display:none}
+@media(max-width:600px){.quiet-illustration{width:144px;height:108px;margin-bottom:20px}.packed-gift-art{width:88px;height:66px}.fern-entry{padding:18px}}
+.starting-paths{display:grid;gap:14px;margin:26px 0}
+.starting-path{display:block;width:100%;text-align:left;border:1px solid var(--line);border-radius:16px;padding:20px;background:var(--surface,#fffdf6);color:var(--ink);line-height:1.6}
+.starting-path strong{display:block;font-weight:normal;font-size:calc(24px * var(--reading-scale,1));margin-bottom:8px}
+.starting-path span{display:block;font-size:calc(17px * var(--reading-scale,1))}
+.starting-path:hover{border-color:#8b7495;background:#f2edf3}
+body[data-contrast=true] :is(.starting-path,.fern-entry){background:#fffdf4;color:#152c22;border-color:#687960}

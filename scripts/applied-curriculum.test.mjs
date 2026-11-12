@@ -25,10 +25,10 @@ test('parent decisions allow either answer and replace feedback without changing
  buttons[1].onclick();assert.equal(feedback.textContent,parentPractice[18].feedback[1]);buttons[0].onclick();assert.equal(feedback.textContent,parentPractice[18].feedback[0]);assert.equal(attrs[1]['aria-pressed'],'false');assert.equal(changes,2);
 });
 test('story paging retains feedback, hides other cases, and focuses the revealed heading',()=>{
- const stories=childPractice(7),sections=stories.map((_,i)=>({dataset:{reviewStory:String(i)},hidden:i>0})),feedback=stories.map(()=>({textContent:''})),headings=stories.map(()=>({focus:()=>{focused++}}));let focused=0;
+ const stories=childPractice(7),sections=stories.map((_,i)=>({dataset:{reviewStory:String(i)},hidden:i>0})),feedback=stories.map(()=>({textContent:''})),headings=stories.map(()=>({focus:()=>{focused++},scrollIntoView:options=>{assert.equal(options.behavior,'instant');scrolled++}}));let focused=0,scrolled=0;
  const arrows=[-1,1].map(n=>({dataset:{reviewStep:String(n)},hidden:n<0})),position={textContent:''},buttons=stories.flatMap((s,i)=>s.options.map((_,j)=>({dataset:{review:i+':'+j},setAttribute(){}})));
  const root={querySelectorAll:s=>s==='[data-review]'?buttons:s==='[data-review-step]'?arrows:s==='[data-review-story]'?sections:buttons.filter(b=>s==='[data-review^="'+b.dataset.review.split(':')[0]+':"]'),querySelector:s=>{if(s.includes('feedback'))return feedback[Number(s.match(/"(\d+)"/)[1])];if(s.includes('step'))return s.includes('-1')?arrows[0]:arrows[1];if(s==='.review-position')return position;return headings[Number(s.match(/"(\d+)"/)[1])];}};
- bindReview(root,7);buttons[0].onclick();const first=feedback[0].textContent;arrows[1].onclick();assert.deepEqual(sections.map(s=>s.hidden),[true,false,true]);assert.equal(position.textContent,'Story 2 of 3');arrows[0].onclick();assert.equal(feedback[0].textContent,first);assert.equal(focused,2);
+ bindReview(root,7);buttons[0].onclick();const first=feedback[0].textContent;arrows[1].onclick();assert.deepEqual(sections.map(s=>s.hidden),[true,false,true]);assert.equal(position.textContent,'Story 2 of 3');arrows[0].onclick();assert.equal(feedback[0].textContent,first);assert.equal(focused,2);assert.equal(scrolled,2);
  assert.equal(nextPracticeIndex(0,-1,3),0);assert.equal(nextPracticeIndex(2,1,3),2);
 });
 test('preparation occurs in planning before implementation and the review includes the missed response',()=>{

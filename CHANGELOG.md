@@ -1,3 +1,12 @@
+## 3.6.0 · Choose your way into the story
+
+- Offer new players a child or family story path and a grown-up path to Fern’s notes. Remember each player’s preference and parent reading page separately from the story bookmark. Keep both paths available and preserve existing adventures.
+- Put Fern’s notes within easy reach on Home and About.
+- Add small, quiet watercolor gift and book illustrations to reading pages. Respect hidden-art and simpler-screen settings.
+- Repair Chochi’s reflected arm at Mirror Pool without changing the scene’s composition.
+- Match outing titles to the chosen companion, remove empty feedback cards, and bring the next practice story into view.
+- Clarify dialogue speakers, child-facing feedback, and chapter endings that referred to the wrong picnic choice or lanterns.
+
 ## 3.3.3
 
 ## 3.5.0 · Learning through story decisions

@@ -19,7 +19,7 @@ export const chapterArt=[
  ['little-bloom-hill','Little Bloom Hill','A badger notices a tiny new leaf on a flower-covered hill.'],
  ['starlight-library','Starlight Library','Linn the lynx opens a book at a mountaintop library, with a gentle ride waiting nearby.'],
  ['glaloulas-garden','Glaloula’s Garden','Chochi the Dinosaur, Mochi the Unicorn, and Glaloula the fairy share their book in her bluebell garden.']
-].map(([slug,title,alt],i)=>({slug,title,alt,src:new URL(`./assets/storybook/${String(i+1).padStart(2,'0')}-${slug}.webp`,import.meta.url).href}));
+].map(([slug,title,alt],i)=>({slug,title,alt,src:new URL(`./assets/storybook/${String(i+1).padStart(2,'0')}-${slug}${i===3?'-v2':''}.webp`,import.meta.url).href}));
 export function storybookFigure(index,{className='',caption='',eager=false}={}){
  const art=chapterArt[index]||chapterArt[19];
  return `<figure class="storybook-plate ${className}"><img src="${art.src}" srcset="${art.src.replace('.webp','-small.webp')} 768w, ${art.src} 1536w" sizes="(max-width:750px) 92vw, 760px" alt="${art.alt}" width="1536" height="1024" loading="${eager?'eager':'lazy'}" decoding="async">${caption?`<figcaption>${caption}</figcaption>`:''}</figure>`;
