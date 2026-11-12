@@ -1,5 +1,13 @@
 ## 3.3.3
 
+## 3.5.0 · Learning through story decisions
+
+- Give every parent note one optional fictional decision with feedback for either choice, replacing the passive reflection block.
+- Activate all nineteen new-situation exercises within existing Remember pages. Keep mixed practice available one story at a time, with no scores or progress gates.
+- Add examples of repeated checking and changes to family routines, keeping function, context, and necessary supports explicit.
+- Introduce preparation and adult support during planning, before a change begins.
+- Show Fern’s three observations, including a missed response, and turn the finale’s planning and review into concrete adult decisions. Keep the existing twenty levels, five finale acts, card targets, and save formats.
+
 ## 3.4.1 · Story and outing continuity
 
 - Make Sol a mother throughout the story, choices, teaching, keepsake notes, and image description.

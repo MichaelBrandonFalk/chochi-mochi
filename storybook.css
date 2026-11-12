@@ -227,7 +227,18 @@ body[data-map-list=true] :is(.atlas-book-title,.atlas-preview){display:none!impo
 .support-pairs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 .support-pairs section{padding:16px;background:#faf8f2;border-radius:12px}
 .mixed-review{margin-block:28px}.review-story{padding-block:20px;border-bottom:1px solid var(--line)}
-.review-story h3{font-size:calc(25px * var(--reading-scale,1));line-height:1.5}
+.review-story h2{font-size:calc(25px * var(--reading-scale,1));line-height:1.5}
 .review-feedback:empty{display:none}.review-feedback{padding:18px;background:#eef1e9;border-radius:12px;line-height:1.75}
 .project-round .micro{margin-top:0}.project-round h2{margin-bottom:0;font-size:calc(23px * var(--reading-scale,1))}
 @media(max-width:600px){.parent-note-list,.support-pairs{grid-template-columns:1fr}.parent-question,.care-cycle,.project-round{padding:16px}}
+
+/* One quiet decision at a time, with space to read and try again. */
+.mixed-review [hidden],.parent-decision [hidden]{display:none!important}
+.review-controls{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;margin-block:18px}
+.review-controls .micro{margin:0}.review-story h2:focus{outline:2px solid var(--access-focus,#624480);outline-offset:5px}
+.parent-decision .choices{display:grid;gap:12px}.parent-decision .choice{width:100%;white-space:normal;line-height:1.65}
+.fern-diary{margin-block:28px}.fern-diary ol{padding-left:26px}.fern-diary li{padding:16px;margin-bottom:14px;background:#f3f0e9;border:1px solid var(--line);border-radius:14px}
+.fern-diary h3{font-size:calc(21px * var(--reading-scale,1));line-height:1.5;margin-top:0}.fern-diary p{line-height:1.75}
+body[data-reading-font=sans] :is(.parent-decision,.review-story,.fern-diary){font-family:Arial,Helvetica,sans-serif}
+body[data-spacing=true] :is(.parent-decision p,.parent-decision button,.review-story p,.review-story button,.fern-diary p){line-height:1.9;letter-spacing:.025em;word-spacing:.06em}
+body[data-contrast=true] :is(.parent-decision,.review-feedback,.fern-diary li){color:#20382b;border-color:#55705b}

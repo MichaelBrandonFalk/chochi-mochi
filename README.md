@@ -87,3 +87,6 @@ Version 3 adds portable Windows, universal Mac, and Linux Mint downloads, plus i
 
 
 Version 3.4 adds an independent nineteen-note parent learning path, accommodation-cycle and support examples, precise adult planning, optional mixed practice at eight places, and smaller finale rounds. These source-informed educational changes have not received clinical review.
+
+
+Version 3.5 makes the parent path interactive, activates all nineteen transfer stories one at a time within existing pages, broadens accommodation examples, brings preparation into planning, and gives Fern a concrete review-and-repair scene. Practice is optional and records no personal answers.
