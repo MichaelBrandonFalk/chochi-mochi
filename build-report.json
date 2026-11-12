@@ -1,10 +1,12 @@
 {
-  "script": "game-71e9d8821bad.js",
-  "scriptBytes": 300590,
-  "stylesheet": "game-79160529b447.css",
-  "stylesheetBytes": 89859,
+  "script": "game-7667356b3b09.js",
+  "scriptBytes": 317849,
+  "stylesheet": "game-851d6f3c67a3.css",
+  "stylesheetBytes": 91081,
   "modules": [
+    "learning.js",
     "curriculum.js",
+    "curriculum-practice.js",
     "content.js",
     "storybook.js",
     "curriculum-view.js",
@@ -38,7 +40,6 @@
     "painting.js",
     "art.js",
     "chapters.js",
-    "learning.js",
     "atlas.js",
     "world.js",
     "app.js"

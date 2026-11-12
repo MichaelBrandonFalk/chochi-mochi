@@ -51,3 +51,12 @@ In the third part of the final gathering, Fern’s planning cards appear in thre
 
 
 Version 3.4.1 removes the outing memory and shape-shelf controls. Existing postcard pictures remain available. Next-stop dialogue reflects the actual previous story choice. It names a basket gift only if its project has been made, and saved songs or finding pictures use the correct activity name.
+
+
+## Small decisions, room to try again
+
+In each of Fern’s nineteen parent notes, try either of two fictional choices to see what Fern notices. You can change your answer or read on. There are no scores, saved answers, or child-progress requirements. Her last note opens three observations from her own book, including a time she picked a color by habit.
+
+Each chapter’s Remember page has an optional Try the idea in a new story section. Only one story is shown at a time. Where more stories are available, Another little story and Previous little story let you browse. Your feedback stays while that page is open. These stories are optional, and reopening the page starts fresh.
+
+The final gathering uses concrete story situations in its existing small groups. The last act helps Fern notice her own actions and bring all her observations to review without blame. Make it again and Chochi’s help keep their usual behavior.

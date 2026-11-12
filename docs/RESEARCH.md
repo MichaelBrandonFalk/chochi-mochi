@@ -1,6 +1,6 @@
 # Research and curriculum notes
 
-Researched November 2, 2026; official program and author overview rechecked November 11, 2026. This is an original educational adaptation, not a reproduction of a SPACE manual, a treatment protocol, or an endorsed SPACE product. No clinical review or clinical efficacy testing of the game has occurred.
+Researched November 2, 2026; official program and author overview rechecked November 12, 2026. This is an original educational adaptation, not a reproduction of a SPACE manual, a treatment protocol, or an endorsed SPACE product. No clinical review or clinical efficacy testing of the game has occurred.
 
 ## Primary and authoritative sources
 
@@ -74,3 +74,14 @@ The parent-only path, Learn with Aunt Fern, is available before the child prolog
 The child story adds a four-part accommodation loop, paired access-versus-taking-over examples, and a precise three-part plan. New-story practice revisits ideas at levels 6, 8, 10, 11, 13, 14, 16, and 19. The finale retains all nineteen ideas and five acts; its seven-card planning activity now unfolds in three small groups. A response need not produce agreement or calm to be supportive. Access and genuine new needs still require attention.
 
 The early-reader explanations, low table and ribbon examples, Fern’s plan, review prompts, and practice alternatives are original educational design. They are not copied or validated SPACE instruments. No family information is requested or recorded by the parent notes or mixed practice. Read-aloud uses the existing browser speech option. A SPACE-trained licensed clinician should review any proposed clinical use; this implementation has not received that independent review.
+
+
+## Applied learning edition (3.5.0)
+
+Each parent note now replaces its passive reflection block with one fictional decision and explanatory feedback for both options. Note 19 shows three original observations from Fern’s book, including a missed planned response. These are not copied clinical worksheets, a treatment schedule, or a score for Glaloula. No personal answers are requested or saved.
+
+All nineteen previously unused transfer stories are available inside the existing Remember page’s optional new-story section. Earlier mixed-practice cases remain reachable one at a time using Another little story and Previous little story. Changing the story preserves the session’s feedback, focuses the revealed heading, and stops current narration. Practice does not gate gifts, letters, or chapters.
+
+Examples now include repeated picnic-bag checking and family routine changes, alongside the connected paint-choice story. They invite examination of function, context, access, needs, and adult actions rather than automatic withdrawal of help. Preparation for difficult moments and adult support is introduced during planning, before announcement and implementation. The five-act finale uses specific adult decisions and ends with an honest review of all three fictional observations. Existing card targets and save formats remain stable.
+
+The official program and the author’s IOCDF overview support the parent-focused principles and preparation for reactions. The stories, interactions, feedback, and diary are our educational design, not a validated implementation of the treatment. Independent clinical review remains outstanding.
