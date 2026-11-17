@@ -107,7 +107,7 @@ test('toy scenes load paintings on demand and keep live note markers',()=>{
 });
 test('chapter art stays before the story and comfort styles follow the new palette',async()=>{
  const app=await readFile(new URL('../app.js',import.meta.url),'utf8'),html=await readFile(new URL('../index.html',import.meta.url),'utf8');
- assert.ok(app.includes("storybookFigure(i,{className:'chapter-opening-art',eager:true})+paragraphs(c.arrival)"));
+ assert.ok(app.includes("storybookFigure(i,{className:'chapter-opening-art',eager:true})+paragraphs(c.arrival.slice(0,1))+storyMomentMarkup(i,state.tripChoices,state.worldEvents)+paragraphs(c.arrival.slice(1))"));
  assert.ok(app.includes("storybookFigure(19,{className:'chapter-opening-art',eager:true})"));
  assert.ok(html.indexOf('storybook.css')<html.indexOf('access.css'));
  const css=await readFile(new URL('../storybook.css',import.meta.url),'utf8');assert.ok(css.includes('body[data-hide-art=true]'));assert.ok(css.includes('body[data-contrast=true]'));

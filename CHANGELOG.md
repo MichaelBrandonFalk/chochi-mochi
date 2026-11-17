@@ -1,3 +1,7 @@
+## 3.9.2 · Arrival flow regression check
+
+- Update the older layout regression check to verify the intended order: chapter picture, host introduction, optional branch-specific discovery, then the rest of the arrival story. Supersedes the unreleased v3.9.1 desktop build, which correctly stopped at that outdated assertion.
+
 ## 3.9.1 · Readable musical scenery
 
 - Give the scenery caption a pale paper backing so it stays readable over detailed paintings. Includes all v3.9.0 story and play improvements; the queued v3.9.0 desktop build was superseded before publication.
