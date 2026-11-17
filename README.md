@@ -2,7 +2,7 @@
 
 A peaceful, text-led browser adventure with a three-page opening and seven-page story chapters: 19 learning places and a five-part garden gathering with Glaloula. Storybook watercolor artwork, early-reader prose, optional browser read-aloud, local progress, a keepsake book, and adult notes. No timers, penalties, trackers, or required accounts. The browser game runs as static files; the build uses the development dependencies in package.json.
 
-This independent educational adaptation introduces SPACE principles. It is not official SPACE treatment, endorsed by its developers, or clinically validated. Children do not need to play for their caregivers to use SPACE. See [research and curriculum notes](docs/RESEARCH.md).
+This independent educational adaptation introduces SPACE principles. It is not official SPACE treatment, endorsed by its developers, or clinically validated. Children do not need to play for their caregivers to use SPACE. See [research and curriculum notes](docs/research.html).
 
 ## Run locally
 
@@ -90,3 +90,7 @@ Version 3.4 adds an independent nineteen-note parent learning path, accommodatio
 
 
 Version 3.5 makes the parent path interactive, activates all nineteen transfer stories one at a time within existing pages, broadens accommodation examples, brings preparation into planning, and gives Fern a concrete review-and-repair scene. Practice is optional and records no personal answers.
+
+## Curriculum notes
+
+The [readable notes](docs/research.html) include a print layout and a four-page [PDF](docs/chochi-mochi-curriculum-notes.pdf). Edit `docs/RESEARCH.md` as the source. `npm run build` regenerates the HTML page. After changing the notes, run `python3 scripts/research-pdf.py` (requires ReportLab) to refresh the PDF, then build again.

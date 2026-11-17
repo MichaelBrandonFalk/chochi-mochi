@@ -1,8 +1,10 @@
+import {writeResearchPage} from './research-page.mjs';
 import { mkdir, copyFile, rm, readFile, writeFile, cp } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import {build} from 'esbuild';
 await rm('dist',{recursive:true,force:true});
 await mkdir('dist',{recursive:true});
+await writeResearchPage();
 await cp('docs','dist/docs',{recursive:true});
 await cp('assets','dist/assets',{recursive:true,filter:source=>!source.endsWith('-original.png')});
 // One bundled module removes the network waterfall through dozens of imports.

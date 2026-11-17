@@ -1,6 +1,8 @@
-# Research and curriculum notes
+# Curriculum sources and adaptation notes
 
-Researched November 2, 2026; official program and author overview rechecked November 12, 2026. This is an original educational adaptation, not a reproduction of a SPACE manual, a treatment protocol, or an endorsed SPACE product. No clinical review or clinical efficacy testing of the game has occurred.
+Researched November 2, 2026. The official program and author overview were rechecked November 12, 2026.
+
+This game is an original educational adaptation. It does not reproduce a SPACE manual or treatment protocol, and it is not an endorsed SPACE product. The game has not received a clinical review or clinical efficacy testing.
 
 ## Primary and authoritative sources
 
@@ -8,7 +10,7 @@ Researched November 2, 2026; official program and author overview rechecked Nove
 2. [SPACE overview by Eli Lebowitz, International OCD Foundation](https://iocdf.org/about-ocd/ocd-treatment-guide/space/). Describes validation plus confidence, mapping accommodation, selecting and announcing adult changes, and trained professional delivery.
 3. [Lebowitz et al., 2019 randomized noninferiority study](https://pmc.ncbi.nlm.nih.gov/articles/PMC6732048/). Randomized 124 children ages 7–14 to parent-based SPACE or child CBT; 97 completed all sessions and assessments. SPACE was noninferior on the studied anxiety outcomes; accommodation decreased more in SPACE. This trial does not establish efficacy of this game, universal suitability, or equivalence for every family.
 
-## Mapping
+## Lesson map
 
 The 19 lessons are small teaching units chosen for the story, not official SPACE modules or session counts. All are original paraphrases and fictional examples. Broad teaching principles derive from sources 1–2; nature metaphors, listening exercises, and keepsakes are our educational presentation.
 
@@ -64,7 +66,7 @@ New fictional teacher memories and Glaloula’s letters connect the principles t
 
 ### Version 2 game design
 
-The garden art afternoon, creative forks, hexagon route, craft projects, and five-part finale are original game design, not clinical SPACE session activities. All 19 ideas remain represented in the finale (see `partyActs.ideas` in `party.js`). The fictional caregiver Fern leads planning with a trained helper; Chochi and Mochi practice friendship. Needed access and care remain in place. Progress and decorative brightness mark learning and story completion, not Glaloula’s anxiety or treatment outcome. Creative choices change fictional details and never ask for a player’s own mental-health history.
+The garden art afternoon, creative forks, hexagon route, craft projects, and five-part finale are original game design, not clinical SPACE session activities. All 19 ideas remain represented in the finale. The fictional caregiver Fern leads planning with a trained helper; Chochi and Mochi practice friendship. Needed access and care remain in place. Progress and decorative brightness mark learning and story completion, not Glaloula’s anxiety or treatment outcome. Creative choices change fictional details and never ask for a player’s own mental-health history.
 
 
 ## Curriculum expansion (3.4.0)
