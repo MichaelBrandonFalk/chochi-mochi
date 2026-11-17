@@ -1,3 +1,13 @@
+## 3.9.0 · Little choices, living stories
+
+- Add nineteen optional arrival moments that use the preceding story choice. Give Button and Pipkin different discoveries at every stop. Save each moment on its own earlier-choice branch.
+- Let a boat become a party-invite stand, a cloth hold Olive’s books, a flower make Luma’s drawing, and chosen snacks and cloud shapes become Brin’s tea-time joke.
+- Give Glaloula playful leaf hats, small acts of care, creative projects, and stories to share in the opening, letters, and homecoming. Keep worry separate from her whole personality.
+- Add changing, captioned pictures to six conversation experiments. Keep both replies available without scoring or penalties.
+- Give Pipkin’s notes five responsive scenery objects at all twenty places. Match the same visual and sound clock, remember played notes, and keep quiet play available. Automatically saved tunes can return without requiring a postcard.
+- Remove duplicate outing callbacks, fold optional lesson explanations, and offer Rest here at chapter endings.
+- Keep earned completion while replaying the five garden scenes. Save replay progress separately and provide a direct return to the celebration.
+
 ## 3.8.0 · A garden worth celebrating
 
 - Move level 20 up and toward level 19. Remove the slanted ride label and outdated instructions that put the garden directly below level 1.
