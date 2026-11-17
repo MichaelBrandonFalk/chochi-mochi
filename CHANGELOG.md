@@ -1,3 +1,7 @@
+## 3.9.1 · Readable musical scenery
+
+- Give the scenery caption a pale paper backing so it stays readable over detailed paintings. Includes all v3.9.0 story and play improvements; the queued v3.9.0 desktop build was superseded before publication.
+
 ## 3.9.0 · Little choices, living stories
 
 - Add nineteen optional arrival moments that use the preceding story choice. Give Button and Pipkin different discoveries at every stop. Save each moment on its own earlier-choice branch.

@@ -1,4 +1,4 @@
-# v3.9.0 living story and replay checks
+# v3.9.1 living story and replay checks
 
 Checked November 17, 2026.
 
@@ -19,3 +19,5 @@ At 390 pixels, the arrival and conversation pages had no horizontal overflow or 
 ## Scope
 
 The changes are original fictional events and presentation improvements. Clinical teaching and the division between friendship and adult-led care are unchanged. No new art or music downloads were added. This is browser and automated QA, not a clinical validation or a formal accessibility certification.
+
+Final visual review added a pale backing to the musical scenery caption. At 320 pixels with Largest text, the new conversation layout also had no horizontal overflow. Restored the temporary viewport and local comfort settings.
