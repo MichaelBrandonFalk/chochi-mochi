@@ -1,8 +1,8 @@
 {
-  "script": "game-0def8ef0a06f.js",
-  "scriptBytes": 320900,
-  "stylesheet": "game-78ae15dd4d2c.css",
-  "stylesheetBytes": 92900,
+  "script": "game-1bbd5c5c5d35.js",
+  "scriptBytes": 321143,
+  "stylesheet": "game-a9a441462304.css",
+  "stylesheetBytes": 93656,
   "modules": [
     "reading-route.js",
     "start-path.js",

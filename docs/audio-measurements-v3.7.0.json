@@ -1,0 +1,30 @@
+[
+  {
+    "file": "assets/audio/garden-window.mp3",
+    "duration": 205.36,
+    "integratedLUFS": -29.67,
+    "truePeakDBTP": -19.71,
+    "loudnessRangeLU": 3.3
+  },
+  {
+    "file": "assets/audio/mossy-steps.mp3",
+    "duration": 222.33,
+    "integratedLUFS": -29.74,
+    "truePeakDBTP": -17.62,
+    "loudnessRangeLU": 5.6
+  },
+  {
+    "file": "assets/audio/little-leaf-minuet.mp3",
+    "duration": 218.03,
+    "integratedLUFS": -29.78,
+    "truePeakDBTP": -20.31,
+    "loudnessRangeLU": 4.9
+  },
+  {
+    "file": "assets/audio/starlit-postcards.mp3",
+    "duration": 201.0,
+    "integratedLUFS": -29.86,
+    "truePeakDBTP": -18.19,
+    "loudnessRangeLU": 5.8
+  }
+]
