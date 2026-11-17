@@ -1,3 +1,10 @@
+## 3.7.0 · Clearer homeward art and a roomier soundtrack
+
+- Put balloon and cloud travellers over the character-free valley landscape. Each of the three homeward pages now has one pair of main characters, with the ride fully inside the frame.
+- Render the homeward scene as ordinary image layers, remove whole-scene watercolor displacement filters, and use synchronous chapter-image decoding. Keep the painted texture already present in the assets.
+- Add four original CC0 pieces with separate melodies, meters, and arrangements: Garden Window, Mossy Steps, Little Leaf Minuet, and Starlit Postcards. Interleave them with the existing music for sixteen tracks.
+- Ease background playback into its saved level over 900 milliseconds. Keep existing quiet preferences, music-box suspension, volume controls, and saved track positions.
+
 ## 3.6.0 · Choose your way into the story
 
 - Offer new players a child or family story path and a grown-up path to Fern’s notes. Remember each player’s preference and parent reading page separately from the story bookmark. Keep both paths available and preserve existing adventures.

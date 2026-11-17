@@ -19,7 +19,7 @@ globalThis.document={hidden:false,querySelector:element,addEventListener(name,fn
 globalThis.requestAnimationFrame=()=>1;
 globalThis.cancelAnimationFrame=()=>{};
 Object.defineProperty(globalThis,'performance',{value:{now:()=>clock},configurable:true});
-const {playTune,playEffect,setAudioSettings,stopTune,initAudio}=await import('../audio.js');
+const {playTune,playEffect,setAudioSettings,stopTune,initAudio,getAudioState}=await import('../audio.js');
 function level(voice,time){let result=1;for(let node=voice.to;node?.kind!=='destination';node=node.to){assert.ok(node);if(node.gain)result*=node.gain.at(time);}return result;}
 
 test('effects volume changes affect scheduled notes without restarting the tune',async()=>{
@@ -62,4 +62,16 @@ test('background position is saved while playing and changing tracks resets it',
  element('#music-toggle').onclick();
  assert.equal(JSON.parse(saves.get('little-lights-audio')).musicOn,false);
  element('#music-next').onclick();assert.equal(music.paused,true,'Skipping while quiet must not turn the music on');
+});
+
+
+test('starting a background track eases into the saved level without a volume jump',async()=>{
+ const frames=[];globalThis.requestAnimationFrame=fn=>{frames.push(fn);return frames.length;};
+ if(getAudioState().musicOn)element('#music-toggle').onclick();
+ clock=50000;element('#music-toggle').onclick();await Promise.resolve();
+ const music=effects.find(e=>e.id==='garden-music');assert.equal(music.volume,0);
+ frames.shift()(50000);frames.shift()(50450);
+ assert.ok(Math.abs(music.volume-getAudioState().musicVolume*.5)<1e-9);
+ frames.shift()(50900);assert.equal(music.volume,getAudioState().musicVolume);
+ element('#music-toggle').onclick();
 });

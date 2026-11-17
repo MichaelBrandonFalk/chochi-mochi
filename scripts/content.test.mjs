@@ -14,7 +14,7 @@ import {learning,letters} from '../learning.js';
 test('every chapter has worked reply outcomes, a reason to explain, and a distinct transfer situation',()=>{assert.equal(learning.length,19);assert.deepEqual(Object.keys(letters).map(Number),[0,4,9,14,18]);for(const d of learning){assert.ok(d.stake&&d.because&&d.scene&&d.model);assert.equal(d.replies.length,2);for(const r of d.replies)assert.ok(r.say&&r.result&&r.reason);assert.ok(d.reasons[d.right]);assert.ok(d.transfer.choices[d.transfer.answer]);assert.ok(!lessons.some(l=>l.story===d.transfer.story));}});
 import {readFile} from 'node:fs/promises';
 test('the map begins with the opening before its 20 numbered places',()=>{const map=trailMap(lessons,[],false);assert.ok(map.indexOf('href="#story-1"')<map.indexOf('href="#level-1"'));assert.ok(map.includes('BEFORE LEVEL 1'));});
-test('bundled audio has complete CC0 source records and intact files',async()=>{const entries=JSON.parse(await readFile(new URL('../assets/audio/manifest.json',import.meta.url),'utf8'));assert.equal(entries.length,14);for(const entry of entries){assert.equal(entry.license,'CC0-1.0');assert.equal(entry.attribution_required,false);const bytes=await readFile(new URL('../'+entry.file,import.meta.url));const {createHash}=await import('node:crypto');assert.equal(createHash('sha256').update(bytes).digest('hex'),entry.sha256);}});
+test('bundled audio has complete CC0 source records and intact files',async()=>{const entries=JSON.parse(await readFile(new URL('../assets/audio/manifest.json',import.meta.url),'utf8'));assert.equal(entries.length,18);for(const entry of entries){assert.equal(entry.license,'CC0-1.0');assert.equal(entry.attribution_required,false);const bytes=await readFile(new URL('../'+entry.file,import.meta.url));const {createHash}=await import('node:crypto');assert.equal(createHash('sha256').update(bytes).digest('hex'),entry.sha256);}});
 import {adventures,normalizeChoices,selectedChoice,storyEchoes,freshProject,placeCard,isProjectComplete,partyStyle} from '../adventure.js';
 import {partyActs,partyProject} from '../party.js';
 import {mapStops} from '../atlas.js';
@@ -78,7 +78,7 @@ test('Pipkin’s flight has three welcoming story endings rather than dock count
 
 import {audioPreferences,playlist,nextTrack} from '../audio-settings.js';
 import {companionPattern,patternReply} from '../companion-game.js';
-test('new players have sound on while explicit quiet preferences survive',()=>{assert.equal(audioPreferences().musicOn,true);assert.equal(audioPreferences().effectsOn,true);assert.equal(audioPreferences({musicOn:false,effectsOn:false}).musicOn,false);assert.equal(audioPreferences({musicOn:false,effectsOn:false}).effectsOn,false);assert.equal(audioPreferences({musicVolume:0}).musicVolume,0);assert.equal(playlist.length,12);assert.deepEqual(Array.from({length:playlist.length},(_,i)=>nextTrack(i)),[1,2,3,4,5,6,7,8,9,10,11,0]);assert.equal(audioPreferences({position:75}).position,75);assert.equal(audioPreferences({position:-1}).position,0);assert.equal(audioPreferences({position:Infinity}).position,0);});
+test('new players have sound on while explicit quiet preferences survive',()=>{assert.equal(audioPreferences().musicOn,true);assert.equal(audioPreferences().effectsOn,true);assert.equal(audioPreferences({musicOn:false,effectsOn:false}).musicOn,false);assert.equal(audioPreferences({musicOn:false,effectsOn:false}).effectsOn,false);assert.equal(audioPreferences({musicVolume:0}).musicVolume,0);assert.equal(playlist.length,16);assert.deepEqual(Array.from({length:playlist.length},(_,i)=>nextTrack(i)),[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0]);assert.equal(audioPreferences({position:75}).position,75);assert.equal(audioPreferences({position:-1}).position,0);assert.equal(audioPreferences({position:Infinity}).position,0);});
 test('each companion keeps a distinct outing through all twenty places',()=>{for(let level=0;level<20;level++)for(const choice of [0,1]){assert.equal(nativeTool(level,{0:choice}).mode,choice===1?'tune':'seek');const pattern=companionPattern(gameConfig(level,{0:choice},nativeTool(level,{0:choice})).seed);assert.equal(pattern.length,4);assert.ok(pattern.every(n=>Number.isInteger(n)&&n>=0&&n<5));assert.match(patternReply(pattern,gameConfig(level,{0:choice},nativeTool(level,{0:choice})).seed,choice===1,'Our host'),/learned this place/);}});
 test('story character mentions carry their species and each chapter adds at most one name',()=>{const seen=new Set(['Chochi','Mochi','Glaloula','Fern','Button','Pipkin']);const names=['Tuck','Rue','Olive','Moss','Sol','Luma','Ada','Kit','Bea','Tansy','Mira','Wren','Ori','Alba','Brin','Nell','Fenn','Linn'];for(const chapter of chapters){const text=JSON.stringify(chapter);assert.ok(!/\bChochi\b(?! the Dinosaur)/.test(text));assert.ok(!/\bMochi\b(?! the Unicorn)/.test(text));const fresh=names.filter(n=>new RegExp('\\b'+n+'\\b').test(text)&&!seen.has(n));assert.ok(fresh.length<=1,'Too many new names: '+fresh.join(', '));for(const n of fresh)seen.add(n);}});
 
@@ -103,7 +103,7 @@ test('every chapter has a distinct prepared painting and an accessible opening f
 test('toy scenes load paintings on demand and keep live note markers',()=>{
  for(let i=0;i<20;i++){assert.match(storybookBackdrop(i),/href="[^"<>]+-small\.webp"/);}
  const choices={0:1},tool=nativeTool(0,choices),c=gameConfig(0,choices,tool),g=newGame(c);g.notes=[0,1,2,3];
- const svg=trailScene(0,choices,c,tool,g,'tune');assert.match(svg,/music-case\.webp/);assert.equal((svg.match(/data-song-scene=/g)||[]).length,4);assert.ok(!svg.includes('data:image/webp;base64,'));assert.match(svg,/<filter/);
+ const svg=trailScene(0,choices,c,tool,g,'tune');assert.match(svg,/music-case\.webp/);assert.equal((svg.match(/data-song-scene=/g)||[]).length,4);assert.ok(!svg.includes('data:image/webp;base64,'));assert.doesNotMatch(svg,/<filter|feDisplacementMap/);
 });
 test('chapter art stays before the story and comfort styles follow the new palette',async()=>{
  const app=await readFile(new URL('../app.js',import.meta.url),'utf8'),html=await readFile(new URL('../index.html',import.meta.url),'utf8');
@@ -223,4 +223,14 @@ test('unavailable ending previews cannot replace a resumable reading page',()=>{
  assert.equal(readingBookmark('homeward',Array(19).fill(0)),null);
  for(const route of ['level-0','level-21','outing-21','outing-2-scene-3','story-4',null])assert.equal(readingBookmark(route,complete),null);
  for(const route of ['story-1','level-1','level-19-scene-7','outing-20'])assert.equal(readingBookmark(route,[]),route);
+});
+
+
+test('homeward rides use one character cutout over a character-free landscape',()=>{
+ for(const choice of [0,1])for(const step of [0,1,2]){
+  const scene=ridePainting({18:choice},step);
+  assert.match(scene,/valley-map\.webp/);assert.doesNotMatch(scene,/19-starlight-library|<svg|<filter/);
+  assert.equal((scene.match(/class="ride-travellers /g)||[]).length,1);
+  assert.match(scene,new RegExp('ride-step-'+step));assert.match(scene,choice?/ride-balloon/:/ride-cloud/);
+ }
 });

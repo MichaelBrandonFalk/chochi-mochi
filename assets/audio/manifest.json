@@ -146,5 +146,45 @@
     "attribution_required": false,
     "sha256": "2ca66ddfc836b60faf8f5a26ea6ab168ebe47c9294ac8413683fea5a3e895fbf",
     "mastering": "Approximately -29.5 LUFS, softened attacks and faded edges."
+  },
+  {
+    "file": "assets/audio/garden-window.mp3",
+    "title": "Garden Window",
+    "description": "Soft piano \u00b7 a quiet six-beat daydream",
+    "creator": "Chochi Mochi original arrangement",
+    "source": "scripts/compose-garden-music.py",
+    "license": "CC0-1.0",
+    "attribution_required": false,
+    "sha256": "611ad6de3bd7d16df37ec5d772acf008bfc62d9b41a9b7392f5915d32b047d34"
+  },
+  {
+    "file": "assets/audio/mossy-steps.mp3",
+    "title": "Mossy Steps",
+    "description": "Warm wooden keys \u00b7 a playful, unhurried walk",
+    "creator": "Chochi Mochi original arrangement",
+    "source": "scripts/compose-garden-music.py",
+    "license": "CC0-1.0",
+    "attribution_required": false,
+    "sha256": "55b86ccd89ce0668a20c3d89f63d3cf20bde30c52a61b65d577b8c8b0020ed75"
+  },
+  {
+    "file": "assets/audio/little-leaf-minuet.mp3",
+    "title": "Little Leaf Minuet",
+    "description": "Soft reeds and strings \u00b7 a tiny garden dance",
+    "creator": "Chochi Mochi original arrangement",
+    "source": "scripts/compose-garden-music.py",
+    "license": "CC0-1.0",
+    "attribution_required": false,
+    "sha256": "7884f871aea6222e02e378af0d7f96847b4c468134db900c77e826f7be096ee7"
+  },
+  {
+    "file": "assets/audio/starlit-postcards.mp3",
+    "title": "Starlit Postcards",
+    "description": "Harp and light bells \u00b7 a spacious evening song",
+    "creator": "Chochi Mochi original arrangement",
+    "source": "scripts/compose-garden-music.py",
+    "license": "CC0-1.0",
+    "attribution_required": false,
+    "sha256": "89fb63a5eac24e19c91662ff8ece4d729068d808f20999b4cfb188b60be8991c"
   }
 ]

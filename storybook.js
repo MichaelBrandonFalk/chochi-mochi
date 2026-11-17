@@ -22,8 +22,9 @@ export const chapterArt=[
 ].map(([slug,title,alt],i)=>({slug,title,alt,src:new URL(`./assets/storybook/${String(i+1).padStart(2,'0')}-${slug}${i===3?'-v2':''}.webp`,import.meta.url).href}));
 export function storybookFigure(index,{className='',caption='',eager=false}={}){
  const art=chapterArt[index]||chapterArt[19];
- return `<figure class="storybook-plate ${className}"><img src="${art.src}" srcset="${art.src.replace('.webp','-small.webp')} 768w, ${art.src} 1536w" sizes="(max-width:750px) 92vw, 760px" alt="${art.alt}" width="1536" height="1024" loading="${eager?'eager':'lazy'}" decoding="async">${caption?`<figcaption>${caption}</figcaption>`:''}</figure>`;
+ return `<figure class="storybook-plate ${className}"><img src="${art.src}" srcset="${art.src.replace('.webp','-small.webp')} 768w, ${art.src} 1536w" sizes="(max-width:750px) 92vw, 760px" alt="${art.alt}" width="1536" height="1024" loading="${eager?'eager':'lazy'}" decoding="sync">${caption?`<figcaption>${caption}</figcaption>`:''}</figure>`;
 }
 export function storybookBackdrop(index,w=720,h=360){const art=chapterArt[index]||chapterArt[19],src=art.src.replace('.webp','-small.webp');return `<image href="${src}" x="0" y="0" width="${w}" height="${h}" preserveAspectRatio="xMidYMid slice"/>`;}
-let paintId=0;
-export function inkPainting(svg){const id='book-ink-'+paintId++;return svg.replace(/<svg\b/,'<svg class="storybook-vector"').replace(/(<svg[^>]*>)/,`$1<style>.storybook-ink :is(path,ellipse,circle,rect):not([stroke]){stroke:#7d6b573b;stroke-width:.65;stroke-linejoin:round}</style><defs><filter id="${id}" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency=".045" numOctaves="3" seed="17" result="paper"/><feDisplacementMap in="SourceGraphic" in2="paper" scale=".7"/><feColorMatrix type="saturate" values=".8"/></filter></defs><g class="storybook-ink" filter="url(#${id})">`).replace('</svg>','</g></svg>');}
+// Paintings and cutouts already contain watercolor texture. Avoid rasterizing
+// the whole scene through a displacement filter, especially on mobile GPUs.
+export function inkPainting(svg){return svg.replace(/<svg\b/,'<svg class="storybook-vector"').replace(/(<svg[^>]*>)/,'$1<g class="storybook-ink">').replace('</svg>','</g></svg>');}

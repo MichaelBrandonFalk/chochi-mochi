@@ -38,7 +38,7 @@ Restart from scratch names the current player and asks twice, including a final 
 
 ## Sound and comfort
 
-New players start with music and effects enabled after their first tap or key press, subject to browser playback rules. Sound and Comfort & Access let you change volume, stop sound, or skip to the next of twelve music tracks. Saved quiet choices are respected.
+New players start with music and effects enabled after their first tap or key press, subject to browser playback rules. Sound and Comfort & Access let you change volume, stop sound, or skip to the next of sixteen music tracks. Saved quiet choices are respected.
 
 Comfort & Access offers larger text, spacing, a plain font, stronger contrast, fewer pictures, reduced motion, larger controls, a list map, and optional read-aloud. Take a break stops sound and saves your place. Finding walks also have text controls, and songs have a visual beat. These choices ask for preferences, not a diagnosis.
 

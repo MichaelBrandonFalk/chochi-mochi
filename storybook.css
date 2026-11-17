@@ -14,7 +14,7 @@ h1,h2,h3{color:var(--ink);font-weight:400;text-wrap:balance}
 .chapter-opening-layout aside>.book-scene{display:none}
 .book-scene{border:none;border-radius:8px;overflow:visible;background:none;box-shadow:none}
 .book-scene .storybook-plate{border-radius:8px}
-.book-scene.is-shining img{filter:brightness(1.025)}
+.book-scene.is-shining{border-color:#b6c6a2}
 .play-layout aside .book-scene{position:static;margin-bottom:24px}
 .storybook-picnic{background:none!important;border:0!important;border-radius:8px!important;overflow:visible!important;box-shadow:none!important}
 .picnic-plan{margin-top:12px;padding:10px 14px 8px;border:1px solid var(--line);border-radius:8px;background:#f8f2e4}
@@ -264,3 +264,16 @@ body[data-simple=true] .quiet-illustration{display:none}
 .starting-path span{display:block;font-size:calc(17px * var(--reading-scale,1))}
 .starting-path:hover{border-color:#8b7495;background:#f2edf3}
 body[data-contrast=true] :is(.starting-path,.fern-entry){background:#fffdf4;color:#152c22;border-color:#687960}
+
+/* Keep decoded watercolor images on ordinary image layers, without GPU effects. */
+.storybook-plate img,.storybook-vector,.storybook-vector>.storybook-ink,.craft-art svg>g,.scene svg>g,.scene svg>path{filter:none!important}
+.ride-painting{margin:25px 0;overflow:hidden}
+.ride-scene{position:relative;aspect-ratio:720/470;overflow:hidden;background:#faf3e5}
+.ride-landscape{display:block;width:100%;height:100%;object-fit:cover}
+.ride-travellers{position:absolute;object-fit:contain;max-width:none}
+.ride-balloon{width:29%;height:78%}
+.ride-cloud{width:43%;height:54%}
+.ride-step-0 .ride-travellers{left:17%;top:5%}
+.ride-step-1 .ride-travellers{left:36%;top:10%}
+.ride-step-2 .ride-travellers{left:52%;top:18%}
+body[data-hide-art=true] .ride-scene{display:none}

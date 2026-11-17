@@ -29,7 +29,7 @@ CC0 information and legal code: https://creativecommons.org/publicdomain/zero/1.
 
 ## Playback behavior
 
-Music and effects default on for a new player. The first tap or keyboard activation unlocks music under browser autoplay rules. On/off choices and volumes are remembered for each player. Files are hosted with the game; playing them makes no request to a third-party music service. The twelve-track playlist plays at a low default volume, ducks during read-aloud, and pauses when the tab is hidden. Stop all sound also stops read-aloud. Sound effects give gentle feedback for navigation and learning actions, with no penalty sound for an incorrect answer.
+Music and effects default on for a new player. The first tap or keyboard activation unlocks music under browser autoplay rules. On/off choices and volumes are remembered for each player. Files are hosted with the game; playing them makes no request to a third-party music service. The sixteen-track playlist plays at a low default volume, ducks during read-aloud, and pauses when the tab is hidden. Stop all sound also stops read-aloud. Sound effects give gentle feedback for navigation and learning actions, with no penalty sound for an incorrect answer.
 
 
 ## Pocket music box
@@ -84,3 +84,12 @@ These are synthesized instrument sounds, not sampled acoustic performances or bo
 Routine page and selection clicks use 55 percent of the effects setting, and keepsake feedback uses 80 percent. The player-made musical notes retain their existing effect-volume behavior. Routine effects wait at least 250 milliseconds between triggers and stay silent while a player-made tune is playing. There is still no error sound, countdown, competitive fanfare, or sound required to understand a lesson.
 
 The selected track and playback position are saved per player approximately every fifteen seconds while music plays, as well as on pause and departure. Reloading resumes near that position after the player’s next interaction. Next track resets the position to the beginning of the selected piece. Explicit silence and zero-volume choices survive. Background music continues to duck during narration and pause completely during player-made tunes, with visual notes available in quiet.
+
+
+## Version 3.7 music and playback
+
+Four additional original scores and recordings expand the playlist to sixteen tracks. Garden Window uses soft piano in six small beats, Mossy Steps pairs warm wooden keys with guitar, Little Leaf Minuet uses soft reeds and strings in three beats, and Starlit Postcards leaves more space between harp and light bell phrases. Each has its own melody and chord voicings, rather than reusing the earlier shared motifs. The new pieces are interleaved with the existing music. New players begin with Garden Window; saved selections continue to match their filenames.
+
+Source scores, synthesis, and recordings in scripts/compose-garden-music.py are dedicated to CC0 1.0 without attribution requirements. No sampled performances or existing classical melodies are used. The four new pieces last about 3 minutes 20 seconds to 3 minutes 42 seconds, with softened attacks, rests, resolving endings, and faded edges. Measured MP3 loudness ranges from -29.67 to -29.86 LUFS, near the existing soundtrack level; true peaks stay below -17.6 dBTP. Measurements are in audio-measurements-v3.7.0.json. These measurements describe the files, not a guarantee of comfort for every listener or device.
+
+Background music eases into the selected volume over 900 milliseconds when it starts or resumes. Music-box tunes still pause the background, and quiet settings remain in force. No extra sounds, warning tones, drums, or automatic speech have been added.

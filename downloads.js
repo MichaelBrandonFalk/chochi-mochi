@@ -1,5 +1,5 @@
 import {smallStoryArt} from './page-art.js';
-export const desktopVersion='3.6.0';
+export const desktopVersion='3.7.0';
 export const releaseURL='https://github.com/MichaelBrandonFalk/chochi-mochi/releases/tag/v'+desktopVersion;
 export const assetURL=name=>'https://github.com/MichaelBrandonFalk/chochi-mochi/releases/download/v'+desktopVersion+'/'+name;
 export const desktopFiles={

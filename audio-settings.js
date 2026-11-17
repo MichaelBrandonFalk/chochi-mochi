@@ -1,16 +1,20 @@
 // Alternate instruments and rhythms so a full trip has a varied soundtrack.
 export const playlist=[
+ {file:'garden-window.mp3',title:'Garden Window',description:'Soft piano · a quiet six-beat daydream'},
  {file:'clover-waltz.mp3',title:'Clover Waltz',description:'Soft keys · a gentle waltz'},
  {file:'paper-boats.mp3',title:'Paper Boats',description:'Warm clarinet and harp · a rocking boat song'},
  {file:'meadow-guitar.mp3',title:'Meadow Guitar',description:'Soft guitar · a gentle walk'},
+ {file:'mossy-steps.mp3',title:'Mossy Steps',description:'Warm wooden keys · a playful, unhurried walk'},
  {file:'pebble-waltz.mp3',title:'Pebble Waltz',description:'Harp and plucked strings · a woodland waltz'},
  {file:'willow-flute.mp3',title:'Willow Flute',description:'Flute and strings · slow and airy'},
  {file:'teacup-two-step.mp3',title:'Teacup Two-Step',description:'Soft piano · a small, cheerful dance'},
  {file:'orchard-marimba.mp3',title:'Orchard Marimba',description:'Marimba and bass · a light dance'},
+ {file:'little-leaf-minuet.mp3',title:'Little Leaf Minuet',description:'Soft reeds and strings · a tiny garden dance'},
  {file:'cloud-picnic.mp3',title:'Cloud Picnic',description:'Soft reeds and guitar · a swaying picnic song'},
  {file:'cloud-bells.mp3',title:'Cloud Bells',description:'Music box bells · quiet and light'},
  {file:'fern-and-feather.mp3',title:'Fern and Feather',description:'Wooden flute and guitar · a sunny walking song'},
  {file:'bluebell-strings.mp3',title:'Bluebell Strings',description:'Warm strings · a soft bedtime song'},
+ {file:'starlit-postcards.mp3',title:'Starlit Postcards',description:'Harp and light bells · a spacious evening song'},
  {file:'homeward-lanterns.mp3',title:'Homeward Lanterns',description:'Cello and soft piano · a warm homecoming'}
 ];
 export function audioPreferences(saved={}){

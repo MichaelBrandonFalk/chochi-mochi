@@ -12,7 +12,7 @@ const source=name=>new URL(`./assets/audio/${name}`,import.meta.url).href;
 const status=text=>{document.querySelector('#audio-status').textContent=text;};
 function persist(){if(music&&!pendingSeek&&music.readyState>=1&&Number.isFinite(music.currentTime))resumeAt=music.currentTime;try{playerStorage.setItem('little-lights-audio',JSON.stringify({musicOn,effectsOn,musicVolume,effectsVolume,track:playlist[track].file,position:resumeAt}));}catch{}}
 function paint(){const label=document.querySelector('#music-track');if(label)label.textContent=(track+1)+' of '+playlist.length+' · '+playlist[track].title+' · '+playlist[track].description;const button=document.querySelector('#music-toggle');button.textContent=musicOn?'Pause music':'Play music';button.setAttribute('aria-pressed',String(musicOn));document.querySelector('#effects-toggle').checked=effectsOn;window.dispatchEvent(new Event('audio-settings-changed'));}
-function gain(){if(!music)return;cancelAnimationFrame(fadeFrame);const from=music.volume,to=musicVolume*(narrating ? 0.18 : 1),start=performance.now();function step(now){const t=Math.min(1,(now-start)/200);music.volume=from+(to-from)*t;if(t<1)fadeFrame=requestAnimationFrame(step);}fadeFrame=requestAnimationFrame(step);}
+function gain(duration=200){if(!music)return;cancelAnimationFrame(fadeFrame);const from=music.volume,to=musicVolume*(narrating ? 0.18 : 1),start=performance.now();function step(now){const t=Math.min(1,(now-start)/duration);music.volume=from+(to-from)*t;if(t<1)fadeFrame=requestAnimationFrame(step);}fadeFrame=requestAnimationFrame(step);}
 export function setNarrating(value){narrating=value;if(value)stopTune();gain();}
 export function playEffect(kind='touch'){
  if(!effectsOn||narrating||background.held||document.hidden)return;
@@ -20,7 +20,7 @@ export function playEffect(kind='touch'){
  if(effect){effect.pause();effect.remove();}
  effect=document.createElement('audio');effect.dataset.gameEffect=kind;effect.preload='none';effect.src=source(kind==='touch'?'page-touch.mp3':'keepsake.mp3');effect.volume=effectsVolume*(kind==='touch'?.55:.8);document.querySelector('#audio-engine').append(effect);effect.play().catch(()=>status('This browser could not play the sound. The story still works.'));
 }
-function pauseMusic(remember=true){playGeneration++;musicOn=false;if(music)music.pause();paint();if(remember)persist();}
+function pauseMusic(remember=true){playGeneration++;musicOn=false;cancelAnimationFrame(fadeFrame);if(music)music.pause();paint();if(remember)persist();}
 export function initAudio(){
  document.querySelector('#music-volume').value=Math.round(musicVolume*100);
  document.querySelector('#effects-volume').value=Math.round(effectsVolume*100);
@@ -32,8 +32,8 @@ export function initAudio(){
    music.addEventListener('loadedmetadata',restorePosition);music.addEventListener('durationchange',restorePosition);music.addEventListener('canplay',restorePosition);
    music.addEventListener('timeupdate',()=>{const now=performance.now();if(now-lastPositionSave>=15000&&!music.paused){lastPositionSave=now;persist();}});
    music.addEventListener('error',()=>{pauseMusic(false);status('The music could not load. You can keep playing quietly.');});}
-  music.volume=musicVolume*(narrating?.18:1);const generation=++playGeneration;
-  try{await music.play();if(generation!==playGeneration||background.held){if(background.held||!musicOn||document.hidden)music.pause();return;}status('Playing '+playlist[track].title+'.');}catch{if(generation!==playGeneration)return;status('Tap Play music to start the music.');musicOn=false;paint();}
+  cancelAnimationFrame(fadeFrame);music.volume=0;const generation=++playGeneration;
+  try{await music.play();if(generation!==playGeneration||background.held){if(background.held||!musicOn||document.hidden)music.pause();return;}gain(900);status('Playing '+playlist[track].title+'.');}catch{if(generation!==playGeneration)return;status('Tap Play music to start the music.');musicOn=false;paint();}
  };
  const advanceTrack=()=>{track=nextTrack(track);resumeAt=0;pendingSeek=false;playGeneration++;if(music){music.pause();music.src=source(playlist[track].file);}persist();paint();if(background.held)status('Next track: '+playlist[track].title+'. It will start after our tune.');else if(musicOn)startMusic();else status('Selected '+playlist[track].title+'. Music is paused.');};
  document.querySelector('#music-next').onclick=()=>{unlocked=true;advanceTrack();};
