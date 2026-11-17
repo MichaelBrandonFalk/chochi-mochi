@@ -144,5 +144,12 @@
     "width": 1433,
     "height": 1098,
     "sha256": "5127f8b458f8b20b27993e56e64c4694b8736ee8d32e719a4b2ffa45933b92f0"
+  },
+  {
+    "file": "assets/storybook/celebration-homecoming.webp",
+    "purpose": "finishing celebration",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "fb8f1803d99e589716d4c69cf20914af8e23e031a30c9e453476da7a7dcf675f"
   }
 ]

@@ -8,7 +8,7 @@ h1,h2,h3{color:var(--ink);font-weight:400;text-wrap:balance}
 .story-panel h1{line-height:1.2;margin-bottom:1.1rem}
 .chapter-text{max-width:72ch}
 .storybook-plate{margin:0;min-width:0;overflow:hidden;background:#f8f0df;border:1px solid #dbcfb5;box-shadow:inset 0 0 0 5px #fffaf0,0 3px 14px #725c3d0a;border-radius:8px}
-.storybook-plate img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:contain}
+.storybook-plate>img,.celebration-art-scene>img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:contain}
 .storybook-plate figcaption{padding:13px 18px;background:#fbf6e8;border-top:1px solid #e0d6bf;color:#5a6757;font:13px/1.6 Georgia,serif;letter-spacing:.03em;text-transform:none;text-align:center}
 .chapter-opening-art{margin:0 0 30px}
 .chapter-opening-layout aside>.book-scene{display:none}
@@ -277,3 +277,40 @@ body[data-contrast=true] :is(.starting-path,.fern-entry){background:#fffdf4;colo
 .ride-step-1 .ride-travellers{left:36%;top:10%}
 .ride-step-2 .ride-travellers{left:52%;top:18%}
 body[data-hide-art=true] .ride-scene{display:none}
+.song-step[data-edit-note]{cursor:pointer;font:inherit}
+.song-step[data-edit-note]:hover,.song-step[data-edit-note]:focus-visible{border-color:var(--note-edge,#927c9a)}
+.celebration-moment{position:relative;isolation:isolate;padding:36px 24px;border:1px solid #d6c7a9;border-radius:24px;background:#fcf7e9;box-shadow:0 0 45px #e8d5a342}
+.celebration-moment h1{font-size:calc(clamp(36px,5vw,64px) * var(--reading-scale,1));line-height:1.15;max-width:20ch;margin:18px auto}
+.celebration-dedication{max-width:50ch;margin:0 auto 24px}
+.celebration-music{margin:24px auto}
+.celebration-music .micro{margin:12px 0}
+.celebration-moment .picnic-painting{max-width:880px;margin:28px auto}
+.celebration-keepsakes{max-width:1000px;margin:36px auto}
+.celebration-choice-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin-top:24px}
+.celebration-choice-grid figure{min-width:0;margin:0;padding:12px 8px;background:#fffdf5;border:1px solid #e2d7be;border-radius:12px}
+.celebration-choice-grid figure>div{display:flex;justify-content:center;height:92px}
+.celebration-choice-grid :is(img,svg){max-width:100%;height:92px;object-fit:contain;min-width:0}
+.celebration-choice-grid figcaption{font-size:calc(16px * var(--reading-scale,1));overflow-wrap:anywhere;line-height:1.5;margin-top:10px}
+.celebration-thanks{font-size:24px;max-width:48ch;margin:32px auto 8px}
+.celebration-petals{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:-1;border-radius:inherit}
+.celebration-petals span{position:absolute;left:var(--petal-x);top:1%;font-size:26px;color:#d9bdcf;opacity:.55;animation:celebration-sway 9s ease-in-out var(--petal-delay) infinite alternate}
+@keyframes celebration-sway{from{transform:translateY(0) rotate(-8deg)}to{transform:translateY(32px) rotate(8deg)}}
+body[data-reduce-motion=true] .celebration-petals span{animation:none}
+body[data-hide-art=true] .celebration-choice-grid figure>div,body[data-hide-art=true] .celebration-petals{display:none}
+body[data-plain=true] .celebration-moment{background:var(--surface);box-shadow:none}
+body[data-contrast=true] .celebration-moment,body[data-contrast=true] .celebration-choice-grid figure{background:#fffdf4;color:#152c22;border-color:#687960}
+@media(prefers-reduced-motion:reduce){.celebration-petals span{animation:none}}
+@media(max-width:750px){.celebration-moment{padding:24px 16px}.celebration-choice-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.celebration-choice-grid figure{padding:10px 5px}.celebration-choice-grid figcaption{font-size:calc(14px * var(--reading-scale,1))}}
+@media(max-width:400px){.celebration-choice-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.song-step[aria-pressed=true]{border-color:#7d6190;outline:2px solid #7d6190;outline-offset:2px}
+.celebrate:has(.celebration-moment){max-width:1120px}
+.celebration-art{max-width:880px;margin:28px auto}
+.celebration-art-scene{position:relative}
+.celebration-arrangement{position:absolute;left:23%;right:23%;bottom:4%;height:24%}
+.celebration-arrangement .painted-picnic-plan{height:100%}
+.celebration-arrangement .plan-lanterns{width:24%;height:28%}
+.celebration-arrangement .plan-tables{height:72%;gap:5%}
+.celebration-arrangement .plan-table{height:100%}
+.celebration-arrangement .plan-table>img:first-child{height:100%;width:100%;object-fit:contain}
+.celebration-buddy{position:absolute;left:10%;bottom:5%;width:14%;height:16%}
+.celebration-buddy svg{width:100%;height:100%}

@@ -1,3 +1,12 @@
+## 3.8.0 · A garden worth celebrating
+
+- Move level 20 up and toward level 19. Remove the slanted ride label and outdated instructions that put the garden directly below level 1.
+- Give Pipkin twenty musical jobs, with different prompts, openings, rhythms, and sounds. Add single-note editing and keep personal tunes valid without scoring or timers. Preserve older saved tunes and postcards.
+- Celebrate the completed journey with a new watercolor scene, chosen table arrangement and decorations, nineteen choice-specific keepsake vignettes, gentle petals, and a dedicated original finishing song.
+- Start the special song on the first completed finish only. Respect quiet settings, pause the regular soundtrack, stop the special song on departure, and offer replay. Keep reduced-motion and hidden-art options.
+- Clarify storybook and remembered examples, the book-cover pocket, Sol’s small plants, the two standing lamps, and the friends’ role. Keep the later review visit in the finale.
+- Clamp audio-fade progress at zero to handle animation-frame timestamps that predate the fade’s starting clock.
+
 ## 3.7.0 · Clearer homeward art and a roomier soundtrack
 
 - Put balloon and cloud travellers over the character-free valley landscape. Each of the three homeward pages now has one pair of main characters, with the ride fully inside the frame.

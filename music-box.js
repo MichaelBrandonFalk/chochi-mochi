@@ -7,5 +7,5 @@ export const notePaint=[
  {name:'Sol',frequency:392,fill:'#b9cfd1',lit:'#d3ecf0',edge:'#597f88'},
  {name:'La',frequency:440,fill:'#dacda9',lit:'#f7ecb5',edge:'#8c793a'}
 ];
-export function tuneScore(notes){return (Array.isArray(notes)?notes:[]).filter(n=>Number.isInteger(n)&&n>=0&&n<notePaint.length).slice(0,4).map((note,index)=>({note,index,at:index*beatSeconds,duration:beatSeconds-.08}));}
+export function tuneScore(notes,{rhythm=[]}={}){let at=0;return (Array.isArray(notes)?notes:[]).filter(n=>Number.isInteger(n)&&n>=0&&n<notePaint.length).slice(0,4).map((note,index)=>{const beats=[.5,1,1.5,2].includes(rhythm[index])?rhythm[index]:1,span=beats*beatSeconds;const beat={note,index,at,duration:Math.max(.12,span-.08),span,beats};at+=span;return beat;});}
 export const noteStyle=n=>{const p=notePaint[n];return p?`--note-fill:${p.fill};--note-lit:${p.lit};--note-edge:${p.edge}`:'';};

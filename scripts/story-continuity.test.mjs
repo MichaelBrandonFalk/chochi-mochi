@@ -50,3 +50,12 @@ test('every outing title matches its current companion rather than a retired gam
  }
  assert.equal(outingTitle(6,{0:0}),'A finding walk with Ada');assert.equal(outingTitle(6,{0:1}),'A song with Ada');
 });
+
+
+test('remembered route and seating choices use natural verbs rather than label fragments',()=>{
+ assert.match(travelGreeting(13,{12:1},{}),/we walked along the fern path/);
+ assert.match(travelGreeting(13,{12:0},{}),/we walked by the smooth stepping stones/);
+ assert.match(travelGreeting(15,{14:1},{}),/we had tea at the cushion nook by the books/);
+ assert.match(travelGreeting(15,{14:0},{}),/we had tea at the window with the pear tree/);
+ for(let previous=0;previous<19;previous++)for(const value of [0,1])assert.doesNotMatch(travelGreeting(previous+1,{[previous]:value},{}),/we chose (along|by|the window|the cushion)/);
+});

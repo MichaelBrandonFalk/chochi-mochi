@@ -93,3 +93,14 @@ Four additional original scores and recordings expand the playlist to sixteen tr
 Source scores, synthesis, and recordings in scripts/compose-garden-music.py are dedicated to CC0 1.0 without attribution requirements. No sampled performances or existing classical melodies are used. The four new pieces last about 3 minutes 20 seconds to 3 minutes 42 seconds, with softened attacks, rests, resolving endings, and faded edges. Measured MP3 loudness ranges from -29.67 to -29.86 LUFS, near the existing soundtrack level; true peaks stay below -17.6 dBTP. Measurements are in audio-measurements-v3.7.0.json. These measurements describe the files, not a guarantee of comfort for every listener or device.
 
 Background music eases into the selected volume over 900 milliseconds when it starts or resumes. Music-box tunes still pause the background, and quiet settings remain in force. No extra sounds, warning tones, drums, or automatic speech have been added.
+
+
+## Version 3.8 musical play and finishing song
+
+Pipkin’s twenty outings share a small set of named note buttons but vary their task, starting notes, rhythm, and sound. Half, whole, one-and-a-half and two-beat durations use one cumulative score for sound and visible note cues. Gentle harp, bell, wooden-key and flute-like voices use different waveforms, registers and envelopes. Players can edit any filled note or make their own answer; no timing, pitch or memory score gates progress. Older note arrays remain valid.
+
+A Garden Full of Friends is a new original 77-second piano, harp and warm-string waltz. Its score, synthesis and recording in scripts/compose-celebration.py are dedicated to CC0 1.0, without an attribution requirement. It uses no samples or borrowed composition. The encoded MP3 measured -28.90 LUFS integrated, -18.79 dBTP true peak and 3.00 LU loudness range; see audio-measurements-v3.8.0.json. It has soft attacks, a returning theme, and a resolving, faded ending.
+
+The finishing song follows the music switch and music volume, independently of the effects switch. It suspends the background playlist without changing its saved track or position. Completion starts it once when music is enabled; quiet completion presents the celebration without sound. An explicit button can enable and replay it. It stops on departure, hidden tabs, Pause music, Stop all sound, and a break. Read-aloud lowers its volume. The background may resume afterward only if enabled and the page is visible. Returning to the completed scene does not auto-replay it.
+
+Audio fade progress now clamps to the interval from zero to one, including when an animation frame’s timestamp is slightly earlier than performance.now().

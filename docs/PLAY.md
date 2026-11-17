@@ -16,7 +16,7 @@ Outings are optional. You can read, make a gift, practice, pause, or return to a
 
 **Button the snail** notices small things. Each of the twenty painted finding walks has its own story and three treasures to spot. Three optional tiny wonders have little story replies, too. Use a hint, make the objects bigger, ask Button to find one, or open Find things with words. Every method gives the same progress. After finding the treasures, Hide them in new places starts another walk while the saved postcard stays unchanged.
 
-**Pipkin the robin** makes songs. Pick four notes for a tune, try the local pattern, or make something of your own. Play our tune and Watch our tune both follow the same colored notes and beat counter. They play sound when effects are on; with effects off, the visual song still works. Background music pauses during tune playback. There is no wrong tune.
+**Pipkin the robin** makes songs. Each place has a different musical job: echo a hello, finish a tune, make an answer, play a pattern backward, or try rising and falling notes. Rhythms and sounds vary by place. Some songs begin with one, two, or three notes from the host. Add your own notes, or ask Pipkin for help. A personal tune always works. Tap a note in your song to change just that note. Play our tune and Watch our tune both follow the same colored notes and beat counter. They play sound when effects are on; with effects off, the visual song still works. Background music pauses during tune playback. There is no wrong tune.
 
 If you reach an outing before picking a travelling friend, a short choice lets you pick Button or Pipkin there. Each companion keeps that familiar kind of outing throughout the trip. The paintings, stories, treasures, patterns, and hiding places vary by place. Earlier story choices also affect later visits. Future choices do not change earlier outings.
 
@@ -62,3 +62,10 @@ In each of Fern’s nineteen parent notes, try either of two fictional choices t
 Each chapter’s Remember page has an optional Try the idea in a new story section. Only one story is shown at a time. Where more stories are available, Another little story and Previous little story let you browse. Your feedback stays while that page is open. These stories are optional, and reopening the page starts fresh.
 
 The final gathering uses concrete story situations in its existing small groups. The last act helps Fern notice her own actions and bring all her observations to review without blame. Make it again and Chochi’s help keep their usual behavior.
+
+
+## The finishing celebration
+
+After the nineteen chapters, the homeward ride, and the five garden scenes, the story celebrates the whole journey. A new watercolor spread shows the friends with the chosen table arrangement, cloth, lanterns, and travelling companion. All selected story details appear as named keepsakes below it. The celebration rewards completing the adventure, not changing someone’s feelings.
+
+A Garden Full of Friends is a special 77-second finishing song, separate from the background playlist. It starts after the final activity if music is enabled. Quiet stays quiet. The music button offers an explicit way to hear it, and the scene works without sound. Returning to the ending does not automatically replay the song. Leaving the page stops it; ordinary music resumes only when enabled. Reduced-motion and hidden-art settings remain available.

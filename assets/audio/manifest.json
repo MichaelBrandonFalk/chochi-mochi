@@ -186,5 +186,15 @@
     "license": "CC0-1.0",
     "attribution_required": false,
     "sha256": "89fb63a5eac24e19c91662ff8ece4d729068d808f20999b4cfb188b60be8991c"
+  },
+  {
+    "file": "assets/audio/a-garden-full-of-friends.mp3",
+    "title": "A Garden Full of Friends",
+    "description": "A gentle finishing waltz for piano, harp and warm strings",
+    "creator": "Chochi Mochi original arrangement",
+    "source": "scripts/compose-celebration.py",
+    "license": "CC0-1.0",
+    "attribution_required": false,
+    "sha256": "062c915fe1a9d9eba2762fb91cb551e86ef4f20011cb68abaaded877c0acf692"
   }
 ]

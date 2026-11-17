@@ -19,7 +19,7 @@ globalThis.document={hidden:false,querySelector:element,addEventListener(name,fn
 globalThis.requestAnimationFrame=()=>1;
 globalThis.cancelAnimationFrame=()=>{};
 Object.defineProperty(globalThis,'performance',{value:{now:()=>clock},configurable:true});
-const {playTune,playEffect,setAudioSettings,stopTune,initAudio,getAudioState}=await import('../audio.js');
+const {playTune,playEffect,setAudioSettings,stopTune,initAudio,getAudioState,playCelebration,stopCelebration,silenceAudio}=await import('../audio.js');
 function level(voice,time){let result=1;for(let node=voice.to;node?.kind!=='destination';node=node.to){assert.ok(node);if(node.gain)result*=node.gain.at(time);}return result;}
 
 test('effects volume changes affect scheduled notes without restarting the tune',async()=>{
@@ -70,8 +70,24 @@ test('starting a background track eases into the saved level without a volume ju
  if(getAudioState().musicOn)element('#music-toggle').onclick();
  clock=50000;element('#music-toggle').onclick();await Promise.resolve();
  const music=effects.find(e=>e.id==='garden-music');assert.equal(music.volume,0);
- frames.shift()(50000);frames.shift()(50450);
+ frames.shift()(49990);assert.equal(music.volume,0,'A frame timestamp may predate performance.now()');frames.shift()(50000);frames.shift()(50450);
  assert.ok(Math.abs(music.volume-getAudioState().musicVolume*.5)<1e-9);
  frames.shift()(50900);assert.equal(music.volume,getAudioState().musicVolume);
  element('#music-toggle').onclick();
+});
+
+
+test('celebration respects quiet, uses music rather than effects, and suspends the playlist',async()=>{
+ silenceAudio();assert.equal(playCelebration(),false);
+ const track=getAudioState().track;
+ assert.equal(playCelebration({enable:true}),true);await Promise.resolve();
+ const song=effects.find(e=>e.id==='garden-celebration');assert.ok(song);assert.equal(song.paused,false);
+ assert.equal(getAudioState().effectsOn,false);assert.equal(getAudioState().track,track);
+ assert.equal(effects.find(e=>e.id==='garden-music').paused,true);
+ assert.equal(getAudioState().celebrating,true);
+ song.listeners.get('ended')();await Promise.resolve();
+ assert.equal(getAudioState().celebrating,false);assert.equal(effects.find(e=>e.id==='garden-music').paused,false);
+ playCelebration();await Promise.resolve();const replay=effects.at(-1);silenceAudio();
+ assert.equal(replay.paused,true);assert.equal(getAudioState().celebrating,false);assert.equal(playCelebration(),false);
+ stopCelebration();
 });
