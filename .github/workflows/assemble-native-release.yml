@@ -1,0 +1,62 @@
+name: Assemble verified native release files
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        required: true
+        type: string
+      build_run:
+        required: true
+        type: string
+      mint_run:
+        required: true
+        type: string
+permissions:
+  contents: write
+  actions: read
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      TAG: ${{ inputs.release_tag }}
+      BUILD_RUN: ${{ inputs.build_run }}
+      MINT_RUN: ${{ inputs.mint_run }}
+    steps:
+      - name: Verify the source and completed native checks
+        run: |
+          [[ "$TAG" =~ ^v3\.[0-9]+\.[0-9]+$ ]]
+          [[ "$BUILD_RUN" =~ ^[0-9]+$ ]]
+          [[ "$MINT_RUN" =~ ^[0-9]+$ ]]
+          gh api "repos/$GH_REPO/actions/runs/$BUILD_RUN" > build.json
+          test "$(jq -r .name build.json)" = 'Build offline desktop games'
+          test "$(jq -r .head_branch build.json)" = "$TAG"
+          test "$(jq -r .head_sha build.json)" = "$(gh api "repos/$GH_REPO/git/ref/tags/$TAG" --jq .object.sha)"
+          gh api "repos/$GH_REPO/actions/runs/$BUILD_RUN/jobs?filter=latest" --jq '.jobs[] | select((.name | startswith("desktop (windows")) or (.name | startswith("desktop (ubuntu"))) | .conclusion' > checks.txt
+          test "$(wc -l < checks.txt)" -eq 2
+          test "$(sort -u checks.txt)" = success
+          gh api "repos/$GH_REPO/actions/runs/$MINT_RUN" > mint.json
+          test "$(jq -r .name mint.json)" = 'Verify an existing Mint package'
+          test "$(jq -r .conclusion mint.json)" = success
+      - uses: actions/download-artifact@v4
+        with:
+          name: desktop-linux
+          path: packages
+          run-id: ${{ inputs.build_run }}
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: desktop-windows
+          path: packages
+          run-id: ${{ inputs.build_run }}
+          github-token: ${{ github.token }}
+      - name: Attach verified files to the private draft
+        run: |
+          test "$(gh release view "$TAG" --json isDraft --jq .isDraft)" = true
+          cd packages
+          test "$(find . -maxdepth 1 -type f | wc -l)" -eq 5
+          for file in *; do [[ "$file" == *"-${TAG#v}-"* ]]; done
+          sha256sum * > SHA256SUMS.txt
+          gh release upload "$TAG" *
