@@ -69,3 +69,14 @@ The final gathering uses concrete story situations in its existing small groups.
 After the nineteen chapters, the homeward ride, and the five garden scenes, the story celebrates the whole journey. A new watercolor spread shows the friends with the chosen table arrangement, cloth, lanterns, and travelling companion. All selected story details appear as named keepsakes below it. The celebration rewards completing the adventure, not changing someone’s feelings.
 
 A Garden Full of Friends is a special 77-second finishing song, separate from the background playlist. It starts after the final activity if music is enabled. Quiet stays quiet. The music button offers an explicit way to hear it, and the scene works without sound. Returning to the ending does not automatically replay the song. Leaving the page stops it; ordinary music resumes only when enabled. Reduced-motion and hidden-art settings remain available.
+
+
+## Little discoveries and another trip
+
+An arrival may include one optional action using something chosen earlier. A cloth can hold books; a boat can hold a party invite. Button and Pipkin notice different details. There is no discovery score and nothing extra is required to finish a chapter. The result stays with that earlier-choice branch. Changing a future choice does not erase it.
+
+Pipkin’s notes also bring small flowers, leaves, lanterns, ribbons, sails, rings, or stars into the musical picture. The named note buttons remain the controls. The scenery follows the same beat with sound or in quiet. Some later story greetings can recall an automatically saved tune, even without a postcard.
+
+Six conversation pages have a small picture and a caption that change with the reply. Both replies remain available. The story response and explanation appear together below them.
+
+Rest here opens the saved-place pause at the end of a chapter. Have the afternoon again starts a separate garden replay. It leaves the completed journey and original gifts intact. Back to our celebration leaves that replay; starting a new replay clears only its five practice boards. Take another story path returns to Clover Gate without clearing the journey.
